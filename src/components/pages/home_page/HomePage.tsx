@@ -2,6 +2,7 @@ import carLogo from '/src/images/car_logo.png'
 import { useLoaderData } from 'react-router-dom';
 import CardList from "../../cards/CardList";
 import './HomePage.scss';
+import Header from "../../header/Header";
 
 export default function HomePage() {
     const data = useLoaderData() as [];
@@ -9,6 +10,7 @@ export default function HomePage() {
 
     return (
         <>
+        <Header></Header>
             <div className="main-wrapper">
                 <div className="upper-main">
                     <span className="upper-main-text">

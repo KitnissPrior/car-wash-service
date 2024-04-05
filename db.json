@@ -1,0 +1,67 @@
+{
+  "Carwashes": [
+    {
+      "id": "1",
+      "name": "Автомойка 1",
+      "carwashStreet": "г. Екатеринбург ул. Малышева 1",
+      "boxAmount": "5",
+      "contactInfo": "8-800-200-01-01"
+    },
+    {
+      "id": "2",
+      "name": "Автомойка 2",
+      "carwashStreet": "г. Екатеринбург ул. Малышева 1",
+      "boxAmount": "4",
+      "contactInfo": "8-800-200-01-01"
+    },
+    {
+      "id": "3",
+      "name": "Автомойка 3",
+      "carwashStreet": "г. Екатеринбург ул. Малышева 1",
+      "boxAmount": "5",
+      "contactInfo": "8-800-200-01-01"
+    },
+    {
+      "id": "4",
+      "name": "Автомойка 4",
+      "carwashStreet": "г. Екатеринбург ул. Малышева 1",
+      "boxAmount": "5",
+      "contactInfo": "8-800-200-01-01"
+    },
+    {
+      "id": "5",
+      "name": "Автомойка 5",
+      "carwashStreet": "г. Екатеринбург ул. Малышева 1",
+      "boxAmount": "2",
+      "contactInfo": "8-800-200-01-01"
+    },
+    {
+      "id": "4d4d",
+      "name": "YadrёnaWash",
+      "carwashStreet": "г. Березовский, ул. Гагарина 20",
+      "boxAmount": 2,
+      "contactInfo": "+79124563257"
+    },
+    {
+      "id": "1746",
+      "name": "АвтомойкаЕкб",
+      "carwashStreet": "г. Екатеринбург, ул. Мира 4",
+      "boxAmount": 8,
+      "contactInfo": "+79124567234"
+    },
+    {
+      "id": "3dbd",
+      "name": "АвтомойкаБрз",
+      "carwashStreet": "адрес",
+      "boxAmount": 4,
+      "contactInfo": "+777777844512"
+    },
+    {
+      "id": "4944",
+      "name": "АвтомойкаБрз2",
+      "carwashStreet": "адрес",
+      "boxAmount": 2,
+      "contactInfo": "+7920546513521"
+    }
+  ]
+}

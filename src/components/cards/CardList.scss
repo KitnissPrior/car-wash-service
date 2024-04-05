@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; /* Распределение карточек равномерно по ширине контейнера */
+    padding: 200px 40px;
 }
 
 .card-list > .card {

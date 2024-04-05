@@ -1,0 +1,17 @@
+.adding-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 100px;
+
+    border: 1px solid #000;
+    border-radius: 30px;
+
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.adding-button:hover {
+    border: 1px solid #B30006;
+    color: #B30006;
+}
