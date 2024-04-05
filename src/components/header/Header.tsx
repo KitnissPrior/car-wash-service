@@ -8,8 +8,7 @@ export default function Header() {
                 <div className="header">
                     <NavLink className="header-logo" to=''>Логотип</NavLink>
                     <div className="header-button">
-                        <NavLink to=''>История заказов</NavLink>
-                        <NavLink to=''>Мой профиль</NavLink>
+                        <NavLink to='/owner'>Личный кабинет владельца</NavLink>
                     </div>
                 </div>
             </div>
