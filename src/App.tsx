@@ -7,6 +7,7 @@ import './App.scss';
 import axios from 'axios';
 import { useState } from 'react';
 import { HeaderOwner } from './components/header/HeaderOwner';
+import { CarwashAdding } from './components/pages/owner_lk/CarwashAdding';
 
 export const api = 'https://jsonplaceholder.typicode.com/';  // Фейковый api для прототипа
 
@@ -28,7 +29,8 @@ const router = createBrowserRouter(
             <Route element={<HeaderOwner/>} loader={GetAllItems}></Route>
             <Route element={<HomePage/>} path='/' loader={GetAllItems}/>
             <Route element={<PageNotFound/>} path='*'/>
-            <Route element={<OwnerLK/>} path='/lk'/>
+            <Route element={<OwnerLK/>} path='/owner'/>
+            <Route element={<CarwashAdding/>} path='/carwash-adding'/>
         </Route>
     )
 );
