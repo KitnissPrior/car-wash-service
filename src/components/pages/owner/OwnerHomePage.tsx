@@ -15,12 +15,17 @@ export default function OwnerHomePage() {
     return (
         <>
         <HeaderOwner></HeaderOwner>
-        <main>
-            <QueryStatus query={query}></QueryStatus>
-            <CardList data={carwashes}/>
-            <Button className="adding-button">
-                <Link to='/carwash-adding'>Добавить автомойку</Link>
-            </Button>
+        <main className='header-owner-main'>
+            <div className='cards'>
+                <QueryStatus query={query}></QueryStatus>
+                <CardList data={carwashes}/>
+            </div>
+            <div className="adding-button">
+                <Link className="adding-button-link" to='/carwash-adding'>
+                <img src="/src/images/plus.png" className='adding-button-image' alt="" />
+                Добавить автомойку
+                </Link>
+            </div>
         </main>
         </>
     )

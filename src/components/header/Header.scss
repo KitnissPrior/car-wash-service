@@ -5,17 +5,6 @@
 
     width: 100%;
     position: fixed;
-
-    @media screen and (min-device-width: 748px) and (max-width: 1560px){
-        display: flex;
-        justify-content: space-between;
-    }
-
-    @media screen and (max-width: 747px){
-        margin-top: -54px;
-        display: flex;
-        justify-content: space-between;
-    }
 }
 
 .header {
@@ -26,16 +15,7 @@
     justify-content: space-between;
     align-items: center;
 
-    @media screen and (min-device-width: 748px) and (max-width: 1560px){
-        width: 100%;
-        padding: 0 24px;
-    }
-
-    @media screen and (max-width: 747px){
-        width: 100%;
-        padding: 0 24px;
-        height: 54px;
-    }
+    width: 100%;
 }
 
 .header-logo {
@@ -43,4 +23,21 @@
     font-size: 24px;
     line-height: 29.26px;
     color: #000;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 30px;
+}
+
+.header-button-red {
+    background-color: #ED1D24;
+    border: 1px solid #ED1D24 !important;
+    color: #fff !important;
+}
+
+.header-button-red:hover {
+    background-color: #B30006;
+    border: 1px solid #B30006 !important;
+    color: #fff !important;
 }
