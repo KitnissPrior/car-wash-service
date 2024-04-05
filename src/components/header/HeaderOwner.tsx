@@ -1,15 +1,15 @@
 import { Outlet, NavLink } from 'react-router-dom';
-import './Header.scss';
+import './HeaderOwner.scss';
 
-export default function Header() {
+export function HeaderOwner() {
     return (
         <>
             <div className="header-wrapper">
                 <div className="header">
                     <NavLink className="header-logo" to=''>Логотип</NavLink>
-                    <div className="header-button">
-                        <NavLink to=''>История заказов</NavLink>
-                        <NavLink to=''>Мой профиль</NavLink>
+                    <NavLink className="header-title" to=''>Мои автомойки</NavLink>
+                    <div >
+                        <NavLink to='' className="header-button">Мой профиль</NavLink>
                     </div>
                 </div>
             </div>
