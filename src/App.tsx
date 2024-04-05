@@ -1,10 +1,12 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Header from "./components/header/Header";
 import HomePage from "./components/pages/home_page/HomePage";
+import OwnerLK from './components/pages/owner_lk/OwnerLK';
 import PageNotFound from "./components/pages/page_not_found/PageNotFound";
 import './App.scss';
 import axios from 'axios';
 import { useState } from 'react';
+import { HeaderOwner } from './components/header/HeaderOwner';
 
 export const api = 'https://jsonplaceholder.typicode.com/';  // Фейковый api для прототипа
 
@@ -21,9 +23,12 @@ function GetAllItems() {
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route element={<Header/>} loader={GetAllItems}>
+        <Route>
+            <Route element={<Header/>} loader={GetAllItems}></Route>
+            <Route element={<HeaderOwner/>} loader={GetAllItems}></Route>
             <Route element={<HomePage/>} path='/' loader={GetAllItems}/>
             <Route element={<PageNotFound/>} path='*'/>
+            <Route element={<OwnerLK/>} path='/lk'/>
         </Route>
     )
 );
