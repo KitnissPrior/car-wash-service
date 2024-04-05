@@ -9,34 +9,18 @@ export default function HomePage() {
     console.log(data);
 
     return (
-        <>
-        <Header></Header>
+        <div className='homepage-content'>
+            <Header></Header>
             <div className="main-wrapper">
                 <div className="upper-main">
                     <span className="upper-main-text">
                         <h1>
-                            <strong>Бронируйте места на любой удобной вам автомойке!</strong>
+                            Бронируйте места на любой <br /> удобной вам автомойке!
                         </h1>
                     </span>
-                    <img alt="Машина" src={carLogo}/>
                 </div>
-
-                <div className="main-search">
-                    <span className='search-text'>
-                        <h2>Доступные автомойки</h2>
-                    </span>
-                    <div className="searcher">
-                        <input className='searcher-input' placeholder='Поиск по автомойкам' type='text'/>
-                        <button className='searcher-button' type='button'>Найти</button>
-                    </div>
-                </div>
-
+                <img className='main-image' alt="Машина" src='./src/images/car2.png'/>
             </div>
-
-            <div className="main-stations">
-                <CardList data={data}/>
-            </div>
-
-        </>
+        </div>
     );
 }

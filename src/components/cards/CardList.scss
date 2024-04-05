@@ -1,11 +1,35 @@
 .card-list {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Распределение карточек равномерно по ширине контейнера */
-    padding: 200px 40px;
+    flex-wrap: wrap; /* Распределение карточек равномерно по ширине контейнера */
+    padding-top: 106px;
+    gap: 20px;
 }
 
 .card-list > .card {
     //flex: 0 0 calc(33.333% - 20px); /* 33.333% ширины контейнера для трех карточек в ряду, вычитаем отступы */
     //margin: 10px; /* Отступы вокруг карточек */
+}
+
+.carwash-title  {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.card {
+    box-sizing: border-box;
+    width: 386px;
+    padding: 1px; 
+
+    border-radius: 15px;
+    
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, .15);
+}
+
+.card:hover {
+    border: 1px solid #B30006;
+}
+
+.carwash-info {
+    margin-bottom: 5px;
 }

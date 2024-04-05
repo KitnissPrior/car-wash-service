@@ -15,11 +15,11 @@ const CardList : React.FC<{ data: Carwash[] | undefined}> = ({data}) => {
     return (
         <div className="card-list">
             {data?.map((item, index) =>
-                <Card key={index} style={{ width: 300 }}>
-                    <p>Название автомойки: {item.name}</p>
-                    <p>Адрес: {item.carwashStreet}</p>
-                    <p>Количество боксов обслуживания: {item.boxAmount}</p>
-                    <p>Контактные данные: {item.contactInfo}</p>
+                <Card key={index} className='card'>
+                    <p className='carwash-title'>Название автомойки: {item.name}</p>
+                    <p className='carwash-info'><b>Адрес:</b> {item.carwashStreet}</p>
+                    <p className='carwash-info'><b>Количество боксов обслуживания:</b> {item.boxAmount}</p>
+                    <p className='carwash-info'><b>Контактные данные:</b> {item.contactInfo}</p>
                 </Card>
             )}
         </div>

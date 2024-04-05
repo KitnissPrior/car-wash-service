@@ -6,7 +6,7 @@ export function HeaderOwner() {
         <>
             <div className="header-wrapper">
                 <div className="header">
-                    <NavLink className="header-logo" to='/'>На главную</NavLink>
+                    <NavLink className="header-logo" to='/'>Логотип</NavLink>
                     <NavLink className="header-title" to='/owner'>Мои автомойки</NavLink>
                     <div >
                         <NavLink to='' className="header-button">Мой профиль</NavLink>

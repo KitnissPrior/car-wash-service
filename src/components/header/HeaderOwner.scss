@@ -1,7 +1,22 @@
+.header {
+    display: flex;
+    box-sizing: border-box;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 !important;
+}
+
 .header-logo {
+    display: block;
+    width: 140px;
     font-size: 24px;
     font-weight: 600;
     text-decoration: none;
+    transition: linear .1s;
+}
+
+.header-logo:hover {
+    color: #B30006;
 }
 
 .header-title {
@@ -10,6 +25,15 @@
     font-weight: 600;
 
     color: #000;
+    transition: linear .1s;
+}
+
+.header-title:hover {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 600;
+
+    color: #B30006;
 }
 
 .header-button {
@@ -22,6 +46,8 @@
     text-decoration: none;
 
     color: #000;
+
+    transition: linear .1s;
 }
 
 .header-button:hover {

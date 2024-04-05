@@ -26,32 +26,38 @@ export const CarwashAdding: FC = () => {
         navigate('/owner');
     }
 
-    return (    
-        <>
-        <HeaderOwner></HeaderOwner>
-            <AutoCenter style={{padding: '150px'}}>
-            <h1 style={{padding: '30px 50px'}}>Добавление автомойки</h1>
-                <Form onFinish={handleFormSubmit}>
-                <Form.Item label="Название автомойки*" name="name">
-                    <Input placeholder="Название" required/>
-                </Form.Item>
-                <Form.Item label="Адрес*" name="carwashStreet" >
-                    <Input.TextArea placeholder="Адрес" required/>
-                </Form.Item>
-                <Form.Item label="Количество боксов для обслуживания*" name="boxAmount">
-                    <InputNumber placeholder="1" required/>
-                </Form.Item>
-                <Form.Item label="Контактный номер*" name="contactInfo">
-                    <Input.TextArea placeholder="+7" required/>
-                </Form.Item>
-                <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                    <Button className="form-submit-button" htmlType="submit">Добавить автомойку</Button>
-                </Form.Item>
-                <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                    <Button className="form-cancel-button" onClick={handleFormCancel}>Не добавлять</Button>
-                </Form.Item>
-            </Form>
-            </AutoCenter>
-        </>
+    return ( 
+        <div className="carwash-adding">
+            <div><HeaderOwner></HeaderOwner></div>
+            <div className="carwash-adding-content2">
+                <AutoCenter>
+                <h1 style={{padding: '30px 50px', fontSize: '24px'}}>Добавление автомойки</h1>
+                    <Form onFinish={handleFormSubmit}>
+                    <Form.Item label="Название автомойки*" name="name">
+                        <span className="input-label">Название автомойки*</span>
+                        <Input className="input" placeholder="Название" required/>
+                    </Form.Item>
+                    <Form.Item label="Адрес*" name="carwashStreet" >
+                        <span className="input-label">Адрес*</span>
+                        <Input.TextArea className="input" placeholder="Адрес" required/>
+                    </Form.Item>
+                    <Form.Item label="Количество боксов для обслуживания*" name="boxAmount">
+                        <span className="input-label">Количество боксов для обслуживания*</span>
+                        <InputNumber className="input" placeholder="1" required/>
+                    </Form.Item>
+                    <Form.Item label="Контактный номер*" name="contactInfo">
+                        <span className="input-label">Контактный номер*</span>
+                        <Input className="input" placeholder="+7" required/>
+                    </Form.Item>
+                    <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                        <Button className="form-submit-button" htmlType="submit">Добавить автомойку</Button>
+                    </Form.Item>
+                    <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                        <Button className="form-cancel-button" onClick={handleFormCancel}>Не добавлять</Button>
+                    </Form.Item>
+                </Form>
+                </AutoCenter>
+            </div>
+        </div>
     )
 }
