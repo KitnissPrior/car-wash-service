@@ -1,0 +1,68 @@
+body {
+    font-family: Montserrat, sans-serif;;
+}
+
+label {
+    display: none !important;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px !important;
+    width: 100%;
+    min-height: 40px;
+}
+
+.carwash-adding {
+    display: flex;
+    flex-direction: column;
+}
+
+.carwash-adding-content2 {
+    max-width: 700px;
+    box-sizing: border-box;
+    margin: 150px auto 0;
+    padding: 20px 90px;
+
+    border-radius: 15px;
+    
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, .15);
+}
+
+.adding-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 19px;
+
+    border: 1px solid #000;
+    border-radius: 30px;
+
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.adding-button:hover {
+    border: 1px solid #B30006;
+    color: #B30006;
+}
+
+.form-submit-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-cancel-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
