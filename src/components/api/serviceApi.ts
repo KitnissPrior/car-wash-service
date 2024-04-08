@@ -1,0 +1,16 @@
+import { useMutation, useQuery } from '@tanstack/react-query'
+import {api} from './serverApi';
+import { Service } from '../types';
+
+export const useServicesQuery = () => useQuery({
+    queryKey: ['services'],
+    queryFn: () => api.get('Service/').json<Service[]>(),
+    refetchInterval: 5000
+})
+
+export const useServiceAddMutation = () => useMutation <Service, Error, Service>({
+    mutationFn: (service) => api('Service/' + (service?.id || ''), {
+        method: 'POST',
+        json: service
+    }).json<Service>()
+})

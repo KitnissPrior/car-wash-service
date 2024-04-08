@@ -1,6 +1,6 @@
 import { Card } from 'antd';
-import './CardList.scss'
-import { Carwash } from '../types';
+import './styles/CardList.scss'
+import { Carwash } from '../../types';
 
 // interface CardItemProps {
 //     userId: number;
