@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import { FC} from "react"
 import {Form, Button, Input, InputNumber} from "antd"
-import './CarwashAdding.scss'
-import { HeaderOwner } from "../../header/HeaderOwner"
+import './styles/CarwashAdding.scss'
+import { HeaderOwner } from "../headers/HeaderOwner"
 import { AutoCenter } from "antd-mobile"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useCarwashAddMutation } from "../../api/carwashApi"
 import { Dialog } from "antd-mobile"
 import { Carwash } from "../../types"
@@ -17,8 +17,8 @@ export const CarwashAdding: FC = () => {
     const handleFormSubmit = async (data: Carwash) => {
         console.log(data)
         await save(data);
-        navigate('/owner');
-        Dialog.alert({content: 'Автомойка успешно добавлена', confirmText: 'Хорошо'});
+        navigate('/service-adding');
+        //Dialog.alert({content: 'Автомойка успешно добавлена', confirmText: 'Хорошо'});
 
     }
 
@@ -50,7 +50,7 @@ export const CarwashAdding: FC = () => {
                         <Input className="input" placeholder="+7" required/>
                     </Form.Item>
                     <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                        <Button className="form-submit-button" htmlType="submit">Добавить автомойку</Button>
+                        <Button className="form-submit-button" htmlType="submit">Продолжить</Button>
                     </Form.Item>
                     <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                         <Button className="form-cancel-button" onClick={handleFormCancel}>Не добавлять</Button>

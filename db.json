@@ -1,5 +1,5 @@
 {
-  "Carwashes": [
+  "Carwash": [
     {
       "id": "1",
       "name": "Автомойка 1",
@@ -27,6 +27,34 @@
       "carwashStreet": "г. Екатеринбург ул. Малышева 1",
       "boxAmount": "5",
       "contactInfo": "8-800-200-01-01"
+    }
+  ],
+  "ServiceStatus": [
+    {
+      "id": "1",
+      "name": "Доступен"
+    },
+    {
+      "id": "2",
+      "name": "Недоступен"
+    }
+  ],
+  "Service": [
+    {
+      "id": "1",
+      "name": "Уборка салона",
+      "price": "350",
+      "time": "15",
+      "status_ID": "1",
+      "carwash_ID": "1"
+    },
+    {
+      "id": "2",
+      "name": "Просто водичкой",
+      "price": "500",
+      "time": "15",
+      "status_ID": "1",
+      "carwash_ID": "2"
     }
   ]
 }
