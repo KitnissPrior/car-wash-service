@@ -1,5 +1,5 @@
 export type Carwash = {
-    id: string;
+    id: string | undefined;
     name: string;
     carwashStreet: string;
     boxAmount: number;
@@ -18,7 +18,7 @@ export type FormContextProviderProps = {
 }
 
 export type Service = {
-    id: string;
+    id: string | undefined;
     name: string;
     price: number;
     time: string;

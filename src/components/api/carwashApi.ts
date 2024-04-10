@@ -10,7 +10,7 @@ export const useCarwashesQuery = () => useQuery({
 
 export const useCarwashAddMutation = () => useMutation <Carwash, Error, Carwash>({
     mutationFn: (carwash) => api('Carwash/' + (carwash?.id || ''), {
-        method: carwash?.id !==''? 'PUT' : 'POST',
+        method: carwash?.id ? 'PUT' : 'POST',
         json: carwash
     }).json<Carwash>()
 })
