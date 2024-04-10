@@ -1,12 +1,13 @@
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Form, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import HomePage from "./components/pages/client/HomePage";
-import OwnerHomePage from './components/pages/owner/OwnerHomePage';
+import OwnerHomePage from './components/pages/owner/HomePage';
 import PageNotFound from "./components/pages/page_not_found/PageNotFound";
 import './App.scss';
 import { HeaderOwner } from './components/pages/headers/HeaderOwner';
-import { CarwashAdding } from './components/pages/owner/CarwashAdding';
+import { CarwashAdding } from './components/pages/owner/CarwashForm';
 import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ServiceAdding } from './components/pages/owner/ServiceAdding';
+import { ServiceAdding } from './components/pages/owner/ServiceForm';
+import { FormProvider } from './components/pages/owner/FormContext';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -39,9 +40,11 @@ export default function App() {
 
     return (
         <>
-        <QueryClientProvider client={queryClient}>
-            <RouterProvider router={router}/>
-        </QueryClientProvider>
+        <FormProvider>
+          <QueryClientProvider client={queryClient}>
+              <RouterProvider router={router}/>
+          </QueryClientProvider>
+        </FormProvider>
         </>
     );
 }
