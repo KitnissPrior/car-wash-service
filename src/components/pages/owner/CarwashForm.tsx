@@ -9,13 +9,12 @@ import { useCarwashAddMutation } from "../../api/carwashApi"
 import { Dialog } from "antd-mobile"
 import { Carwash} from "../../types"
 import { Controller, useForm, FormProvider, useFormContext } from "react-hook-form";
-import { CarwashFormPage } from "./CarwashFormPage"
 import { useFormData } from "./FormContext"
 
 export const CarwashAdding: FC = () => {
     const { formData, setFormData} = useFormData();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData((prev) => ({ ...prev, name: e.target.value }));
      };
 
@@ -51,7 +50,7 @@ export const CarwashAdding: FC = () => {
                         <Form.Item label="Название автомойки*" name="name" >
                             <span className="input-label">Название автомойки*</span>
                             <Input className="input" placeholder="Название" required 
-                                defaultValue={formData.name} onChange={handleChange}/>
+                                defaultValue={formData.name} onChange={handleNameChange}/>
                         </Form.Item>
                         <Form.Item label="Адрес*" name="carwashStreet" >
                             <span className="input-label">Адрес*</span>

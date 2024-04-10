@@ -14,3 +14,10 @@ export const useServiceAddMutation = () => useMutation <Service, Error, Service>
         json: service
     }).json<Service>()
 })
+
+export const userServiceDeleteMutation = () => useMutation <Service, Error, Service>({
+    mutationFn: (service) => api('Service/' + (service?.id || ''), {
+        method: 'DELETE',
+        json: service
+    }).json<Service>()
+})

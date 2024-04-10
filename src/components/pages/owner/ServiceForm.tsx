@@ -26,7 +26,7 @@ export const ServiceAdding:FC = () => {
         await save(carwashData);
 
         navigate('/owner');
-        Dialog.alert({content: 'Автомойка успешно добавлена', confirmText: 'Хорошо'});
+        Dialog.alert({content: 'Автомойка успешно сохранена', confirmText: 'Хорошо'});
         setFormData(() => (defaultFormData));
 
     }
@@ -55,7 +55,7 @@ export const ServiceAdding:FC = () => {
                         <Button onClick={handleServiceAdd}>Добавить услугу</Button>
                     </Form.Item>
                     <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                        <Button className="form-submit-button" htmlType="submit">Добавить автомойку</Button>
+                        <Button className="form-submit-button" htmlType="submit">Сохранить</Button>
                     </Form.Item>
                     <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                         <Button className="form-cancel-button" onClick={handleFormCancel}>Назад</Button>

@@ -17,7 +17,7 @@ const CardList : React.FC<{ data: Carwash[] | undefined}> = ({data}) => {
 
     const handleCardEdit = (card: Carwash) => {
         setFormData({...carwashData, ...card});
-        navigate(`/carwash-adding/`);
+        navigate(`/carwash-about/`);
     }
 
     return (

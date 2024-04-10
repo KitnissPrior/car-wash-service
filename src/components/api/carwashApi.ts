@@ -14,3 +14,10 @@ export const useCarwashAddMutation = () => useMutation <Carwash, Error, Carwash>
         json: carwash
     }).json<Carwash>()
 })
+
+export const useCarwashDeleteMutation = () => useMutation <Carwash, Error, Carwash>({
+    mutationFn: (carwash) => api('Carwash/' + (carwash?.id || ''), {
+        method: 'DELETE',
+        json: carwash
+    }).json<Carwash>()
+})
