@@ -10,7 +10,14 @@ export const useCarwashesQuery = () => useQuery({
 
 export const useCarwashAddMutation = () => useMutation <Carwash, Error, Carwash>({
     mutationFn: (carwash) => api('Carwash/' + (carwash?.id || ''), {
-        method: 'POST',
+        method: carwash?.id ? 'PUT' : 'POST',
+        json: carwash
+    }).json<Carwash>()
+})
+
+export const useCarwashDeleteMutation = () => useMutation <Carwash, Error, Carwash>({
+    mutationFn: (carwash) => api('Carwash/' + (carwash?.id || ''), {
+        method: 'DELETE',
         json: carwash
     }).json<Carwash>()
 })

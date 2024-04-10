@@ -1,13 +1,24 @@
 export type Carwash = {
-    id: string;
+    id: string | undefined;
     name: string;
     carwashStreet: string;
     boxAmount: number;
     contactInfo: string;
 }
 
+export type CarwashFormData = {
+    name: string;
+    carwashStreet: string;
+    boxAmount: number;
+    contactInfo: string;
+}
+
+export type FormContextProviderProps = {
+    children: React.ReactNode;
+}
+
 export type Service = {
-    id: string;
+    id: string | undefined;
     name: string;
     price: number;
     time: string;

@@ -10,7 +10,14 @@ export const useServicesQuery = () => useQuery({
 
 export const useServiceAddMutation = () => useMutation <Service, Error, Service>({
     mutationFn: (service) => api('Service/' + (service?.id || ''), {
-        method: 'POST',
+        method: service?.id ? 'PUT' : 'POST',
+        json: service
+    }).json<Service>()
+})
+
+export const userServiceDeleteMutation = () => useMutation <Service, Error, Service>({
+    mutationFn: (service) => api('Service/' + (service?.id || ''), {
+        method: 'DELETE',
         json: service
     }).json<Service>()
 })
