@@ -29,7 +29,7 @@ label {
     max-width: 700px;
     box-sizing: border-box;
     margin: 150px auto 0;
-    padding: 20px 90px;
+    padding: 40px 90px;
 
     border-radius: 15px;
     
@@ -55,14 +55,41 @@ label {
 }
 
 .form-submit-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin: auto;
+    border-radius: 30px;
+    width: 400px;
+    align-items: center;
+    height: 48px;
+
+    border: none;
+    background-color: #000;
+    color: #fff;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form-submit-button:hover {
+    border: none;
+    outline: 1px solid #B30006;
+    color: #B30006 !important;
+    font-weight: 400;
 }
 
 .form-cancel-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin: auto;
+    border-radius: 30px;
+    width: 400px;
+    align-items: center;
+    height: 48px;
+
+    border: 1px solid #000 !important;
+    font-size: 16px;
 }
 
+.form-cancel-button:hover {
+    border: none !important;
+    outline: 1px solid #B30006;
+    color: #B30006 !important;
+    font-weight: 400;
+}

@@ -43,25 +43,25 @@ export const ServiceAdding:FC = () => {
     return (
         <div>
         <div><HeaderOwner></HeaderOwner></div>
-        <div>
-            <AutoCenter>
-            <h1 style={{padding: '30px 50px', fontSize: '24px'}}>Услуги</h1>
+        <div className="services-adding-main">
+        <div className="services-adding">
+            <h1 className="form-title">Услуги</h1>
                 <Form onFinish={handleFormSubmit}>
+                    <Form.Item>
+                        <Button onClick={handleServiceAdd} className="form-cancel-button-add-service">Добавить услугу</Button>
+                    </Form.Item>
                     <div>
                     <ServicesList data={services}/>
                     <QueryStatus query={query}></QueryStatus>
                     </div>
-                    <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                        <Button onClick={handleServiceAdd}>Добавить услугу</Button>
-                    </Form.Item>
-                    <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                    <Form.Item>
                         <Button className="form-submit-button" htmlType="submit">Сохранить</Button>
                     </Form.Item>
-                    <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                    <Form.Item>
                         <Button className="form-cancel-button" onClick={handleFormCancel}>Назад</Button>
                     </Form.Item>
             </Form>
-            </AutoCenter>
+        </div>
         </div>
     </div>
     )

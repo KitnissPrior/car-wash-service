@@ -41,6 +41,13 @@
       "carwashStreet": "г. Екатеринбург, ул. Шевченко 9А",
       "boxAmount": 21,
       "contactInfo": "+76125784324"
+    },
+    {
+      "id": "7db3",
+      "name": "",
+      "carwashStreet": "",
+      "boxAmount": 0,
+      "contactInfo": ""
     }
   ],
   "ServiceStatus": [

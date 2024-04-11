@@ -45,7 +45,7 @@ export const CarwashAdding: FC = () => {
             <div><HeaderOwner></HeaderOwner></div>
             <div className="carwash-adding-content2">
                 <AutoCenter>
-                <h1 style={{padding: '30px 50px', fontSize: '24px'}}>Добавление автомойки</h1>
+                <h1 className="form-title">Добавление автомойки</h1>
                     <Form>
                         <Form.Item label="Название автомойки*" name="name" >
                             <span className="input-label">Название автомойки*</span>
@@ -67,10 +67,10 @@ export const CarwashAdding: FC = () => {
                             <Input className="input" placeholder="+7" required
                                 defaultValue={formData.contactInfo} onChange={handleInfoChange}/>
                         </Form.Item>
-                        <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                        <Form.Item>
                             <Button className="form-submit-button" onClick={handleContinue} htmlType="submit">Продолжить</Button>
                         </Form.Item>
-                        <Form.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                        <Form.Item>
                             <Button className="form-cancel-button" onClick={handleFormCancel}>Не добавлять</Button>
                         </Form.Item>
                     </Form>

@@ -6,9 +6,8 @@ import './styles/ServicesList.scss'
 export const ServicesList : FC<{ data: Service[] | undefined}> = ({data}) => {
 
     return (
-        <>
+        <div className="">
         <List 
-            itemLayout="horizontal" 
             size="large" 
             dataSource={data}
             renderItem={(item) => (
@@ -20,6 +19,6 @@ export const ServicesList : FC<{ data: Service[] | undefined}> = ({data}) => {
                 </List.Item>
             )}
             />
-        </>
+        </div>
     );
 }
