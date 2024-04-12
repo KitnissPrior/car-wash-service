@@ -1,0 +1,53 @@
+.services-list-item{
+    padding: 20px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.services-adding {
+    display: block;
+    box-sizing: border-box;
+    width: 996px;
+    padding: 40px 80px;
+    margin: auto;
+
+    border-radius: 15px;
+    
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, .15);
+}
+
+.services-adding-main {
+    padding: 140px 0 0;
+}
+
+.form-title {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin: 10px 0 40px;
+}
+
+.form-cancel-button-add-service {
+    margin: auto;
+    border-radius: 30px;
+    width: 100%;
+    align-items: center;
+    height: 48px;
+
+    border: 1px solid #000 !important;
+    font-size: 16px;
+
+    background-image: (url(../../../../images/plus2.png));
+    background-repeat: no-repeat;
+    background-position: right 30px center;
+}
+
+.form-cancel-button-add-service:hover {
+    border: 1px solid #B30006 !important;
+
+    background-image: (url(../../../../images/plus2.png)) !important;
+    background-repeat: no-repeat !important;
+    background-position: right 30px center !important;
+
+    color: #B30006 !important;
+}

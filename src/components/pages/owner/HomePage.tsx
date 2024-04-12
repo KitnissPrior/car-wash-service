@@ -1,11 +1,11 @@
 import carLogo from '/src/images/car_logo.png';
-import { HeaderOwner } from '../../header/HeaderOwner';
+import { HeaderOwner } from '../headers/HeaderOwner';
 import { Link } from 'react-router-dom';
-import './OwnerHomePage.scss';
+import './styles/OwnerHomePage.scss';
 import {Button} from 'antd';
 import { AutoCenter } from 'antd-mobile';
 import { useCarwashesQuery } from '../../api/carwashApi';
-import CardList from '../../cards/CardList';
+import CardList from './CardList';
 import { QueryStatus } from '../page_not_found/QueryStatus';
 
 export default function OwnerHomePage() {
@@ -22,7 +22,7 @@ export default function OwnerHomePage() {
             </div>
             <div className="adding-button">
                 <Link className="adding-button-link" to='/carwash-adding'>
-                <img src="/src/images/plus.png" className='adding-button-image' alt="" />
+                <img src="/src/images/plus.png" className='adding-button-image' alt="Кнопка" />
                 Добавить автомойку
                 </Link>
             </div>

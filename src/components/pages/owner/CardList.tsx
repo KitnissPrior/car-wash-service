@@ -1,6 +1,8 @@
-import { Card } from 'antd';
-import './CardList.scss'
-import { Carwash } from '../types';
+import { Card, Button } from 'antd';
+import './styles/CardList.scss'
+import { Carwash } from '../../types';
+import { useNavigate } from 'react-router-dom';
+import { useFormData } from './FormContext';
 
 // interface CardItemProps {
 //     userId: number;
@@ -10,12 +12,18 @@ import { Carwash } from '../types';
 // }
 
 const CardList : React.FC<{ data: Carwash[] | undefined}> = ({data}) => {
-    //const filteredData = data.filter(item => item.id === 2);
+    const navigate = useNavigate();
+    const {formData: carwashData, setFormData} = useFormData();
+
+    const handleCardEdit = (card: Carwash) => {
+        setFormData({...carwashData, ...card});
+        navigate(`/carwash-about/`);
+    }
 
     return (
         <div className="card-list">
             {data?.map((item, index) =>
-                <Card key={index} className='card'>
+                <Card onClick={() => handleCardEdit(item)} key={index} className='card'>
                     <p className='carwash-title'>Название автомойки: {item.name}</p>
                     <p className='carwash-info'><b>Адрес:</b> {item.carwashStreet}</p>
                     <p className='carwash-info'><b>Количество боксов обслуживания:</b> {item.boxAmount}</p>
