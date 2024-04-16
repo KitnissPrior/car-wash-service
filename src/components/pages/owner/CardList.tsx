@@ -3,6 +3,7 @@ import './styles/CardList.scss'
 import { Carwash } from '../../types';
 import { useNavigate } from 'react-router-dom';
 import { useFormData } from './FormContext';
+import { Link } from 'react-router-dom';
 
 // interface CardItemProps {
 //     userId: number;
@@ -29,7 +30,14 @@ const CardList : React.FC<{ data: Carwash[] | undefined}> = ({data}) => {
                     <p className='carwash-info'><b>Количество боксов обслуживания:</b> {item.boxAmount}</p>
                     <p className='carwash-info'><b>Контактные данные:</b> {item.contactInfo}</p>
                 </Card>
+                
             )}
+            <div className="adding-button">
+                <Link className="adding-button-link" to='/carwash-adding'>
+                <img src="/src/images/plus.png" className='adding-button-image' alt="Кнопка" />
+                Добавить автомойку
+                </Link>
+            </div>
         </div>
     );
 }

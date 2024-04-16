@@ -1,0 +1,113 @@
+.carwash-adding-info {
+    max-width: 1200px;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.carwash-item-info{
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 15px;
+    padding: 40px;
+
+    font-size: 14px;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, .15);
+}
+
+.carwash-info-title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.carwash-info-buttons {
+    display: flex;
+    gap: 69px;
+    margin-bottom: 40px;
+}
+
+.carwash-info-button {
+    box-sizing: border-box;
+    width: 248px;
+    height: 49px;
+
+    border: 1px solid #000;
+    border-radius: 30px;
+
+    text-align: center;
+
+    font-size: 16px;
+}
+
+.carwash-info-button:hover {
+    border: 1px solid #B30006 !important;
+    color: #B30006 !important;
+
+    cursor: pointer;
+}
+
+.carwash-info-button-active {
+    box-sizing: border-box;
+    
+    width: 248px;
+
+    border-radius: 30px;
+    border: none;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, .15);
+
+    text-align: center;
+
+    font-size: 16px;
+}
+
+.carwash-item-info-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 22px;
+}
+
+.carwash-info-edit-button {
+    margin-bottom: 22px;
+    margin-right: 22px;
+    border-radius: 30px;
+    padding: 0 25px;
+    align-items: center;
+    height: 40px;
+
+    border: none;
+    background-color: #000;
+    color: #fff;
+
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.carwash-info-edit-button:hover {
+    border: none;
+    outline: 1px solid #B30006;
+    color: #B30006 !important;
+    font-weight: 400;
+}
+
+.carwash-info-delete-button {
+    margin-top: 40px;
+    margin-right: 22px;
+    border-radius: 30px;
+    padding: 0 25px;
+    align-items: center;
+    height: 40px;
+
+    border: 1px solid #000 !important;
+    font-size: 16px;
+}
+
+.carwash-info-delete-button:hover {
+    border: none !important;
+    outline: 1px solid #B30006;
+    color: #B30006 !important;
+    font-weight: 400;
+}
+

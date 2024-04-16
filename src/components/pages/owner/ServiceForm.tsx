@@ -36,7 +36,7 @@ export const ServiceAdding:FC = () => {
     }
 
     const handleServiceAdd = () => {
-        
+        navigate('../add-service')
     }
 
     

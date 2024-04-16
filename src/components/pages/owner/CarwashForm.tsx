@@ -18,8 +18,8 @@ export const CarwashAdding: FC = () => {
         setFormData((prev) => ({ ...prev, name: e.target.value }));
      };
 
-     const handleBoxAmountChange = (e: number | null) => {
-        setFormData((prev) => ({ ...prev, boxAmount: Number(e) }));
+     const handleBoxAmountChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData((prev) => ({ ...prev, boxAmount: Number(e.target.value) }));
      }
 
      const handleAddressChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -41,10 +41,10 @@ export const CarwashAdding: FC = () => {
     }
 
     return ( 
-        <div className="carwash-adding">
+        <div>
             <div><HeaderOwner></HeaderOwner></div>
+            <div className="carwash-adding">
             <div className="carwash-adding-content2">
-                <AutoCenter>
                 <h1 className="form-title">Добавление автомойки</h1>
                     <Form>
                         <Form.Item label="Название автомойки*" name="name" >
@@ -59,8 +59,8 @@ export const CarwashAdding: FC = () => {
                         </Form.Item>
                         <Form.Item label="Количество боксов для обслуживания*" name="boxAmount">
                             <span className="input-label">Количество боксов для обслуживания*</span>
-                            <InputNumber className="input" placeholder="1" required
-                                defaultValue={formData.boxAmount} onChange={handleBoxAmountChange}/>
+                            <Input type="number" className="input" min="1" placeholder="0" required
+                                 onChange={handleBoxAmountChange}/>
                         </Form.Item>
                         <Form.Item label="Контактный номер*" name="contactInfo">
                             <span className="input-label">Контактный номер*</span>
@@ -74,7 +74,7 @@ export const CarwashAdding: FC = () => {
                             <Button className="form-cancel-button" onClick={handleFormCancel}>Не добавлять</Button>
                         </Form.Item>
                     </Form>
-                </AutoCenter>
+                    </div>
             </div>
         </div>
     )
