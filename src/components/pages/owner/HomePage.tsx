@@ -20,12 +20,7 @@ export default function OwnerHomePage() {
                 <QueryStatus query={query}></QueryStatus>
                 <CardList data={carwashes}/>
             </div>
-            <div className="adding-button">
-                <Link className="adding-button-link" to='/carwash-adding'>
-                <img src="/src/images/plus.png" className='adding-button-image' alt="Кнопка" />
-                Добавить автомойку
-                </Link>
-            </div>
+            
         </main>
         </>
     )
