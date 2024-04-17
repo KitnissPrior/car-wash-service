@@ -1,13 +1,19 @@
-import React, { useState } from "react"
+import React from "react"
 import { FC} from "react"
 import {Form, Button, Input} from "antd"
 import './styles/CarwashAdding.scss'
 import { HeaderOwner } from "../headers/HeaderOwner"
 import { useNavigate } from "react-router-dom"
 import { useFormData } from "./CarwashFormContext"
+import { useCarwashAddMutation } from "../../api/carwashApi"
+import { Carwash } from "../../types"
 
 export const CarwashAdding: FC = () => {
     const { formData, setFormData} = useFormData();
+    const {mutateAsync: save} = useCarwashAddMutation()
+
+    //проверяет, что все поля формы заполнены. 
+    //это нужно для того, чтобы кнопка "Продолжить" была активной
     const areValuesFilled = formData.name && formData.carwashStreet && formData.boxAmount && formData.contactInfo;
    
     const handleNameChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -32,13 +38,18 @@ export const CarwashAdding: FC = () => {
         navigate('/owner');
     }
 
-    const handleContinue = () => {
+    const handleFormSubmit = async (carwashData: Carwash) => {
+        await save(carwashData);
+        console.log(carwashData)
+
         navigate('/carwash-services');
     }
 
+
+
     return ( 
         <div>
-            <div><HeaderOwner></HeaderOwner></div>
+            <div><HeaderOwner/></div>
             <div className="carwash-adding">
             <div className="carwash-adding-content2">
                 <h1 className="form-title">Добавление автомойки</h1>
@@ -66,11 +77,11 @@ export const CarwashAdding: FC = () => {
                         </Form.Item>
                         <Form.Item label="Количество боксов для обслуживания*" name="boxAmount"
                         rules={[{ required: true,  message: 'Введите количество боксов' },
-                        { min:1, message: 'Количество боксов должно быть не меньше 1'},
+                        { min: 1, message: 'Количество боксов должно быть не меньше 1'},
                         { max: 100, message: 'Количество боксов должно быть не больше 100'} ]}>
                             <div>
                                 <span className="input-label">Количество боксов для обслуживания*</span>
-                                <Input type="number" className="input" min="1" placeholder="0"
+                                <Input type="number" className="input" min="1" max="100" placeholder="0"
                                     defaultValue={formData.boxAmount} onChange={handleBoxAmountChange}/>
                             </div>
                         </Form.Item>
@@ -84,7 +95,10 @@ export const CarwashAdding: FC = () => {
                             </div>
                         </Form.Item>
                         <Form.Item>
-                            <Button className="form-submit-button" disabled={!areValuesFilled} onClick={handleContinue} htmlType="submit">Продолжить</Button>
+                            <Button className="form-submit-button" 
+                            disabled={!areValuesFilled} 
+                            onClick={() => handleFormSubmit(formData)}
+                            htmlType="submit">Продолжить</Button>
                         </Form.Item>
                         <Form.Item>
                             <Button className="form-cancel-button" onClick={handleFormCancel}>Не добавлять</Button>

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import { Carwash, FormContextProviderProps } from '../../types';
 
-export const defaultFormData: Carwash = { id: undefined, name: '', carwashStreet: '', boxAmount: 1, contactInfo: '' };
+export const defaultFormData: Carwash = { id: undefined, name: '', carwashStreet: '', boxAmount: 0, contactInfo: '' };
 
 const FormContext = createContext<{ formData: Carwash; setFormData: React.Dispatch<React.SetStateAction<Carwash>> }>({
  formData: defaultFormData,

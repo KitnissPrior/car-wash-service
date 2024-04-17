@@ -28,12 +28,6 @@ export const ServiceAddingForm: FC = () => {
         navigate(-1);
     }
 
-    const handleSubmit = async (service: Service) => {
-        await save(service);
-
-        navigate(-1);
-    }
-
     return (
         <div className="carwash-adding">
             <div><HeaderOwner/></div>

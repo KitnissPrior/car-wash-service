@@ -1,21 +1,18 @@
-import React, {FC} from "react"
+import {FC} from "react"
 import { HeaderOwner } from "../headers/HeaderOwner"
-import { AutoCenter, Dialog } from "antd-mobile"
+import { Dialog } from "antd-mobile"
 import { Button, Form} from "antd"
 import { useNavigate } from "react-router-dom"
-import { Carwash, Service } from "../../types"
 import { ServicesList } from "./ServicesListInForm"
 import './styles/ServiceAdding.scss'
-import { useServiceAddMutation, useServicesQuery } from "../../api/serviceApi"
+import { useServicesQuery } from "../../api/serviceApi"
 import { QueryStatus } from "../ux/QueryStatus"
-import { useCarwashAddMutation } from "../../api/carwashApi"
 import { useFormData, defaultFormData } from "./CarwashFormContext"
 
 export const ServiceAdding:FC = () => {
     const navigate = useNavigate()
 
     const { formData: carwashData, setFormData } = useFormData();
-    const {mutateAsync: save} = useCarwashAddMutation()
     
     const query = useServicesQuery()
     const { data: services} = query
@@ -23,17 +20,14 @@ export const ServiceAdding:FC = () => {
 
 
     const handleFormSubmit = async () => {
-        //этот пока не нужно, т.к без сгенерированного id автомойки услуга к новой автомойке не добавится
+        //это пригодится позже
         // if(filteredServices?.length === 0) {
         //     Dialog.alert({content: 'Вы не добавили ни одной услуги!', confirmText: 'Добавить услугу', 
         //         onConfirm: () => navigate('/service-adding')});
         //     return
         // }
-        console.log(carwashData)
-        await save(carwashData);
 
         navigate('/owner');
-        Dialog.alert({content: 'Автомойка успешно сохранена', confirmText: 'Хорошо'});
         setFormData(() => (defaultFormData));
 
     }
@@ -61,7 +55,7 @@ export const ServiceAdding:FC = () => {
                     <QueryStatus query={query}></QueryStatus>
                     </div>
                     <Form.Item>
-                        <Button className="form-submit-button" htmlType="submit">Сохранить</Button>
+                        <Button className="form-submit-button" htmlType="submit">Завершить</Button>
                     </Form.Item>
                     <Form.Item>
                         <Button className="form-cancel-button" onClick={handleGoBack}>Назад</Button>

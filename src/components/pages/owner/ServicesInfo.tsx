@@ -4,7 +4,6 @@ import { FC } from "react";
 import { NoData } from "../ux/NoData";
 
 export const ServicesInfo : FC<{ data: Service[] | undefined}> = ({data}) => {
-    console.log(data)
     return (
         <div className="">
         {data?.length? 
