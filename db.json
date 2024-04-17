@@ -31,14 +31,6 @@
       "": "4"
     },
     {
-      "id": "034e",
-      "name": "Автомойка 666",
-      "carwashStreet": "г. Екатеринбург, ул. Пентаграммная, 13",
-      "boxAmount": 7,
-      "contactInfo": "89125632547",
-      "": "г. Екатеринбург ул. Малышева 21"
-    },
-    {
       "id": "7588",
       "name": "АвтомойкаБрз",
       "carwashStreet": "г. Березовский, ул. Строителей 1",
@@ -46,18 +38,19 @@
       "contactInfo": "+7912874293721"
     },
     {
-      "id": "fdb8",
-      "name": "Авто и Голуби",
-      "carwashStreet": "ул. Курлыка Великого 4",
-      "boxAmount": "2",
-      "contactInfo": "892222"
+      "id": "6bf9",
+      "name": "Мойдодыр Для Лексуса",
+      "carwashStreet": "г.Москва, ул. Буржуйская 21",
+      "boxAmount": 500,
+      "contactInfo": "89003872345",
+      "": "г. Екатеринбург ул. Малышева 21"
     },
     {
-      "id": "ffff",
-      "name": "Мойдодыр Для Лексуса",
-      "carwashStreet": "ул. Буржуйская, 21",
-      "boxAmount": 500,
-      "contactInfo": "89"
+      "id": "7101",
+      "name": "Автомойка33",
+      "carwashStreet": "адрес",
+      "boxAmount": 3,
+      "contactInfo": "891234"
     }
   ],
   "ServiceStatus": [
@@ -93,7 +86,7 @@
       "price": "5000",
       "time": "60",
       "status_ID": "1",
-      "carwash_ID": "034e"
+      "carwash_ID": "6bf9"
     },
     {
       "id": "67a3",
@@ -136,28 +129,28 @@
       "carwash_ID": "7588"
     },
     {
-      "id": "44",
-      "name": "Посрать на лобовое стекло",
-      "price": "500",
-      "time": "10",
-      "status_ID": "1",
-      "carwash_ID": "fdb8"
-    },
-    {
-      "id": "cb66",
-      "name": "услуга1",
-      "price": "1",
-      "time": "5",
-      "status_ID": "1",
-      "carwash_ID": "ffff"
-    },
-    {
       "id": "febd",
-      "name": "Услуга1",
-      "price": "500",
+      "name": "Просто водичкой",
+      "price": "300",
       "time": "25",
       "status_ID": "1",
-      "carwash_ID": "5bac"
+      "carwash_ID": "1"
+    },
+    {
+      "id": "f1b5",
+      "name": "Двухфазная мойка с нано-шампунем",
+      "price": "600",
+      "time": "25",
+      "status_ID": "1",
+      "carwash_ID": "6bf9"
+    },
+    {
+      "id": "de2c",
+      "name": "услуга1",
+      "price": "250",
+      "time": "25",
+      "status_ID": "1",
+      "carwash_ID": "0694"
     }
   ]
 }

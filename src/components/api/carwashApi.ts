@@ -16,7 +16,7 @@ export const useCarwashAddMutation = () => useMutation <Carwash, Error, Carwash>
         
     }).json<Carwash>(),
     onSuccess: (data) => {
-        Dialog.alert({content: 'Автомойка сохранена', confirmText: 'Хорошо'});
+        //Dialog.alert({content: 'Автомойка сохранена', confirmText: 'Хорошо'});
         console.log('Mutation successful:', data);
     },
     onError: (error) => {
