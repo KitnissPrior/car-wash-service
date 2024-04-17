@@ -1,25 +1,22 @@
-import React, {FC} from "react"
+import {FC} from "react"
 import { HeaderOwner } from "../headers/HeaderOwner"
-import { AutoCenter, Dialog } from "antd-mobile"
 import { Button, Form, Input} from "antd"
 import { useNavigate } from "react-router-dom"
 import { Carwash, Service } from "../../types"
-import { ServicesList } from "./ServicesList"
 import './styles/ServiceAdding.scss'
 import { useServiceAddMutation, useServicesQuery } from "../../api/serviceApi"
 import { QueryStatus } from "../page_not_found/QueryStatus"
-import { useCarwashAddMutation } from "../../api/carwashApi"
 import { useFormData, defaultFormData } from "./FormContext"
 
-export const AddService:FC = () => {
+export const ServiceAddingForm: FC = () => {
     const navigate = useNavigate();
 
     const handleFormCancel = () => {
-        navigate('/service-adding');
+        navigate(-1);
     }
 
     const handleContinue = () => {
-        navigate('/service-adding');
+        navigate(-1);
     }
 
     return (
@@ -29,16 +26,22 @@ export const AddService:FC = () => {
                 <h1 className="form-title">Добавление услуги</h1>
                 <Form>
                     <Form.Item label="Название автомойки*" name="name" >
-                        <span className="input-label">Название услуги*</span>
-                        <Input.TextArea className="input" placeholder="Название" required/>
+                        <div>
+                            <span className="input-label">Название услуги*</span>
+                            <Input.TextArea className="input" placeholder="Название" required/>
+                        </div>
                     </Form.Item>
                     <Form.Item label="Количество боксов для обслуживания*" name="boxAmount">
-                        <span className="input-label">Стоимость*</span>
-                        <Input type="number" className="input" min="1" placeholder="0" required/>
+                        <div>
+                            <span className="input-label">Продолжительность услуги*</span>
+                            <Input type="number" className="input" min="1" placeholder="0" required/>
+                        </div>
                     </Form.Item>
                     <Form.Item label="Количество боксов для обслуживания*" name="boxAmount">
-                        <span className="input-label">Продолжительность услуги*</span>
-                        <Input type="number" className="input" min="1" placeholder="0" required/>
+                        <div>
+                            <span className="input-label">Продолжительность услуги*</span>
+                            <Input type="number" className="input" min="1" placeholder="0" required/>
+                        </div>
                     </Form.Item>
                     <Form.Item>
                         <Button className="form-submit-button" onClick={handleContinue} htmlType="submit">Добавить</Button>

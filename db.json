@@ -11,7 +11,7 @@
       "id": "2",
       "name": "Автомойка 2",
       "carwashStreet": "г. Екатеринбург ул. Малышева 1",
-      "boxAmount": 20,
+      "boxAmount": 8,
       "contactInfo": "8-800-200-01-01"
     },
     {
@@ -25,7 +25,7 @@
       "id": "5",
       "name": "Мойкатеринбург",
       "carwashStreet": "г.Екатеринбург, ул.Вайнера 9",
-      "boxAmount": 9,
+      "boxAmount": 11,
       "contactInfo": "+79123154615165"
     }
   ],

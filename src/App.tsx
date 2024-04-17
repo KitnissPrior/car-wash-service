@@ -6,10 +6,10 @@ import './App.scss';
 import { HeaderOwner } from './components/pages/headers/HeaderOwner';
 import { CarwashAdding } from './components/pages/owner/CarwashForm';
 import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ServiceAdding } from './components/pages/owner/ServiceForm';
+import { ServiceAdding } from './components/pages/owner/ServicesForm';
 import { FormProvider } from './components/pages/owner/FormContext';
 import { CarwashInfo } from './components/pages/owner/CarwashInfo';
-import { AddService } from './components/pages/owner/addService'
+import { ServiceAddingForm } from './components/pages/owner/ServiceAddingForm'
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -33,9 +33,9 @@ const router = createBrowserRouter(
             <Route element={<PageNotFound/>} path='*'/>
             <Route element={<OwnerHomePage/>} path='/owner'/>
             <Route element={<CarwashAdding/>} path='/carwash-adding'/>
-            <Route element={<ServiceAdding/>} path='/service-adding'/>
-            <Route element={<CarwashInfo/>} path='/carwash-about'/>
-            <Route element={<AddService/>} path='/add-service'/>
+            <Route element={<ServiceAdding/>} path='/carwash-services'/>
+            <Route element={<CarwashInfo/>} path='/carwash-about/:id'/>
+            <Route element={<ServiceAddingForm/>} path='/service-adding'/>
         </Route>
     )
 );

@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
 import { Carwash, FormContextProviderProps } from '../../types';
-import { Guid } from 'guid-typescript';
 
 export const defaultFormData: Carwash = { id: undefined, name: '', carwashStreet: '', boxAmount: 0, contactInfo: '' };
 

@@ -1,14 +1,16 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Carwash } from "../../types";
 import { defaultFormData, useFormData } from "./FormContext";
-import { HeaderOwner } from "../headers/HeaderOwner";
-import { Button } from "antd";
+import { Button, Modal } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useCarwashDeleteMutation } from "../../api/carwashApi";
-import { AutoCenter, Dialog } from "antd-mobile";
+import { Dialog } from "antd-mobile";
+import { ConfirmationPopup } from "./ConfirmationPopup";
 import './styles/CarwashInfo.scss'
 
 export const CarwashInfo: FC = () => {
+    const [confirmationVisible, setConfirmationVisible] = useState(false);
+
     const navigate = useNavigate();
     const {formData: carwash, setFormData} = useFormData();
     const {mutateAsync: deleteCarwash} = useCarwashDeleteMutation()
@@ -16,18 +18,34 @@ export const CarwashInfo: FC = () => {
     const handleEditClick = () => {
         navigate(`/carwash-adding/`);
     }
+
+    const handleAddServiceClick = () => {
+        navigate('/service-adding');
+    }
    
     const handleDeleteClick = async (item: Carwash) => {
-        console.log(item)
+        setConfirmationVisible(false);
+        
         await deleteCarwash(item);
-
         navigate('/owner');
+
         Dialog.alert({content: 'Автомойка успешно удалена', confirmText: 'Хорошо'});
         setFormData(() => (defaultFormData));
+        
     }
     
     const handleContinue = () => {
         navigate('/owner');
+    }
+
+    const handleDeleteCancel = () => {
+        setConfirmationVisible(false);
+        navigate(`/carwash-about/:${carwash.id}`)
+    }
+
+    const showConfirmationPopup = () => {
+        setConfirmationVisible(true);
+        console.log(confirmationVisible);
     }
 
     return (
@@ -45,10 +63,16 @@ export const CarwashInfo: FC = () => {
                 <p><b>График работы: </b></p>
                 <p><b>Контактный номер: </b>{carwash?.contactInfo}</p>
                 <Button className="carwash-info-edit-button" onClick={handleEditClick}>Редактировать информацию</Button>
-                <Button className="carwash-info-delete-button" onClick={() => handleDeleteClick(carwash)}>Удалить автомойку</Button>
-
+                <Button className="carwash-info-delete-button" onClick={showConfirmationPopup}>Удалить автомойку</Button>
+                <ConfirmationPopup 
+                    title="Вы уверены, что хотите удалить автомойку?"
+                    handleOk={() => handleDeleteClick(carwash)}
+                    handleCancel={() => handleDeleteCancel()}
+                    visible={confirmationVisible}
+                    okText="Да, удалить"
+                    cancelText="Отмена"/>
                 <h2 className="carwash-item-info-title">Услуги автомойки</h2>
-                <Button className="carwash-info-edit-button" onClick={handleEditClick}>Добавить услугу</Button>
+                <Button className="carwash-info-edit-button" onClick={handleAddServiceClick}>Добавить услугу</Button>
             </div>
         </div>
     );

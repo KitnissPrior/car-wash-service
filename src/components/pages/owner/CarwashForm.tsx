@@ -18,7 +18,7 @@ export const CarwashAdding: FC = () => {
         setFormData((prev) => ({ ...prev, name: e.target.value }));
      };
 
-     const handleBoxAmountChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+     const handleBoxAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData((prev) => ({ ...prev, boxAmount: Number(e.target.value) }));
      }
 
@@ -37,7 +37,7 @@ export const CarwashAdding: FC = () => {
     }
 
     const handleContinue = () => {
-        navigate('/service-adding');
+        navigate('/carwash-services');
     }
 
     return ( 
@@ -47,25 +47,33 @@ export const CarwashAdding: FC = () => {
             <div className="carwash-adding-content2">
                 <h1 className="form-title">Добавление автомойки</h1>
                     <Form>
-                        <Form.Item label="Название автомойки*" name="name" >
-                            <span className="input-label">Название автомойки*</span>
-                            <Input className="input" placeholder="Название" required 
-                                defaultValue={formData.name} onChange={handleNameChange}/>
+                        <Form.Item label="Название автомойки*" name="name">
+                            <div>
+                                <span className="input-label">Название автомойки*</span>
+                                <Input className="input" placeholder="Название" required 
+                                    defaultValue={formData.name} onChange={handleNameChange}/>
+                            </div>
                         </Form.Item>
                         <Form.Item label="Адрес*" name="carwashStreet" >
-                            <span className="input-label">Адрес*</span>
-                            <Input.TextArea className="input" placeholder="Адрес" required 
-                                defaultValue={formData.carwashStreet} onChange={handleAddressChange}/>
+                            <div>
+                                <span className="input-label">Адрес*</span>
+                                <Input.TextArea className="input" placeholder="Адрес" required 
+                                    defaultValue={formData.carwashStreet} onChange={handleAddressChange}/>
+                            </div>
                         </Form.Item>
                         <Form.Item label="Количество боксов для обслуживания*" name="boxAmount">
-                            <span className="input-label">Количество боксов для обслуживания*</span>
-                            <Input type="number" className="input" min="1" placeholder="0" required
-                                 onChange={handleBoxAmountChange}/>
+                            <div>
+                                <span className="input-label">Количество боксов для обслуживания*</span>
+                                <Input type="number" className="input" min="1" placeholder="0" required
+                                    defaultValue={formData.boxAmount} onChange={handleBoxAmountChange}/>
+                            </div>
                         </Form.Item>
                         <Form.Item label="Контактный номер*" name="contactInfo">
-                            <span className="input-label">Контактный номер*</span>
-                            <Input className="input" placeholder="+7" required
-                                defaultValue={formData.contactInfo} onChange={handleInfoChange}/>
+                            <div>
+                                <span className="input-label">Контактный номер*</span>
+                                <Input className="input" placeholder="+7" required
+                                    defaultValue={formData.contactInfo} onChange={handleInfoChange}/>
+                            </div>
                         </Form.Item>
                         <Form.Item>
                             <Button className="form-submit-button" onClick={handleContinue} htmlType="submit">Продолжить</Button>

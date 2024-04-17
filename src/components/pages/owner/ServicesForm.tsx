@@ -19,6 +19,7 @@ export const ServiceAdding:FC = () => {
     
     const query = useServicesQuery()
     const { data: services} = query
+    const filteredServices = services?.filter(item => item.carwash_ID === carwashData.id);
 
 
     const handleFormSubmit = async (data: Service) => {
@@ -31,15 +32,14 @@ export const ServiceAdding:FC = () => {
 
     }
 
-    const handleFormCancel = () => {
+    const handleGoBack = () => {
         navigate('/carwash-adding');
     }
 
     const handleServiceAdd = () => {
-        navigate('../add-service')
+        navigate('../service-adding')
     }
 
-    
     return (
         <div>
         <div><HeaderOwner></HeaderOwner></div>
@@ -51,14 +51,14 @@ export const ServiceAdding:FC = () => {
                         <Button onClick={handleServiceAdd} className="form-cancel-button-add-service">Добавить услугу</Button>
                     </Form.Item>
                     <div>
-                    <ServicesList data={services}/>
+                    <ServicesList data={filteredServices}/>
                     <QueryStatus query={query}></QueryStatus>
                     </div>
                     <Form.Item>
                         <Button className="form-submit-button" htmlType="submit">Сохранить</Button>
                     </Form.Item>
                     <Form.Item>
-                        <Button className="form-cancel-button" onClick={handleFormCancel}>Назад</Button>
+                        <Button className="form-cancel-button" onClick={handleGoBack}>Назад</Button>
                     </Form.Item>
             </Form>
         </div>
