@@ -9,6 +9,7 @@ import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-qu
 import { ServiceAdding } from './components/pages/owner/ServiceForm';
 import { FormProvider } from './components/pages/owner/FormContext';
 import { CarwashInfo } from './components/pages/owner/CarwashInfo';
+import { AddService } from './components/pages/owner/addService'
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
             <Route element={<CarwashAdding/>} path='/carwash-adding'/>
             <Route element={<ServiceAdding/>} path='/service-adding'/>
             <Route element={<CarwashInfo/>} path='/carwash-about'/>
+            <Route element={<AddService/>} path='/add-service'/>
         </Route>
     )
 );

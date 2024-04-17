@@ -8,7 +8,6 @@ export const ServicesList : FC<{ data: Service[] | undefined}> = ({data}) => {
     return (
         <div className="">
         <List 
-            size="large" 
             dataSource={data}
             renderItem={(item) => (
                 <List.Item className="services-list-item"

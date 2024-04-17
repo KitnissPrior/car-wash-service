@@ -17,10 +17,13 @@
 }
 
 .card {
+    width: 386px;
+    border-radius: 15px;
 }
 
 .card:hover {
     border: 1px solid #B30006;
+    cursor: pointer;
 }
 
 .carwash-info {
