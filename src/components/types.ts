@@ -32,10 +32,14 @@ export type Service = {
     price: number;
     time: string;
     status_ID: string;
-    carwash_ID: string;
+    carwash_ID: string | undefined;
 }
 
 export type ServiceStatus = {
     id: string;
     name: string;
+}
+
+export type NoDataProps = {
+    message: string;
 }

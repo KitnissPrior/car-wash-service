@@ -2,7 +2,7 @@ import { Card, Button } from 'antd';
 import './styles/CardList.scss'
 import { Carwash } from '../../types';
 import { useNavigate } from 'react-router-dom';
-import { useFormData, defaultFormData } from './FormContext';
+import { useFormData, defaultFormData } from './CarwashFormContext';
 import { Link } from 'react-router-dom';
 
 const CardList : React.FC<{ data: Carwash[] | undefined}> = ({data}) => {

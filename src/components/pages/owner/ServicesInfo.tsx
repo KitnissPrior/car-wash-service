@@ -1,23 +1,25 @@
-import React, {FC} from "react";
-import { Service } from "../../types";
 import { List } from "antd";
-import './styles/ServicesList.scss'
+import { Service } from "../../types";
+import { FC } from "react";
+import { NoData } from "../ux/NoData";
 
-export const ServicesList : FC<{ data: Service[] | undefined}> = ({data}) => {
-
+export const ServicesInfo : FC<{ data: Service[] | undefined}> = ({data}) => {
+    console.log(data)
     return (
         <div className="">
+        {data?.length? 
         <List 
             dataSource={data}
             renderItem={(item) => (
-                <List.Item className="services-list-item"
+                <List.Item
                     key={item.id}>
                     <List.Item.Meta title={item.name} />
                     <List.Item.Meta title={item.price + " р."}/>
                     <List.Item.Meta title={item.time + " мин."}/>
                 </List.Item>
             )}
-            />
+            /> : <NoData message="Услуг пока нет!" />
+        }
         </div>
     );
 }

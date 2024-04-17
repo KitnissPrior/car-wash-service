@@ -12,7 +12,8 @@
       "name": "Автомойка 2",
       "carwashStreet": "г. Екатеринбург ул. Малышева 1",
       "boxAmount": 8,
-      "contactInfo": "8-800-200-01-01"
+      "contactInfo": "8-800-200-01-01",
+      "": "г. Екатеринбург ул. Малышева 21"
     },
     {
       "id": "4",
@@ -26,7 +27,37 @@
       "name": "Мойкатеринбург",
       "carwashStreet": "г.Екатеринбург, ул.Вайнера 9",
       "boxAmount": 11,
-      "contactInfo": "+79123154615165"
+      "contactInfo": "+79123154615165",
+      "": "4"
+    },
+    {
+      "id": "034e",
+      "name": "Автомойка 666",
+      "carwashStreet": "г. Екатеринбург, ул. Пентаграммная, 13",
+      "boxAmount": 7,
+      "contactInfo": "89125632547",
+      "": "г. Екатеринбург ул. Малышева 21"
+    },
+    {
+      "id": "7588",
+      "name": "АвтомойкаБрз",
+      "carwashStreet": "г. Березовский, ул. Строителей 1",
+      "boxAmount": 2,
+      "contactInfo": "+7912874293721"
+    },
+    {
+      "id": "5470",
+      "name": "Автомойка Ноунейм",
+      "carwashStreet": "улица никакая",
+      "boxAmount": 3,
+      "contactInfo": "000000000"
+    },
+    {
+      "id": "f152",
+      "name": "авто",
+      "carwashStreet": "ааааа",
+      "boxAmount": 1,
+      "contactInfo": "98"
     }
   ],
   "ServiceStatus": [
@@ -55,6 +86,62 @@
       "time": "15",
       "status_ID": "1",
       "carwash_ID": "2"
+    },
+    {
+      "id": "6bf9",
+      "name": "Тотальная ультра-мойка для мажоров",
+      "price": "5000",
+      "time": "60",
+      "status_ID": "1",
+      "carwash_ID": "034e"
+    },
+    {
+      "id": "67a3",
+      "name": "Двухфазная мойка с нано-шампунем",
+      "price": "650",
+      "time": "15",
+      "status_ID": "1",
+      "carwash_ID": "5"
+    },
+    {
+      "id": "d397",
+      "name": "Уборка багажника",
+      "price": "400",
+      "time": "15",
+      "status_ID": "1",
+      "carwash_ID": "5"
+    },
+    {
+      "id": "e0bc",
+      "name": "Экспресс",
+      "price": "250",
+      "time": "15",
+      "status_ID": "1",
+      "carwash_ID": "4"
+    },
+    {
+      "id": "f3b7",
+      "name": "Трехфазная мойка с нано-шампунем и покрытием HydroShine",
+      "price": "700",
+      "time": "60",
+      "status_ID": "1",
+      "carwash_ID": "4"
+    },
+    {
+      "id": "77c9",
+      "name": "Экспресс-мойка",
+      "price": "250",
+      "time": "15",
+      "status_ID": "1",
+      "carwash_ID": "7588"
+    },
+    {
+      "id": "588f",
+      "name": "загадить машину\n",
+      "price": "5000",
+      "time": "5",
+      "status_ID": "1",
+      "carwash_ID": "5470"
     }
   ]
 }

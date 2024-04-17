@@ -79,6 +79,12 @@ label {
     font-weight: 400;
 }
 
+.form-submit-button:disabled:hover {
+    border: none;
+    outline: none;
+    color: #323232;
+}
+
 .form-cancel-button {
     margin: auto;
     border-radius: 30px;

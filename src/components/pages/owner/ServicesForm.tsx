@@ -4,12 +4,12 @@ import { AutoCenter, Dialog } from "antd-mobile"
 import { Button, Form} from "antd"
 import { useNavigate } from "react-router-dom"
 import { Carwash, Service } from "../../types"
-import { ServicesList } from "./ServicesList"
+import { ServicesList } from "./ServicesListInForm"
 import './styles/ServiceAdding.scss'
 import { useServiceAddMutation, useServicesQuery } from "../../api/serviceApi"
-import { QueryStatus } from "../page_not_found/QueryStatus"
+import { QueryStatus } from "../ux/QueryStatus"
 import { useCarwashAddMutation } from "../../api/carwashApi"
-import { useFormData, defaultFormData } from "./FormContext"
+import { useFormData, defaultFormData } from "./CarwashFormContext"
 
 export const ServiceAdding:FC = () => {
     const navigate = useNavigate()
@@ -22,7 +22,13 @@ export const ServiceAdding:FC = () => {
     const filteredServices = services?.filter(item => item.carwash_ID === carwashData.id);
 
 
-    const handleFormSubmit = async (data: Service) => {
+    const handleFormSubmit = async () => {
+        //этот пока не нужно, т.к без сгенерированного id автомойки услуга к новой автомойке не добавится
+        // if(filteredServices?.length === 0) {
+        //     Dialog.alert({content: 'Вы не добавили ни одной услуги!', confirmText: 'Добавить услугу', 
+        //         onConfirm: () => navigate('/service-adding')});
+        //     return
+        // }
         console.log(carwashData)
         await save(carwashData);
 

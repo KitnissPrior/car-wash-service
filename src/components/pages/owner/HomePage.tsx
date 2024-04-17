@@ -6,7 +6,7 @@ import {Button} from 'antd';
 import { AutoCenter } from 'antd-mobile';
 import { useCarwashesQuery } from '../../api/carwashApi';
 import CardList from './CardList';
-import { QueryStatus } from '../page_not_found/QueryStatus';
+import { QueryStatus } from '../ux/QueryStatus';
 
 export default function OwnerHomePage() {
     const query = useCarwashesQuery()

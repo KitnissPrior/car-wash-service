@@ -1,11 +1,13 @@
 import { FC, useState } from "react";
 import { Carwash } from "../../types";
-import { defaultFormData, useFormData } from "./FormContext";
+import { defaultFormData, useFormData } from "./CarwashFormContext";
 import { Button, Modal } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useCarwashDeleteMutation } from "../../api/carwashApi";
+import { useServicesQuery } from "../../api/serviceApi";
 import { Dialog } from "antd-mobile";
 import { ConfirmationPopup } from "./ConfirmationPopup";
+import { ServicesInfo } from "./ServicesInfo";
 import './styles/CarwashInfo.scss'
 
 export const CarwashInfo: FC = () => {
@@ -14,6 +16,7 @@ export const CarwashInfo: FC = () => {
     const navigate = useNavigate();
     const {formData: carwash, setFormData} = useFormData();
     const {mutateAsync: deleteCarwash} = useCarwashDeleteMutation()
+    const services = useServicesQuery().data;
 
     const handleEditClick = () => {
         navigate(`/carwash-adding/`);
@@ -31,7 +34,6 @@ export const CarwashInfo: FC = () => {
 
         Dialog.alert({content: 'Автомойка успешно удалена', confirmText: 'Хорошо'});
         setFormData(() => (defaultFormData));
-        
     }
     
     const handleContinue = () => {
@@ -72,6 +74,7 @@ export const CarwashInfo: FC = () => {
                     okText="Да, удалить"
                     cancelText="Отмена"/>
                 <h2 className="carwash-item-info-title">Услуги автомойки</h2>
+                <ServicesInfo data={services?.filter(item => item.carwash_ID === carwash?.id)}/>
                 <Button className="carwash-info-edit-button" onClick={handleAddServiceClick}>Добавить услугу</Button>
             </div>
         </div>
