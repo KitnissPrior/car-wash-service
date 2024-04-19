@@ -29,9 +29,10 @@ export const ServiceAddingForm: FC = () => {
     }
 
     return (
+        <div>
+        <div><HeaderOwner></HeaderOwner></div>
         <div className="carwash-adding">
-            <div><HeaderOwner/></div>
-            <div className="carwash-adding-content2">
+        <div className="carwash-adding-content2">
                 <h1 className="form-title">Добавление услуги</h1>
                 <Form 
                 initialValues={serviceDefaultValues}
@@ -73,6 +74,7 @@ export const ServiceAddingForm: FC = () => {
                         <Button className="form-cancel-button" onClick={handleFormCancel}>Не добавлять</Button>
                     </Form.Item>
                 </Form>
+            </div>
             </div>
         </div>
     )

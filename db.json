@@ -51,6 +51,20 @@
       "carwashStreet": "адрес",
       "boxAmount": 3,
       "contactInfo": "891234"
+    },
+    {
+      "id": "c634",
+      "name": "rtertgrg",
+      "carwashStreet": "rwtretert",
+      "boxAmount": 4,
+      "contactInfo": "231323"
+    },
+    {
+      "id": "5e9f",
+      "name": "eargeg",
+      "carwashStreet": "ergeg",
+      "boxAmount": 324,
+      "contactInfo": "34214"
     }
   ],
   "ServiceStatus": [
@@ -137,20 +151,12 @@
       "carwash_ID": "1"
     },
     {
-      "id": "f1b5",
-      "name": "Двухфазная мойка с нано-шампунем",
-      "price": "600",
-      "time": "25",
+      "id": "d5e3",
+      "name": "пкнренре",
+      "price": "1344",
+      "time": "10",
       "status_ID": "1",
-      "carwash_ID": "6bf9"
-    },
-    {
-      "id": "de2c",
-      "name": "услуга1",
-      "price": "250",
-      "time": "25",
-      "status_ID": "1",
-      "carwash_ID": "0694"
+      "carwash_ID": "c634"
     }
   ]
 }

@@ -1,14 +1,12 @@
 .header {
     display: flex;
-    box-sizing: border-box;
     max-width: 1200px;
-    margin: 0 auto 40px;
-    padding: 0 !important;
+    justify-content: space-between;
 }
 
 .header-logo {
     display: block;
-    width: 140px;
+    width: 155px;
     font-size: 24px;
     font-weight: 600;
     text-decoration: none;

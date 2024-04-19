@@ -12,15 +12,14 @@ export default function HomePage() {
         <div className='homepage-content'>
             <Header></Header>
             <div className="main-wrapper">
-                <div className="upper-main">
+                <img className='main-image1' alt="Машина" src='./src/images/car2.png'/>
                     <span className="upper-main-text">
                         <h1>
                             Бронируйте места на любой <br /> удобной вам автомойке!
                         </h1>
                     </span>
                 </div>
-                <img className='main-image' alt="Машина" src='./src/images/car2.png'/>
+                <img className='main-image2' alt="Машина" src='./src/images/car_logo.png'/>
             </div>
-        </div>
     );
 }
