@@ -4,8 +4,8 @@ import { NoDataProps } from '../../types';
 export const NoData: FC<NoDataProps> = ({message}) => {
 
     return (
-        <div style={{padding: '20px', textAlign: 'center'}}>
-            <h2>{message}</h2>
+        <div style={{padding: '0 0 20px', textAlign: 'start', fontSize: '16px'}}>
+            <p>{message}</p>
         </div>
     )
 }

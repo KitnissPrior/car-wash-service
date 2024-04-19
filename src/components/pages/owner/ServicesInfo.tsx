@@ -5,7 +5,7 @@ import { NoData } from "../ux/NoData";
 
 export const ServicesInfo : FC<{ data: Service[] | undefined}> = ({data}) => {
     return (
-        <div className="">
+        <div>
         {data?.length? 
         <List 
             dataSource={data}
@@ -17,7 +17,9 @@ export const ServicesInfo : FC<{ data: Service[] | undefined}> = ({data}) => {
                     <List.Item.Meta title={item.time + " мин."}/>
                 </List.Item>
             )}
-            /> : <NoData message="Услуг пока нет!" />
+            /> : <p className="no-services">
+                <NoData message="Услуг пока нет!" />
+                </p>
         }
         </div>
     );
