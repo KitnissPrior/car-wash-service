@@ -40,7 +40,7 @@
     {
       "id": "6bf9",
       "name": "Мойдодыр Для Лексуса",
-      "carwashStreet": "г.Москва, ул. Буржуйская 21",
+      "carwashStreet": "г. Екатеринбург, ул. Буржуйская-Ленина 213",
       "boxAmount": 500,
       "contactInfo": "89003872345",
       "": "г. Екатеринбург ул. Малышева 21"
@@ -51,20 +51,6 @@
       "carwashStreet": "адрес",
       "boxAmount": 3,
       "contactInfo": "891234"
-    },
-    {
-      "id": "c634",
-      "name": "rtertgrg",
-      "carwashStreet": "rwtretert",
-      "boxAmount": 4,
-      "contactInfo": "231323"
-    },
-    {
-      "id": "5e9f",
-      "name": "eargeg",
-      "carwashStreet": "ergeg",
-      "boxAmount": 324,
-      "contactInfo": "34214"
     }
   ],
   "ServiceStatus": [
@@ -149,14 +135,6 @@
       "time": "25",
       "status_ID": "1",
       "carwash_ID": "1"
-    },
-    {
-      "id": "d5e3",
-      "name": "пкнренре",
-      "price": "1344",
-      "time": "10",
-      "status_ID": "1",
-      "carwash_ID": "c634"
     }
   ]
 }
