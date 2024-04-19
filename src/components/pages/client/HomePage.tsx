@@ -11,7 +11,7 @@ export default function HomePage() {
     return (
         <div className='homepage-content'>
             <Header></Header>
-            <div className="main-wrapper">
+            {/* <div className="main-wrapper">
                 <img className='main-image1' alt="Машина" src='./src/images/car2.png'/>
                     <span className="upper-main-text">
                         <h1>
@@ -19,7 +19,7 @@ export default function HomePage() {
                         </h1>
                     </span>
                 </div>
-                <img className='main-image2' alt="Машина" src='./src/images/car_logo.png'/>
-            </div>
+                <img className='main-image2' alt="Машина" src='./src/images/car_logo.png'/> */}
+        </div>
     );
 }
