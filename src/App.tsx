@@ -6,6 +6,7 @@ import { ServiceAdding } from './pages/owner/ServicesForm';
 import { HeaderOwner } from './pages/headers/HeaderOwner';
 import { CarwashAdding } from './pages/owner/CarwashForm';
 import { CarwashInfo } from './pages/owner/CarwashInfo';
+import ProfilePage from "./pages/profile/ProfilePage";
 import OwnerHomePage from './pages/owner/HomePage';
 import PageNotFound from "./pages/ux/PageNotFound";
 import HomePage from "./pages/client/HomePage";
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
             <Route element={<ServiceAdding/>} path='/carwash-services'/>
             <Route element={<CarwashInfo/>} path='/carwash-about/:id'/>
             <Route element={<ServiceAddingForm/>} path='/service-adding'/>
+            <Route element={<ProfilePage/>} path={'/profile'}/>
         </Route>
     )
 );
