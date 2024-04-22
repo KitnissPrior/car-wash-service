@@ -1,15 +1,15 @@
-import { Form, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
-import HomePage from "./components/pages/client/HomePage";
-import OwnerHomePage from './components/pages/owner/HomePage';
-import PageNotFound from "./components/pages/ux/PageNotFound";
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import HomePage from "./pages/client/HomePage";
+import OwnerHomePage from './pages/owner/HomePage';
+import PageNotFound from "./pages/ux/PageNotFound";
 import './App.scss';
-import { HeaderOwner } from './components/pages/headers/HeaderOwner';
-import { CarwashAdding } from './components/pages/owner/CarwashForm';
+import { HeaderOwner } from './pages/headers/HeaderOwner';
+import { CarwashAdding } from './pages/owner/CarwashForm';
 import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ServiceAdding } from './components/pages/owner/ServicesForm';
-import { FormProvider } from './components/pages/owner/CarwashFormContext';
-import { CarwashInfo } from './components/pages/owner/CarwashInfo';
-import { ServiceAddingForm } from './components/pages/owner/ServiceAddingForm'
+import { ServiceAdding } from './pages/owner/ServicesForm';
+import { FormProvider } from './pages/owner/CarwashFormContext';
+import { CarwashInfo } from './pages/owner/CarwashInfo';
+import { ServiceAddingForm } from './pages/owner/ServiceAddingForm'
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
       }
     },
     queryCache: new QueryCache({
-      onError: (error) => {
+      onError: () => {
         window.location.replace('/404');
       }
     })

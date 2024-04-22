@@ -2,9 +2,9 @@ import {FC} from "react"
 import { HeaderOwner } from "../headers/HeaderOwner"
 import { Button, Form, Input} from "antd"
 import { useNavigate } from "react-router-dom"
-import { Service } from "../../types"
+import { Service } from "../../components/types"
 import './styles/ServiceAdding.scss'
-import { useServiceAddMutation } from "../../api/serviceApi"
+import { useServiceAddMutation } from "../../components/api/serviceApi"
 import { useFormData } from "./CarwashFormContext"
 
 export const ServiceAddingForm: FC = () => {

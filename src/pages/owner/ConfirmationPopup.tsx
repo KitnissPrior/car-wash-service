@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import { Modal } from 'antd';
-import { ConfirmationProps } from '../../types';
+import { ConfirmationProps } from '../../components/types';
 
 export const ConfirmationPopup: FC<ConfirmationProps> = (
    {title, visible, handleOk, handleCancel, okText, cancelText}) => {

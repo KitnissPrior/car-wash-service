@@ -5,8 +5,8 @@ import './styles/CarwashAdding.scss'
 import { HeaderOwner } from "../headers/HeaderOwner"
 import { useNavigate } from "react-router-dom"
 import { useFormData } from "./CarwashFormContext"
-import { useCarwashAddMutation } from "../../api/carwashApi"
-import { Carwash } from "../../types"
+import { useCarwashAddMutation } from "../../components/api/carwashApi"
+import { Carwash } from "../../components/types"
 
 export const CarwashAdding: FC = () => {
     const { formData, setFormData} = useFormData();

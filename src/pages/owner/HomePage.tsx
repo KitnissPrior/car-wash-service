@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './styles/OwnerHomePage.scss';
 import {Button} from 'antd';
 import { AutoCenter } from 'antd-mobile';
-import { useCarwashesQuery } from '../../api/carwashApi';
+import { useCarwashesQuery } from '../../components/api/carwashApi';
 import CardList from './CardList';
 import { QueryStatus } from '../ux/QueryStatus';
 

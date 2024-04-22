@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import { NoDataProps } from '../../types';
+import { NoDataProps } from '../../components/types';
 
 export const NoData: FC<NoDataProps> = ({message}) => {
 

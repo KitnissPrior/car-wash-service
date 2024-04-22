@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Carwash, FormContextProviderProps } from '../../types';
+import { Carwash, FormContextProviderProps } from '../../components/types';
 
 export const defaultFormData: Carwash = { id: undefined, name: '', carwashStreet: '', boxAmount: 0, contactInfo: '' };
 
