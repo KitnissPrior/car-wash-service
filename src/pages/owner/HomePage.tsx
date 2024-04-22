@@ -14,14 +14,13 @@ export default function OwnerHomePage() {
 
     return (
         <>
-        <HeaderOwner></HeaderOwner>
-        <main className='header-owner-main'>
-            <div className='cards'>
-                <QueryStatus query={query}></QueryStatus>
-                <CardList data={carwashes}/>
-            </div>
-            
-        </main>
+            <HeaderOwner></HeaderOwner>
+            <main className='header-owner-main'>
+                <div className='cards'>
+                    <QueryStatus query={query}></QueryStatus>
+                    <CardList data={carwashes}/>
+                </div>
+            </main>
         </>
-    )
-}
+    );
+};

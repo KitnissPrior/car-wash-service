@@ -1,8 +1,8 @@
-import carLogo from '/src/images/car_logo.png'
 import { useLoaderData } from 'react-router-dom';
+import carLogo from '/src/images/car_logo.png'
 import CardList from "../owner/CardList";
-import './HomePage.scss';
 import Header from "../headers/Header";
+import './HomePage.scss';
 
 export default function HomePage() {
     const data = useLoaderData() as [];

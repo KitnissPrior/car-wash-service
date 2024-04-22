@@ -1,29 +1,29 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
-import HomePage from "./pages/client/HomePage";
-import OwnerHomePage from './pages/owner/HomePage';
-import PageNotFound from "./pages/ux/PageNotFound";
-import './App.scss';
+import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ServiceAddingForm } from './pages/owner/ServiceAddingForm'
+import { FormProvider } from './pages/owner/CarwashFormContext';
+import { ServiceAdding } from './pages/owner/ServicesForm';
 import { HeaderOwner } from './pages/headers/HeaderOwner';
 import { CarwashAdding } from './pages/owner/CarwashForm';
-import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ServiceAdding } from './pages/owner/ServicesForm';
-import { FormProvider } from './pages/owner/CarwashFormContext';
 import { CarwashInfo } from './pages/owner/CarwashInfo';
-import { ServiceAddingForm } from './pages/owner/ServiceAddingForm'
+import OwnerHomePage from './pages/owner/HomePage';
+import PageNotFound from "./pages/ux/PageNotFound";
+import HomePage from "./pages/client/HomePage";
+import './App.scss';
 
 const queryClient = new QueryClient({
     defaultOptions: {
-      queries: {
-        //после первой неудачной попытки сделать запрос появится сообщение об ошибке, и других запросов не будет
-        retry: false 
-      }
+        queries: {
+            //после первой неудачной попытки сделать запрос появится сообщение об ошибке, и других запросов не будет
+            retry: false
+        }
     },
     queryCache: new QueryCache({
-      onError: () => {
-        window.location.replace('/404');
-      }
+        onError: () => {
+            window.location.replace('/404');
+        }
     })
-  })
+});
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -41,14 +41,13 @@ const router = createBrowserRouter(
 );
 
 export default function App() {
-
     return (
         <>
-        <FormProvider>
-          <QueryClientProvider client={queryClient}>
-              <RouterProvider router={router}/>
-          </QueryClientProvider>
-        </FormProvider>
+            <FormProvider>
+                  <QueryClientProvider client={queryClient}>
+                      <RouterProvider router={router}/>
+                  </QueryClientProvider>
+            </FormProvider>
         </>
     );
 }
