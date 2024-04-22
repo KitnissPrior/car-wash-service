@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './styles/OwnerHomePage.scss';
 import {Button} from 'antd';
 import { AutoCenter } from 'antd-mobile';
-import { useCarwashesQuery } from '../../api/carwashApi';
+import { useCarwashesQuery } from '../../components/api/carwashApi';
 import CardList from './CardList';
 import { QueryStatus } from '../ux/QueryStatus';
 
@@ -14,14 +14,13 @@ export default function OwnerHomePage() {
 
     return (
         <>
-        <HeaderOwner></HeaderOwner>
-        <main className='header-owner-main'>
-            <div className='cards'>
-                <QueryStatus query={query}></QueryStatus>
-                <CardList data={carwashes}/>
-            </div>
-            
-        </main>
+            <HeaderOwner></HeaderOwner>
+            <main className='header-owner-main'>
+                <div className='cards'>
+                    <QueryStatus query={query}></QueryStatus>
+                    <CardList data={carwashes}/>
+                </div>
+            </main>
         </>
-    )
-}
+    );
+};

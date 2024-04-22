@@ -1,13 +1,14 @@
+import React, {FC} from "react";
+import { Service } from "../../components/types";
 import { List } from "antd";
-import { Service } from "../../types";
-import { FC } from "react";
 import { NoData } from "../ux/NoData";
+import './styles/ServicesList.scss'
 
-export const ServicesInfo : FC<{ data: Service[] | undefined}> = ({data}) => {
+export const ServicesList : FC<{ data: Service[] | undefined}> = ({data}) => {
+
     return (
         <div>
-        {data?.length? 
-        <List 
+            <List 
             dataSource={data}
             renderItem={(item) => (
                 <List.Item
@@ -17,10 +18,7 @@ export const ServicesInfo : FC<{ data: Service[] | undefined}> = ({data}) => {
                     <List.Item.Meta title={item.time + " мин."}/>
                 </List.Item>
             )}
-            /> : <p className="no-services">
-                <NoData message="Услуг пока нет!" />
-                </p>
-        }
+            />
         </div>
     );
 }

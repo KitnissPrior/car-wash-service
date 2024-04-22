@@ -1,10 +1,10 @@
 import { FC, useState } from "react";
-import { Carwash } from "../../types";
+import { Carwash } from "../../components/types";
 import { defaultFormData, useFormData } from "./CarwashFormContext";
 import { Button, Modal } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useCarwashDeleteMutation } from "../../api/carwashApi";
-import { useServicesQuery } from "../../api/serviceApi";
+import { useCarwashDeleteMutation } from "../../components/api/carwashApi";
+import { useServicesQuery } from "../../components/api/serviceApi";
 import { Dialog } from "antd-mobile";
 import { ConfirmationPopup } from "./ConfirmationPopup";
 import { ServicesInfo } from "./ServicesInfo";

@@ -5,7 +5,7 @@ import { Button, Form} from "antd"
 import { useNavigate } from "react-router-dom"
 import { ServicesList } from "./ServicesListInForm"
 import './styles/ServiceAdding.scss'
-import { useServicesQuery } from "../../api/serviceApi"
+import { useServicesQuery } from "../../components/api/serviceApi"
 import { QueryStatus } from "../ux/QueryStatus"
 import { useFormData, defaultFormData } from "./CarwashFormContext"
 
