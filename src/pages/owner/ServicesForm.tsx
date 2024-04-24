@@ -1,45 +1,45 @@
-import React, {FC} from "react"
+import {FC} from "react"
 import { HeaderOwner } from "../headers/HeaderOwner"
-import { AutoCenter, Dialog } from "antd-mobile"
+import { Dialog } from "antd-mobile"
 import { Button, Form} from "antd"
 import { useNavigate } from "react-router-dom"
-import { Carwash, Service } from "../../types"
-import { ServicesList } from "./ServicesList"
+import { ServicesList } from "./ServicesListInForm"
 import './styles/ServiceAdding.scss'
-import { useServiceAddMutation, useServicesQuery } from "../../api/serviceApi"
-import { QueryStatus } from "../page_not_found/QueryStatus"
-import { useCarwashAddMutation } from "../../api/carwashApi"
-import { useFormData, defaultFormData } from "./FormContext"
+import { useServicesQuery } from "../../components/api/serviceApi"
+import { QueryStatus } from "../ux/QueryStatus"
+import { useFormData, defaultFormData } from "./CarwashFormContext"
 
 export const ServiceAdding:FC = () => {
     const navigate = useNavigate()
 
     const { formData: carwashData, setFormData } = useFormData();
-    const {mutateAsync: save} = useCarwashAddMutation()
     
     const query = useServicesQuery()
     const { data: services} = query
+    const filteredServices = services?.filter(item => item.carwash_ID === carwashData.id);
 
 
-    const handleFormSubmit = async (data: Service) => {
-        console.log(carwashData)
-        await save(carwashData);
+    const handleFormSubmit = async () => {
+        //это пригодится позже
+        // if(filteredServices?.length === 0) {
+        //     Dialog.alert({content: 'Вы не добавили ни одной услуги!', confirmText: 'Добавить услугу', 
+        //         onConfirm: () => navigate('/service-adding')});
+        //     return
+        // }
 
         navigate('/owner');
-        Dialog.alert({content: 'Автомойка успешно сохранена', confirmText: 'Хорошо'});
         setFormData(() => (defaultFormData));
 
     }
 
-    const handleFormCancel = () => {
+    const handleGoBack = () => {
         navigate('/carwash-adding');
     }
 
     const handleServiceAdd = () => {
-        navigate('../add-service')
+        navigate('../service-adding')
     }
 
-    
     return (
         <div>
         <div><HeaderOwner></HeaderOwner></div>
@@ -51,14 +51,14 @@ export const ServiceAdding:FC = () => {
                         <Button onClick={handleServiceAdd} className="form-cancel-button-add-service">Добавить услугу</Button>
                     </Form.Item>
                     <div>
-                    <ServicesList data={services}/>
+                    <ServicesList data={filteredServices}/>
                     <QueryStatus query={query}></QueryStatus>
                     </div>
                     <Form.Item>
-                        <Button className="form-submit-button" htmlType="submit">Сохранить</Button>
+                        <Button className="form-submit-button" htmlType="submit">Завершить</Button>
                     </Form.Item>
                     <Form.Item>
-                        <Button className="form-cancel-button" onClick={handleFormCancel}>Назад</Button>
+                        <Button className="form-cancel-button" onClick={handleGoBack}>Назад</Button>
                     </Form.Item>
             </Form>
         </div>
