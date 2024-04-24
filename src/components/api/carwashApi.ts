@@ -2,6 +2,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import {api} from './serverApi';
 import { Carwash } from '../types';
 import { Dialog } from 'antd-mobile';
+//import ky from 'ky';
 
 export const useCarwashesQuery = () => useQuery({
     queryKey: ['carwashes'],
@@ -9,7 +10,8 @@ export const useCarwashesQuery = () => useQuery({
     refetchInterval: 1000
 })
 
-export const useCarwashAddMutation = () => useMutation <Carwash, Error, Carwash>({
+export const useCarwashSaveMutation = () => useMutation <Carwash, Error, Carwash>({
+    //mutationFn: (carwash) => ky('/Carwash/' + (carwash?.id || ''), {
     mutationFn: (carwash) => api('Carwash/' + (carwash?.id || ''), {
         method: carwash?.id ? 'PUT' : 'POST',
         json: carwash,
@@ -29,5 +31,12 @@ export const useCarwashDeleteMutation = () => useMutation <Carwash, Error, Carwa
     mutationFn: (carwash) => api('Carwash/' + (carwash?.id || ''), {
         method: 'DELETE',
         json: carwash
-    }).json<Carwash>()
+    }).json<Carwash>(),
+    onSuccess: () => {
+        Dialog.alert({content: 'Автомойка успешно удалена', confirmText: 'Хорошо'});
+    },
+    onError: (error) => {
+        Dialog.alert({content: 'Удаление выполнить не удалось'+ error, confirmText: 'Закрыть'});
+        console.error('Mutation failed:', error);
+    }
 })

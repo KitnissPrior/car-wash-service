@@ -5,12 +5,12 @@ import './styles/CarwashAdding.scss'
 import { HeaderOwner } from "../headers/HeaderOwner"
 import { useNavigate } from "react-router-dom"
 import { useFormData } from "./CarwashFormContext"
-import { useCarwashAddMutation } from "../../components/api/carwashApi"
+import { useCarwashSaveMutation } from "../../components/api/carwashApi"
 import { Carwash } from "../../components/types"
 
 export const CarwashAdding: FC = () => {
     const { formData, setFormData} = useFormData();
-    const {mutateAsync: save} = useCarwashAddMutation()
+    const {mutateAsync: save} = useCarwashSaveMutation()
 
     //проверяет, что все поля формы заполнены. 
     //это нужно для того, чтобы кнопка "Продолжить" была активной
@@ -44,8 +44,6 @@ export const CarwashAdding: FC = () => {
 
         navigate('/carwash-services');
     }
-
-
 
     return ( 
         <div>
