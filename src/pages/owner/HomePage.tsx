@@ -1,9 +1,6 @@
-import carLogo from '/src/images/car_logo.png';
+//import carLogo from '/src/images/car_logo.png';
 import { HeaderOwner } from '../headers/HeaderOwner';
-import { Link } from 'react-router-dom';
 import './styles/OwnerHomePage.scss';
-import {Button} from 'antd';
-import { AutoCenter } from 'antd-mobile';
 import { useCarwashesQuery } from '../../components/api/carwashApi';
 import CardList from './CardList';
 import { QueryStatus } from '../ux/QueryStatus';

@@ -1,7 +1,6 @@
-import React, {FC} from "react";
+import {FC} from "react";
 import { Service } from "../../components/types";
 import { List } from "antd";
-import { NoData } from "../ux/NoData";
 import './styles/ServicesList.scss'
 
 export const ServicesList : FC<{ data: Service[] | undefined}> = ({data}) => {

@@ -1,6 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-import carLogo from '/src/images/car_logo.png'
-import CardList from "../owner/CardList";
+//import carLogo from '/src/images/car_logo.png'
 import Header from "../headers/Header";
 import './HomePage.scss';
 

@@ -1,6 +1,5 @@
 import {FC} from "react"
 import { HeaderOwner } from "../headers/HeaderOwner"
-import { Dialog } from "antd-mobile"
 import { Button, Form} from "antd"
 import { useNavigate } from "react-router-dom"
 import { ServicesList } from "./ServicesListInForm"
