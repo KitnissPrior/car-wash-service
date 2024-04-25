@@ -1,0 +1,146 @@
+.profile-page {
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.profile-page-button:hover {
+    border: 1px solid #B30006 !important;
+    color: #B30006 !important;
+}
+
+@media (min-width: 1200px){
+    .profile-page {
+        box-sizing: border-box;
+        padding: 15px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .profile-page-title {
+        margin-bottom: 3vh;
+        font-size: 2em;
+        text-align: center;
+        color: #000000;
+    }
+
+    .profile-page-list-item {
+        width: 30vw;
+        margin: 15px auto 0;
+        padding: 20px;
+
+        border: 1px solid #e9e9e9;
+        border-radius: 15px;
+
+        font-size: 1.2em;
+    }
+
+    .buttons-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 8vh;
+    }
+
+    .profile-page-button {
+        width: 30vw;
+        height: 46px;
+        margin: auto;
+        padding: 0 19px;
+
+        border: 1px solid #000;
+        border-radius: 30px;
+
+        font-size: 1.2em;
+        text-decoration: none;
+
+        color: #000;
+
+        transition: linear .1s;
+    }
+}
+
+@media (min-width: 740px) and (max-width: 1199px) {
+    .profile-page-title {
+        margin-bottom: 3vh;
+        font-size: 2.2em;
+        text-align: center;
+        color: #000000;
+    }
+    
+    .profile-page-list-item {
+        margin: 9px 0;
+        padding: 20px;
+
+        border: 1px solid #e9e9e9;
+        border-radius: 15px;
+
+        font-size: 1.6em;
+    }
+
+    .buttons-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 8vh;
+    }
+
+    .profile-page-button {
+        width: 40vw;
+        height: 46px;
+        margin: auto;
+        padding: 0 19px;
+
+        border: 1px solid #000;
+        border-radius: 30px;
+
+        font-size: 1.6em;
+        text-decoration: none;
+
+        color: #000;
+
+        transition: linear .1s;
+    }
+}
+
+@media (max-width: 739px) {
+    .profile-page-title {
+        margin-bottom: 3vh;
+        font-size: 1.8em;
+        text-align: center;
+        color: #000000;
+    }
+    
+    .profile-page-list-item {
+        margin: 9px 0;
+        padding: 12px;
+
+        border: 1px solid #e9e9e9;
+        border-radius: 15px;
+
+        font-size: 1.2em;
+    }
+
+    .buttons-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 8vh;
+    }
+
+    .profile-page-button {
+        width: 60vw;
+        height: 46px;
+        margin: auto;
+        padding: 0 19px;
+
+        border: 1px solid #000;
+        border-radius: 30px;
+
+        font-size: 1.2em;
+        text-decoration: none;
+
+        color: #000;
+
+        transition: linear .1s;
+    }
+}
