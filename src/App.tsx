@@ -21,7 +21,7 @@ const queryClient = new QueryClient({
     },
     queryCache: new QueryCache({
         onError: () => {
-            window.location.replace('/404');
+            //window.location.replace('/404');
         }
     })
 });
