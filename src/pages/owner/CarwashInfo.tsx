@@ -31,9 +31,6 @@ export const CarwashInfo: FC = () => {
         
         await deleteCarwash(item);
         navigate('/owner');
-
-        Dialog.alert({content: 'Автомойка успешно удалена', confirmText: 'Хорошо'});
-        setFormData(() => (defaultFormData));
     }
     
     const handleContinue = () => {
