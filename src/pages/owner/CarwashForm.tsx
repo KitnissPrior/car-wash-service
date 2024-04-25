@@ -42,7 +42,7 @@ export const CarwashAdding: FC = () => {
         await save(carwashData);
         console.log(carwashData)
 
-        navigate('/carwash-services');
+        navigate('/carwash-about/:'+carwashData.id);
     }
 
 
@@ -98,10 +98,10 @@ export const CarwashAdding: FC = () => {
                             <Button className="form-submit-button" 
                             disabled={!areValuesFilled} 
                             onClick={() => handleFormSubmit(formData)}
-                            htmlType="submit">Продолжить</Button>
+                            htmlType="submit">Сохранить</Button>
                         </Form.Item>
                         <Form.Item>
-                            <Button className="form-cancel-button" onClick={handleFormCancel}>Не добавлять</Button>
+                            <Button className="form-cancel-button" onClick={handleFormCancel}>Не сохранять</Button>
                         </Form.Item>
                     </Form>
                     </div>
