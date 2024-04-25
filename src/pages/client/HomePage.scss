@@ -1,4 +1,4 @@
-@media (min-width: 1200px) {
+@media (min-width: 1200px){
     .homepage-content {
         display: flex;
         flex-direction: column;
@@ -28,6 +28,14 @@
         margin: 150px auto 0;
         width: 1150px;
     }
+
+    .main-image3 {
+        display: none;
+    }
+
+    .homepage-button {
+        display: none;
+    }
 }
 
 @media (min-width: 740px) and (max-width: 1199px) {
@@ -47,13 +55,83 @@
     
     .upper-main-text > h1 {
         text-align: center;
-        font-size: 30px;
+        font-size: 36px;
         font-weight: 600;
-        margin-top: 150px;
+        margin-top: 12vh;
     }
 
     .main-image1 {
-        margin: 150px auto 0;
-        width: 700px;
+        margin: 10vh auto 0;
+        width: 90vw;
+    }
+
+    .main-image2 {
+        margin: 12vh auto 0;
+        width: 90vw;
+    }
+
+    .main-image3 {
+        display: none;
+    }
+
+    .homepage-button {
+        display: none;
+    }
+}
+
+@media (max-width: 739px) {
+    .homepage-content {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .main-wrapper {
+        max-width: 700px;
+        margin: auto;
+    }
+    
+    .main-text {
+        display: grid;
+    }
+    
+    .upper-main-text > h1 {
+        display: block;
+        width: 90vw;
+        font-size: 1.8em;
+        font-weight: 600;
+        margin-top: 8vh;
+    }
+
+    .main-image1 {
+        margin: 8vh -45vw 0;
+        width: 130vw;
+    }
+
+    .main-image2 {
+        display: none;
+    }
+
+    .main-image3 {
+        margin: 8vh 4.5vw 0;
+        width: 90vw;
+    }
+
+    .homepage-button {
+        display: block;
+        width: 70vw;
+        height: 6vh;
+        margin: 8vh auto;
+
+        background-color: #ED1D24;
+        border: 1px solid #ED1D24 !important;
+        border-radius: 50px;
+
+        font-size: 1.3em;
+        color: #fff !important;
+    }
+
+    .homepage-button:hover {
+        background-color: #B30006 !important;
+        border: 1px solid #B30006 !important;
     }
 }

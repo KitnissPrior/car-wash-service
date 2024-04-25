@@ -9,26 +9,77 @@
     width: 100%;
 }
 
-.header-logo {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 29.26px;
-    color: #000;
+@media (min-width: 1200px){
+    .header-logo {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 29.26px;
+        color: #000;
+    }
+
+    .header-buttons {
+        display: flex;
+        gap: 30px;
+    }
+
+    .header-button-red {
+        background-color: #ED1D24;
+        border: 1px solid #ED1D24 !important;
+        color: #fff !important;
+    }
+
+    .header-button-red:hover {
+        background-color: #B30006;
+        border: 1px solid #B30006 !important;
+    }
 }
 
-.header-buttons {
-    display: flex;
-    gap: 30px;
+@media (min-width: 740px) and (max-width: 1199px) {
+    .header-logo {
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 29.26px;
+        color: #000;
+    }
+
+    .header-buttons {
+        display: flex;
+        gap: 30px;
+    }
+
+    .header-button {
+        font-size: 20px !important;
+    }
+
+    .header-button-red {
+        display: block;
+        background-color: #ED1D24;
+        border: 1px solid #ED1D24 !important;
+        color: #fff !important;
+    }
+
+    .header-button-red:active {
+        background-color: #B30006;
+        border: 1px solid #B30006 !important;
+    }
 }
 
-.header-button-red {
-    background-color: #ED1D24;
-    border: 1px solid #ED1D24 !important;
-    color: #fff !important;
-}
+@media (max-width: 739px) {
+    .header-logo {
+        font-weight: 700;
+        font-size: 2em;
+        line-height: 29.26px;
+        color: #000;
+    }
 
-.header-button-red:hover {
-    background-color: #B30006;
-    border: 1px solid #B30006 !important;
-    color: #fff !important;
+    .header-button {
+        font-size: 1.1em;
+        text-align: center;
+
+        width: 40vw;
+    }
+
+    .header-button-red {
+        display: none;
+    }
 }
