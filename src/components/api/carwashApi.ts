@@ -29,5 +29,12 @@ export const useCarwashDeleteMutation = () => useMutation <Carwash, Error, Carwa
     mutationFn: (carwash) => api('Carwash/' + (carwash?.id || ''), {
         method: 'DELETE',
         json: carwash
-    }).json<Carwash>()
+    }).json<Carwash>(),
+    onSuccess: () => {
+        Dialog.alert({content: 'Автомойка успешно удалена', confirmText: 'Хорошо'});
+    },
+    onError: (error) => {
+        Dialog.alert({content: 'Удаление выполнить не удалось'+ error, confirmText: 'Закрыть'});
+        console.error('Mutation failed:', error);
+    }
 })

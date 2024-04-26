@@ -1,4 +1,4 @@
-import { Card, Button } from 'antd';
+import { Card } from 'antd';
 import './styles/CardList.scss'
 import { Carwash } from '../../components/types';
 import { useNavigate } from 'react-router-dom';

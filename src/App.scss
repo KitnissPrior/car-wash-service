@@ -5,7 +5,22 @@
 }
 
 body {
-    padding: 0 20px 20px;
+    overflow-x: hidden;
+}
+
+.ux {
+    display: block;
+    height: 100vh;
+    text-align: center;
+
+    background-image: url('./images/backgroundPageNotFound.png');
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.ux-title {
+    margin-top: 25vh;
+    font-size: 2.5em
 }
 
 // <uniquifier>: Use a unique and descriptive class name
