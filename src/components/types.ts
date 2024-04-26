@@ -1,17 +1,10 @@
 export type Carwash = {
-    id: string | undefined;
+    id: UUID | undefined;
     name: string;
     carwashStreet: string;
     boxAmount: number;
     contactInfo: string;
 }
-
-// export type CarwashFormData = {
-//     name: string;
-//     carwashStreet: string;
-//     boxAmount: number;
-//     contactInfo: string;
-// }
 
 export type FormContextProviderProps = {
     children: React.ReactNode;
@@ -43,3 +36,5 @@ export type ServiceStatus = {
 export type NoDataProps = {
     message: string;
 }
+
+export type UUID = string & { __uuid: void };
