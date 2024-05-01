@@ -18,24 +18,17 @@ export const useCarwashQuery = (id: string) => useQuery({
     refetchInterval: 1000,
 })
 
-const {setFormData} = useFormData();
-const navigate = useNavigate();
-
-export const useCarwashAddMutation = () => useMutation <Carwash, Error, Carwash>({
+export const useCarwashAddMutation = (handleSuccess: (carwash: Carwash) => void) => useMutation <Carwash, Error, Carwash>({
     mutationFn: (carwash) => api('Carwash/' + (carwash?.carwashId || ''), {
         method: carwash?.carwashId ? 'PUT' : 'POST',
         json: carwash,
         
     }).json<Carwash>(),
-    onSuccess: (data) => {
-        Dialog.alert({content: 'Автомойка сохранена', confirmText: 'Хорошо'});
-        console.log('Mutation successful:', data);
-        setFormData(data);
-        navigate('/carwash-about/:'+data.carwashId);
+    onSuccess: (data: any) => {
+        handleSuccess(data.value as Carwash);
     },
-    onError: (error) => {
+    onError: () => {
         Dialog.alert({content: 'Сохранение выполнить не удалось', confirmText: 'Закрыть'});
-        console.error('Mutation failed:', error);
     },
 })
 

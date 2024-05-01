@@ -10,7 +10,14 @@ import { Carwash } from "../../components/types"
 
 export const CarwashAdding: FC = () => {
     const { formData, setFormData} = useFormData();
-    const {mutateAsync: save} = useCarwashAddMutation()
+
+    const handleCarwashSuccessAdd = (data: Carwash) => {
+        console.log(data)
+        setFormData(data);
+        navigate(`/carwash-about/:${data.carwashId}`);
+    }
+
+    const {mutateAsync: save} = useCarwashAddMutation(handleCarwashSuccessAdd)
 
     //проверяет, что все поля формы заполнены. 
     //это нужно для того, чтобы кнопка "Продолжить" была активной
