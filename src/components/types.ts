@@ -1,5 +1,7 @@
+import { Guid } from 'guid-typescript';
+
 export type Carwash = {
-    id: UUID | undefined;
+    carwashId?: Guid;
     name: string;
     carwashStreet: string;
     boxAmount: number;
@@ -20,16 +22,16 @@ export type ConfirmationProps = {
 }
 
 export type Service = {
-    id: string | undefined;
+    id?: Guid | string;
     name: string;
     price: number;
     time: string;
-    status_ID: string;
-    carwash_ID: string | undefined;
+    status_ID?: Guid;
+    carwash_ID?: Guid;
 }
 
 export type ServiceStatus = {
-    id: string;
+    id: Guid;
     name: string;
 }
 

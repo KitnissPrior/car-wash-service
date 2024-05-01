@@ -1,7 +1,10 @@
 import React, { createContext, useContext, useState } from 'react';
 import { Carwash, FormContextProviderProps } from '../../components/types';
+import { Guid } from 'guid-typescript';
 
-export const defaultFormData: Carwash = { id: undefined, name: '', carwashStreet: '', boxAmount: 0, contactInfo: '' };
+const defaultId = Guid.create();
+
+export const defaultFormData: Carwash = { name: '', carwashStreet: '', boxAmount: 0, contactInfo: '' };
 
 const FormContext = createContext<{ formData: Carwash; setFormData: React.Dispatch<React.SetStateAction<Carwash>> }>({
  formData: defaultFormData,
@@ -9,7 +12,6 @@ const FormContext = createContext<{ formData: Carwash; setFormData: React.Dispat
 });
 
 export const useFormData = () => useContext(FormContext);
-
 
 export const FormProvider: React.FC<FormContextProviderProps> = ({ children}) => {
  const [formData, setFormData] = useState<Carwash>(defaultFormData);

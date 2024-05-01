@@ -1,7 +1,6 @@
-import React, {FC} from "react";
+import {FC} from "react";
 import { Service } from "../../components/types";
 import { List } from "antd";
-import { NoData } from "../ux/NoData";
 import './styles/ServicesList.scss'
 
 export const ServicesList : FC<{ data: Service[] | undefined}> = ({data}) => {
@@ -12,7 +11,7 @@ export const ServicesList : FC<{ data: Service[] | undefined}> = ({data}) => {
             dataSource={data}
             renderItem={(item) => (
                 <List.Item
-                    key={item.id}>
+                    key={item.name}>
                     <List.Item.Meta title={item.name} />
                     <List.Item.Meta title={item.price + " р."}/>
                     <List.Item.Meta title={item.time + " мин."}/>

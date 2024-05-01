@@ -40,12 +40,7 @@ export const CarwashAdding: FC = () => {
 
     const handleFormSubmit = async (carwashData: Carwash) => {
         await save(carwashData);
-        console.log(carwashData)
-
-        navigate('/carwash-about/:'+carwashData.id);
     }
-
-
 
     return ( 
         <div>
@@ -54,7 +49,7 @@ export const CarwashAdding: FC = () => {
             <div className="carwash-adding-content2">
                 <h1 className="form-title">Добавление автомойки</h1>
                     <Form>
-                        <Form.Item name="carwash_ID" hidden/>
+                        {<Form.Item name="carwashId" hidden/>}
                         <Form.Item label="Название автомойки*" name="name" 
                         rules={[{ required: true,  message: 'Введите название автомойки' },
                         { min: 3, message: 'Слишком короткое название'},
