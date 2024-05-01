@@ -1,6 +1,6 @@
 import Header from "../headers/Header";
-import './ProfilePage.scss'
-import { Button} from "antd";
+import { Button } from "antd";
+import './ProfilePage.scss';
 
 export default function ProfilePage() {
     return (

@@ -54,6 +54,7 @@ export const CarwashAdding: FC = () => {
             <div className="carwash-adding-content2">
                 <h1 className="form-title">Добавление автомойки</h1>
                     <Form>
+                        <Form.Item name="carwash_ID" hidden/>
                         <Form.Item label="Название автомойки*" name="name" 
                         rules={[{ required: true,  message: 'Введите название автомойки' },
                         { min: 3, message: 'Слишком короткое название'},
