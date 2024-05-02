@@ -1,24 +1,29 @@
-import Header from "../headers/Header";
-import { Button } from "antd";
+import {Form, Button, Input} from "antd"
+import '../edit-profile/EditProfilePage.scss'
+import { useNavigate } from "react-router-dom"
 
 // Сделать функциональность изменения данных прочего
 export default function EditPasswordPage() {
+    const navigate = useNavigate();
+
+    const toProfile = () => {
+        navigate(-1);
+    }
 
     return (
         <>
-            <Header/>
-            <div>
-                <h2>Изменение пароля</h2>
-                <div className="some-container">
+            <div className="edit-container">
+                <h2 className="profile-page-title">Изменение пароля</h2>
+                <div className="edit-inputs">
                     {/* Прикрутить позже выгрузку данных с БД, чтобы они в input висели*/}
-                    <input type='text' placeholder='Придумайте новый пароль'/>
-                    <input type='text' placeholder='Повторите новый пароль'/>
-                    <input type='text' placeholder='Введите старый пароль'/>
+                    <Input type='text' className="edit-input" placeholder='Придумайте новый пароль'/>
+                    <Input type='text' className="edit-input" placeholder='Повторите новый пароль'/>
+                    <Input type='text' className="edit-input" placeholder='Введите старый пароль'/>
                 </div>
 
                 <div className="buttons-section">
                     <Button className="profile-page-button">Сохранить изменения</Button>
-                    <Button className="profile-page-button">Не сохранять изменения</Button>
+                    <Button className="profile-page-button" onClick={toProfile}>Не сохранять изменения</Button>
                 </div>
             </div>
         </>

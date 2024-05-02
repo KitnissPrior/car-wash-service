@@ -1,11 +1,31 @@
-import Header from "../headers/Header";
+import { Outlet, NavLink } from 'react-router-dom';
 import { Button } from "antd";
 import './ProfilePage.scss';
+import { useNavigate } from "react-router-dom";
 
-export default function ProfilePage() {
+export default function ProfilePage() {const navigate = useNavigate();
+    const editProfilePage = () => {
+        navigate('/edit-profile/');
+    }
+
+    const editPassword = () => {
+        navigate('/edit-password/');
+    }
+
+    const checkOrderHistory = () => {
+        navigate('/history/');
+    }
+
     return (
         <div>
-            <Header/>
+            <header className="header">
+                <NavLink className="header-logo" to='/'>Логотип</NavLink>
+                <div className="header-buttons">
+                    <NavLink className="header-button header-button-red" to='/'>Забронировать место</NavLink>
+                    <NavLink className="header-button" to='/'>На главную</NavLink>
+                </div>
+            </header>
+
             <div className="profile-page">
                 <h2 className="profile-page-title">Мои данные</h2>
                 <div className="personal-info-list">
@@ -26,9 +46,9 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="buttons-section">
-                    <Button className="profile-page-button">Изменить данные</Button>
-                    <Button className="profile-page-button">Изменить пароль</Button>
-                    <Button className="profile-page-button">История записей</Button>
+                    <Button className="profile-page-button" onClick={editProfilePage}>Изменить данные</Button>
+                    <Button className="profile-page-button" onClick={editPassword}>Изменить пароль</Button>
+                    <Button className="profile-page-button" onClick={checkOrderHistory}>История записей</Button>
                 </div>
             </div>
         </div>
