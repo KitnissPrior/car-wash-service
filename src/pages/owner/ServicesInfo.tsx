@@ -4,6 +4,7 @@ import { FC } from "react";
 import { NoData } from "../ux/NoData";
 
 export const ServicesInfo : FC<{ data: Service[] | undefined}> = ({data}) => {
+    console.log(data)
     return (
         <div>
         {data?.length? 
@@ -14,7 +15,7 @@ export const ServicesInfo : FC<{ data: Service[] | undefined}> = ({data}) => {
                     key={item.name}>
                     <List.Item.Meta title={item.name} />
                     <List.Item.Meta title={item.price + " р."}/>
-                    <List.Item.Meta title={item.time + " мин."}/>
+                    <List.Item.Meta title={item.duration + " мин."}/>
                 </List.Item>
             )}
             /> : <p className="no-services">

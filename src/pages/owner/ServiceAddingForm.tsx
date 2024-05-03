@@ -17,8 +17,8 @@ export const ServiceAddingForm: FC = () => {
        //id: undefined,
         name: '',
         price: 0,
-        time: '0',
-        carwash_ID: carwashData.carwashId,
+        duration: '0',
+        carwashId: carwashData.carwashId,
         //status_ID : '1'
     }
 
@@ -60,16 +60,16 @@ export const ServiceAddingForm: FC = () => {
                             </div>
                         </Form.Item>
 
-                        <Form.Item label="Продолжительность услуги (мин)*" name="time">
+                        <Form.Item label="Продолжительность услуги (мин)*" name="duration">
                             <div>
                                 <span className="input-label">Продолжительность услуги (мин)*</span>
                                 <Input type="number" className="input" min="5" placeholder="0" required step={5}/>
                             </div>
                         </Form.Item>
 
-                        <Form.Item name="status_ID" hidden/>
+                        <Form.Item name="statusId" hidden/>
 
-                        <Form.Item name="carwash_ID" hidden/>
+                        <Form.Item name="carwashId" hidden/>
 
                         <Form.Item>
                             <Button className="form-submit-button" htmlType="submit">Добавить</Button>
