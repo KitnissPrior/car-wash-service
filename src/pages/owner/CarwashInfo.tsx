@@ -72,7 +72,7 @@ export const CarwashInfo: FC = () => {
                     okText="Да, удалить"
                     cancelText="Отмена"/>
                 <h2 className="carwash-item-info-title">Услуги автомойки</h2>
-                <ServicesInfo data={services?.filter(item => item.carwash_ID === carwash?.carwashId)}/>
+                <ServicesInfo data={services?.filter(item => item.carwashId === carwash?.carwashId)}/>
                 <Button className="carwash-info-edit-button" onClick={handleAddServiceClick}>Добавить услугу</Button>
             </div>
         </div>

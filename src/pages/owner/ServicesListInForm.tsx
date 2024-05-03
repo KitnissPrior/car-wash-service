@@ -14,7 +14,7 @@ export const ServicesList : FC<{ data: Service[] | undefined}> = ({data}) => {
                     key={item.name}>
                     <List.Item.Meta title={item.name} />
                     <List.Item.Meta title={item.price + " р."}/>
-                    <List.Item.Meta title={item.time + " мин."}/>
+                    <List.Item.Meta title={item.duration + " мин."}/>
                 </List.Item>
             )}
             />

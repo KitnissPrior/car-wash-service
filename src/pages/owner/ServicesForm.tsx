@@ -15,7 +15,7 @@ export const ServiceAdding:FC = () => {
     
     const query = useServicesQuery()
     const { data: services} = query
-    const filteredServices = services?.filter(item => item.carwash_ID === carwashData.carwashId);
+    const filteredServices = services?.filter(item => item.carwashId === carwashData.carwashId);
 
 
     const handleFormSubmit = async () => {
