@@ -1,20 +1,46 @@
-import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
+import { YMaps, Map, Placemark, ZoomControl } from '@pbe/react-yandex-maps';
 import Header from "../../headers/Header";
 import './bookingPage.scss';
 import { NavLink } from 'react-router-dom';
+import { List } from 'antd';
+import CardList from '../../owner/CardList';
+import { useCarwashesQuery } from '../../../components/api/carwashApi';
+import { QueryStatus } from '../../ux/QueryStatus';
 
 export default function BookingPage() {
+    const query = useCarwashesQuery()
+    const { data: carwashes} = query
+
     const App = () => (
-    <YMaps>
-        <Map className="map" defaultState={{
-            center: [56.84, 60.60],
-            zoom: 12,
-            controls: ["zoomControl", "fullscreenControl"],
+        <YMaps
+            query={{
+            ns: "use-load-option",
+            load: "Map,Placemark,control.ZoomControl,control.FullscreenControl,geoObject.addon.balloon",
             }}
-            modules={["control.ZoomControl", "control.FullscreenControl"]}>
-        <Placemark defaultGeometry={[56.84, 60.60]} />
-        </Map>
-    </YMaps>
+        >
+            <Map className="map"
+            defaultState={{
+                center: [56.83, 60.60],
+                zoom: 13,
+                controls: ["zoomControl", "fullscreenControl"],
+            }}
+            >
+            <Placemark
+                defaultGeometry={[56.83, 60.60]}
+                properties={{
+                    balloonContentBody:
+                    "Автомойка 1",
+                }}
+            />
+            <Placemark
+                defaultGeometry={[56.82, 60.604]}
+                properties={{
+                    balloonContentBody:
+                    "Автомойка 2",
+                }}
+            />
+            </Map>
+        </YMaps>
     );
 
     return (
@@ -32,6 +58,30 @@ export default function BookingPage() {
                 <App />
                 <div className='booking-carvash-adding'>
                     {/* тут будет список автомоек потом */}
+                        <div className='erunda'>
+                            <h3 className='erunda-title'>Автомойка 1</h3>
+                            <p><b>Адрес: </b>ул. Первомайская, 32</p>
+                            <p><b>График работы: </b>8:00 - 22:00</p>
+                            <p><b>Контакный номер: </b>+7 (777) 777-77-77</p>
+                        </div>
+                        <div className='erunda'>
+                            <h3 className='erunda-title'>Автомойка 1</h3>
+                            <p><b>Адрес: </b>ул. Первомайская, 32</p>
+                            <p><b>График работы: </b>8:00 - 22:00</p>
+                            <p><b>Контакный номер: </b>+7 (777) 777-77-77</p>
+                        </div>
+                        <div className='erunda'>
+                            <h3 className='erunda-title'>Автомойка 1</h3>
+                            <p><b>Адрес: </b>ул. Первомайская, 32</p>
+                            <p><b>График работы: </b>8:00 - 22:00</p>
+                            <p><b>Контакный номер: </b>+7 (777) 777-77-77</p>
+                        </div>
+                        <div className='erunda'>
+                            <h3 className='erunda-title'>Автомойка 1</h3>
+                            <p><b>Адрес: </b>ул. Первомайская, 32</p>
+                            <p><b>График работы: </b>8:00 - 22:00</p>
+                            <p><b>Контакный номер: </b>+7 (777) 777-77-77</p>
+                        </div>
                 </div>
             </div>
         </div>

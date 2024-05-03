@@ -25,5 +25,30 @@
 
 .booking-carvash-adding {
     width: 40%;
+    height: 500px;
     box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, .15);
+    overflow-y: scroll;
+
+}
+
+[class*="copyrights-pane"] { //убирает дурацкие надписи внизу карты
+    display: none !important;
+}
+
+.erunda {
+    box-sizing: border-box;
+    display: block;
+    width: 90%;
+    height: 220px;
+    margin: 20px auto;
+    padding: 20px;
+
+    // background-image: url(../../../images/erunda.png);
+    border-radius: 15px;
+
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, .15);
+}
+
+.erunda-title {
+    font-size: 16px;
 }
