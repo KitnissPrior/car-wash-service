@@ -1,11 +1,10 @@
 import { FC, useState } from "react";
 import { Carwash } from "../../components/types";
-import { defaultFormData, useFormData } from "./CarwashFormContext";
-import { Button, Modal } from "antd";
-import { useNavigate } from "react-router-dom";
-import { useCarwashDeleteMutation } from "../../components/api/carwashApi";
+import { useFormData } from "./CarwashFormContext";
+import { Button } from "antd";
+import { useNavigate, useParams } from "react-router-dom";
+import { useCarwashDeleteMutation, useCarwashQuery } from "../../components/api/carwashApi";
 import { useServicesQuery } from "../../components/api/serviceApi";
-import { Dialog } from "antd-mobile";
 import { ConfirmationPopup } from "./ConfirmationPopup";
 import { ServicesInfo } from "./ServicesInfo";
 import './styles/CarwashInfo.scss'
@@ -14,7 +13,10 @@ export const CarwashInfo: FC = () => {
     const [confirmationVisible, setConfirmationVisible] = useState(false);
 
     const navigate = useNavigate();
-    const {formData: carwash, setFormData} = useFormData();
+    const {formData: carwash } = useFormData();
+    //const {carwashId} = useParams();
+    //const {data: carwash} = useCarwashQuery(carwashId?.toString() || '');
+
     const {mutateAsync: deleteCarwash} = useCarwashDeleteMutation()
     const services = useServicesQuery().data;
 
@@ -39,12 +41,11 @@ export const CarwashInfo: FC = () => {
 
     const handleDeleteCancel = () => {
         setConfirmationVisible(false);
-        navigate(`/carwash-about/:${carwash.id}`)
+        navigate(`/carwash-about/:${carwash?.carwashId}`)
     }
 
     const showConfirmationPopup = () => {
         setConfirmationVisible(true);
-        console.log(confirmationVisible);
     }
 
     return (
@@ -65,13 +66,13 @@ export const CarwashInfo: FC = () => {
                 <Button className="carwash-info-delete-button" onClick={showConfirmationPopup}>Удалить автомойку</Button>
                 <ConfirmationPopup 
                     title="Вы уверены, что хотите удалить автомойку?"
-                    handleOk={() => handleDeleteClick(carwash)}
+                    handleOk={() => handleDeleteClick(carwash!)}
                     handleCancel={() => handleDeleteCancel()}
                     visible={confirmationVisible}
                     okText="Да, удалить"
                     cancelText="Отмена"/>
                 <h2 className="carwash-item-info-title">Услуги автомойки</h2>
-                <ServicesInfo data={services?.filter(item => item.carwash_ID === carwash?.id)}/>
+                <ServicesInfo data={services?.filter(item => item.carwash_ID === carwash?.carwashId)}/>
                 <Button className="carwash-info-edit-button" onClick={handleAddServiceClick}>Добавить услугу</Button>
             </div>
         </div>

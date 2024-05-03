@@ -7,7 +7,7 @@ export default function Header() {
             <div className="header">
                 <NavLink className="header-logo" to='/'>Логотип</NavLink>
                 <div className="header-buttons">
-                    <NavLink className="header-button header-button-red" to='/'>Забронировать место</NavLink>
+                    <NavLink className="header-button header-button-red" to='/booking-page'>Забронировать место</NavLink>
                     <NavLink className="header-button" to='/profile'>Мой профиль</NavLink>
                 </div>
             </div>

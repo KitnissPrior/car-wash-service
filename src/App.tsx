@@ -13,6 +13,7 @@ import ProfilePage from "./pages/profile/ProfilePage";
 import OwnerHomePage from './pages/owner/HomePage';
 import PageNotFound from "./pages/ux/PageNotFound";
 import HomePage from "./pages/client/HomePage";
+import BookingPage from './pages/client/booking-page/bookingPage';
 import './App.scss';
 
 const queryClient = new QueryClient({
@@ -44,6 +45,7 @@ const router = createBrowserRouter(
             <Route element={<EditProfilePage/>} path='/edit-profile'/>
             <Route element={<EditPasswordPage/>} path='/edit-password'/>
             <Route element={<OrderHistory/>} path={'/history'}/>
+            <Route element={<BookingPage/>} path={'/booking-page'}/>
         </Route>
     )
 );

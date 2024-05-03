@@ -7,12 +7,14 @@ import { Link } from 'react-router-dom';
 
 const CardList : React.FC<{ data: Carwash[] | undefined}> = ({data}) => {
     const navigate = useNavigate();
-    const {formData: carwashData, setFormData} = useFormData();
+    const {setFormData} = useFormData();
 
     const handleCardEdit = (card: Carwash) => {
-        setFormData({...carwashData, ...card});
-        console.log(carwashData.id);
-        navigate(`/carwash-about/:${carwashData.id}`);
+        //setFormData({...carwashData, ...card}); <-Вот тут была ошибка:
+        //В данные формы сохраняется значение без сгенерированного на бэке айдишника. 
+        //Правильно сохранять значение, которое приходит с бэка (card):
+        setFormData(card);
+        navigate(`/carwash-about/:${card.carwashId}`);
     }
 
     const handleCardAdd = () => {

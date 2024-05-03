@@ -11,7 +11,7 @@ export const ServicesInfo : FC<{ data: Service[] | undefined}> = ({data}) => {
             dataSource={data}
             renderItem={(item) => (
                 <List.Item
-                    key={item.id}>
+                    key={item.name}>
                     <List.Item.Meta title={item.name} />
                     <List.Item.Meta title={item.price + " р."}/>
                     <List.Item.Meta title={item.time + " мин."}/>
