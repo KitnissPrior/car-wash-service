@@ -6,18 +6,17 @@ import { List } from 'antd';
 import CardList from '../../owner/CardList';
 import { useCarwashesQuery } from '../../../components/api/carwashApi';
 import { QueryStatus } from '../../ux/QueryStatus';
+import { useQuery } from 'react-query';
 
 export default function BookingPage() {
-    const query = useCarwashesQuery()
-    const { data: carwashes} = query
-
-    const App = () => (
-        <YMaps
+    const MapApp = () => (
+        <YMaps 
             query={{
+            apikey: "4e901b2a-d2ff-4af7-bd5b-12dd596a2002",
             ns: "use-load-option",
             load: "Map,Placemark,control.ZoomControl,control.FullscreenControl,geoObject.addon.balloon",
-            }}
-        >
+            }}>
+                
             <Map className="map"
             defaultState={{
                 center: [56.83, 60.60],
@@ -28,15 +27,33 @@ export default function BookingPage() {
             <Placemark
                 defaultGeometry={[56.83, 60.60]}
                 properties={{
+                    balloonContentHeader:
+                    "<h4>Автомойка 1</h4>",
                     balloonContentBody:
-                    "Автомойка 1",
+                    "адрес автомойки"
+                }}
+                options={{
+                    iconLayout: 'default#image',
+                    iconImageHref: '../src/images/mapsIcon.png',
+                    iconImageSize: [27, 36],
                 }}
             />
             <Placemark
-                defaultGeometry={[56.82, 60.604]}
+                defaultGeometry={[56.84, 60.62]}
                 properties={{
+                    balloonContentHeader:
+                    "<h4>Автомойка 2</h4>",
                     balloonContentBody:
-                    "Автомойка 2",
+                    "адрес автомойки"
+                }}
+                options={{
+                    iconLayout: 'default#image',
+                    iconImageHref: '../src/images/mapsIcon.png',
+                    iconImageSize: [27, 36],
+                }}
+            />
+            <ZoomControl 
+                options={{
                 }}
             />
             </Map>
@@ -55,7 +72,7 @@ export default function BookingPage() {
         <div className="booking-container">
             <h2 className="booking-title">Выберете автомойку</h2>
             <div className='choose-container'>
-                <App />
+            <MapApp />
                 <div className='booking-carvash-adding'>
                     {/* тут будет список автомоек потом */}
                         <div className='erunda'>

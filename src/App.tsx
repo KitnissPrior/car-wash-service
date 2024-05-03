@@ -14,6 +14,7 @@ import OwnerHomePage from './pages/owner/HomePage';
 import PageNotFound from "./pages/ux/PageNotFound";
 import HomePage from "./pages/client/HomePage";
 import BookingPage from './pages/client/booking-page/bookingPage';
+import { YMaps, Map, Placemark, ZoomControl } from '@pbe/react-yandex-maps';
 import './App.scss';
 
 const queryClient = new QueryClient({
