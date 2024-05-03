@@ -17,8 +17,8 @@ export const ServiceAddingForm: FC = () => {
        //id: undefined,
         name: '',
         price: 0,
-        time: '0',
-        carwash_ID: carwashData.carwashId,
+        duration: '0',
+        carwashId: carwashData.carwashId,
         //status_ID : '1'
     }
 

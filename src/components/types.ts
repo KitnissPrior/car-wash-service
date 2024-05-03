@@ -22,16 +22,16 @@ export type ConfirmationProps = {
 }
 
 export type Service = {
-    id?: Guid | string;
+    serviceId?: Guid | string;
     name: string;
     price: number;
-    time: string;
-    status_ID?: Guid;
-    carwash_ID?: Guid;
+    duration: string;
+    statusId?: Guid | string;
+    carwashId?: Guid | string;
 }
 
 export type ServiceStatus = {
-    id: Guid;
+    statusId: Guid;
     name: string;
 }
 
