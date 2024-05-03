@@ -2,9 +2,6 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import {api} from './serverApi';
 import { Carwash } from '../types';
 import { Dialog } from 'antd-mobile';
-import { Guid } from 'guid-typescript';
-import { useFormData } from '../../pages/owner/CarwashFormContext';
-import { useNavigate } from 'react-router-dom';
 
 export const useCarwashesQuery = () => useQuery({
     queryKey: ['carwashes'],
