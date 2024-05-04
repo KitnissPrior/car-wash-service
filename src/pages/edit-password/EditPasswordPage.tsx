@@ -1,6 +1,6 @@
-import {Form, Button, Input} from "antd"
-import '../edit-profile/EditProfilePage.scss'
-import { useNavigate } from "react-router-dom"
+import { Button, Input } from "antd";
+import '../edit-profile/EditProfilePage.scss';
+import { useNavigate } from "react-router-dom";
 
 // Сделать функциональность изменения данных прочего
 export default function EditPasswordPage() {
