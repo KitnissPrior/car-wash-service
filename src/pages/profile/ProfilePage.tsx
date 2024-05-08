@@ -2,6 +2,7 @@ import { Outlet, NavLink } from 'react-router-dom';
 import { Button } from "antd";
 import './ProfilePage.scss';
 import { useNavigate } from "react-router-dom";
+import Header from '../headers/Header';
 
 export default function ProfilePage() {const navigate = useNavigate();
     const editProfilePage = () => {
@@ -18,13 +19,7 @@ export default function ProfilePage() {const navigate = useNavigate();
 
     return (
         <div>
-            <header className="header">
-                <NavLink className="header-logo" to='/'>Логотип</NavLink>
-                <div className="header-buttons">
-                    <NavLink className="header-button header-button-red" to='/'>Забронировать место</NavLink>
-                    <NavLink className="header-button" to='/'>На главную</NavLink>
-                </div>
-            </header>
+            <Header />
 
             <div className="profile-page">
                 <h2 className="profile-page-title">Мои данные</h2>

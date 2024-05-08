@@ -1,6 +1,7 @@
 import { YMaps, Map, Placemark, ZoomControl } from '@pbe/react-yandex-maps';
 import { NavLink } from 'react-router-dom';
 import './BookingPage.scss';
+import Header from '../../headers/Header';
 
 const MapApp = () => {
     return (
@@ -54,13 +55,7 @@ const MapApp = () => {
 export default function BookingPage() {
     return (
         <>
-            <div className="header">
-                <NavLink className="header-logo" to='/'>Логотип</NavLink>
-                <div className="header-buttons">
-                    <NavLink className="header-button" to='/'>На главную</NavLink>
-                    <NavLink className="header-button" to='/profile'>Мой профиль</NavLink>
-                </div>
-            </div>
+            <Header />
 
             <div className="booking-container">
                 <h2 className="booking-title">Выберете автомойку</h2>
