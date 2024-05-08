@@ -1,5 +1,5 @@
 import { Outlet, NavLink } from 'react-router-dom';
-import './HeaderOwner.scss';
+import './Header.scss';
 
 export function HeaderOwner() {
     return (
