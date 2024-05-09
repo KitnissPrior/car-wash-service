@@ -17,6 +17,7 @@ import PageNotFound from "./pages/ux/PageNotFound";
 import HomePage from "./pages/client/HomePage";
 import './App.scss';
 import SignUpPage from "./pages/sign-up/SignUpPage";
+import {PageHost} from "./pages/PageHost";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -34,7 +35,7 @@ const queryClient = new QueryClient({
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route>
+        <Route path='/' element={<PageHost />}>
             <Route element={<HeaderOwner/>}></Route>
             <Route element={<HomePage/>} path='/'/>
             <Route element={<PageNotFound/>} path='*'/>
@@ -58,9 +59,9 @@ export default function App() {
     return (
         <>
             <FormProvider>
-                  <QueryClientProvider client={queryClient}>
-                      <RouterProvider router={router}/>
-                  </QueryClientProvider>
+                <QueryClientProvider client={queryClient}>
+                    <RouterProvider router={router}/>
+                </QueryClientProvider>
             </FormProvider>
         </>
     );
