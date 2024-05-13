@@ -17,7 +17,7 @@ import PageNotFound from "./pages/ux/PageNotFound";
 import HomePage from "./pages/client/HomePage";
 import './App.scss';
 import SignUpPage from "./pages/sign-up/SignUpPage";
-import {PageHost} from "./pages/PageHost";
+import { PageHost } from "./pages/PageHost";
 
 const queryClient = new QueryClient({
     defaultOptions: {
