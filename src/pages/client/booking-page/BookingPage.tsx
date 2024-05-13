@@ -1,7 +1,10 @@
 import { YMaps, Map, Placemark, ZoomControl } from '@pbe/react-yandex-maps';
-import { NavLink } from 'react-router-dom';
 import './BookingPage.scss';
 import Header from '../../headers/Header';
+import OrderForm from "../../../components/order-form/OrderForm";
+import DateTimeSelectionStep from "../../../components/order-form/DateTimeSelectionStep";
+import ServiceSelectionStep from "../../../components/order-form/ServiceSelectionStep";
+import PersonalInfoStep from "../../../components/order-form/PersonalInfoStep";
 
 const MapApp = () => {
     return (
@@ -52,44 +55,67 @@ const MapApp = () => {
     );
 };
 
+const stepData = [
+    {
+        title: "Выберите услугу",
+        id: "serviceSelection",
+        content: ServiceSelectionStep, // Предполагается, что это компонент для выбора услуги
+    },
+    {
+        title: "Выберите дату и время",
+        id: "dateTimeSelection",
+        content: DateTimeSelectionStep, // Предполагается, что это компонент для выбора даты и времени
+    },
+    {
+        title: "Введите личную информацию",
+        id: "personalInfo",
+        content: PersonalInfoStep, // Предполагается, что это компонент для ввода личной информации
+    },
+];
+
+const handleSubmit = (data) => {
+    console.log("Форма отправлена:", data);
+};
+
+// Основное все закомментировано для работы над OrderForm
 export default function BookingPage() {
     return (
         <>
             <Header />
-
-            <div className="booking-container">
-                <h2 className="booking-title">Выберете автомойку</h2>
-                <div className='choose-container'>
-                    <MapApp />
-                    <div className='booking-carvash-adding'>
-                        {/* В будущем зафункционировать автоподбор мест с БД */}
-                        <div className='erunda'>
-                            <h3 className='erunda-title'>Автомойка 1</h3>
-                            <p><b>Адрес: </b>ул. Первомайская, 32</p>
-                            <p><b>График работы: </b>8:00 - 22:00</p>
-                            <p><b>Контакный номер: </b>+7 (777) 777-77-77</p>
-                        </div>
-                        <div className='erunda'>
-                            <h3 className='erunda-title'>Автомойка 1</h3>
-                            <p><b>Адрес: </b>ул. Первомайская, 32</p>
-                            <p><b>График работы: </b>8:00 - 22:00</p>
-                            <p><b>Контакный номер: </b>+7 (777) 777-77-77</p>
-                        </div>
-                        <div className='erunda'>
-                            <h3 className='erunda-title'>Автомойка 1</h3>
-                            <p><b>Адрес: </b>ул. Первомайская, 32</p>
-                            <p><b>График работы: </b>8:00 - 22:00</p>
-                            <p><b>Контакный номер: </b>+7 (777) 777-77-77</p>
-                        </div>
-                        <div className='erunda'>
-                            <h3 className='erunda-title'>Автомойка 1</h3>
-                            <p><b>Адрес: </b>ул. Первомайская, 32</p>
-                            <p><b>График работы: </b>8:00 - 22:00</p>
-                            <p><b>Контакный номер: </b>+7 (777) 777-77-77</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <OrderForm stepData={stepData} onSubmit={handleSubmit} />
+            {/*<div className="booking-container">*/}
+            {/*    <h2 className="booking-title">Выберете автомойку</h2>*/}
+            {/*    <div className='choose-container'>*/}
+            {/*        <MapApp />*/}
+            {/*        <div className='booking-carvash-adding'>*/}
+            {/*            /!* В будущем зафункционировать автоподбор мест с БД *!/*/}
+            {/*            <div className='erunda'>*/}
+            {/*                <h3 className='erunda-title'>Автомойка 1</h3>*/}
+            {/*                <p><b>Адрес: </b>ул. Первомайская, 32</p>*/}
+            {/*                <p><b>График работы: </b>8:00 - 22:00</p>*/}
+            {/*                <p><b>Контакный номер: </b>+7 (777) 777-77-77</p>*/}
+            {/*            </div>*/}
+            {/*            <div className='erunda'>*/}
+            {/*                <h3 className='erunda-title'>Автомойка 1</h3>*/}
+            {/*                <p><b>Адрес: </b>ул. Первомайская, 32</p>*/}
+            {/*                <p><b>График работы: </b>8:00 - 22:00</p>*/}
+            {/*                <p><b>Контакный номер: </b>+7 (777) 777-77-77</p>*/}
+            {/*            </div>*/}
+            {/*            <div className='erunda'>*/}
+            {/*                <h3 className='erunda-title'>Автомойка 1</h3>*/}
+            {/*                <p><b>Адрес: </b>ул. Первомайская, 32</p>*/}
+            {/*                <p><b>График работы: </b>8:00 - 22:00</p>*/}
+            {/*                <p><b>Контакный номер: </b>+7 (777) 777-77-77</p>*/}
+            {/*            </div>*/}
+            {/*            <div className='erunda'>*/}
+            {/*                <h3 className='erunda-title'>Автомойка 1</h3>*/}
+            {/*                <p><b>Адрес: </b>ул. Первомайская, 32</p>*/}
+            {/*                <p><b>График работы: </b>8:00 - 22:00</p>*/}
+            {/*                <p><b>Контакный номер: </b>+7 (777) 777-77-77</p>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </>
     );
 };
