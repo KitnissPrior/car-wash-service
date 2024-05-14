@@ -3,6 +3,7 @@ import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-qu
 import EditPasswordPage from "./pages/edit-password/EditPasswordPage";
 import { ServiceAddingForm } from './pages/owner/ServiceAddingForm';
 import EditProfilePage from "./pages/edit-profile/EditProfilePage";
+import BookingPage from './pages/client/booking-page/BookingPage';
 import { FormProvider } from './pages/owner/CarwashFormContext';
 import OrderHistory from "./pages/order-history/OrderHistory";
 import { ServiceAdding } from './pages/owner/ServicesForm';
@@ -10,11 +11,13 @@ import { HeaderOwner } from './pages/headers/HeaderOwner';
 import { CarwashAdding } from './pages/owner/CarwashForm';
 import { CarwashInfo } from './pages/owner/CarwashInfo';
 import ProfilePage from "./pages/profile/ProfilePage";
+import LoginPage from "./pages/login/LoginPage";
 import OwnerHomePage from './pages/owner/HomePage';
 import PageNotFound from "./pages/ux/PageNotFound";
 import HomePage from "./pages/client/HomePage";
-import BookingPage from './pages/client/booking-page/bookingPage';
 import './App.scss';
+import SignUpPage from "./pages/sign-up/SignUpPage";
+import { PageHost } from "./pages/PageHost";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -32,7 +35,7 @@ const queryClient = new QueryClient({
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route>
+        <Route path='/' element={<PageHost />}>
             <Route element={<HeaderOwner/>}></Route>
             <Route element={<HomePage/>} path='/'/>
             <Route element={<PageNotFound/>} path='*'/>
@@ -46,6 +49,8 @@ const router = createBrowserRouter(
             <Route element={<EditPasswordPage/>} path='/edit-password'/>
             <Route element={<OrderHistory/>} path={'/history'}/>
             <Route element={<BookingPage/>} path={'/booking-page'}/>
+            <Route element={<LoginPage/>} path={'/login'}/>
+            <Route element={<SignUpPage/>} path={'/sign-up'}/>
         </Route>
     )
 );
@@ -54,9 +59,9 @@ export default function App() {
     return (
         <>
             <FormProvider>
-                  <QueryClientProvider client={queryClient}>
-                      <RouterProvider router={router}/>
-                  </QueryClientProvider>
+                <QueryClientProvider client={queryClient}>
+                    <RouterProvider router={router}/>
+                </QueryClientProvider>
             </FormProvider>
         </>
     );

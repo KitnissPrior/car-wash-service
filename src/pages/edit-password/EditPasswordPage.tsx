@@ -1,6 +1,6 @@
-import {Form, Button, Input} from "antd"
-import '../edit-profile/EditProfilePage.scss'
-import { useNavigate } from "react-router-dom"
+import { Button, Input } from "antd";
+import '../edit-profile/EditProfilePage.scss';
+import { useNavigate } from "react-router-dom";
 
 // Сделать функциональность изменения данных прочего
 export default function EditPasswordPage() {
@@ -16,9 +16,9 @@ export default function EditPasswordPage() {
                 <h2 className="profile-page-title">Изменение пароля</h2>
                 <div className="edit-inputs">
                     {/* Прикрутить позже выгрузку данных с БД, чтобы они в input висели*/}
+                    <Input type='text' className="edit-input" placeholder='Введите старый пароль'/>
                     <Input type='text' className="edit-input" placeholder='Придумайте новый пароль'/>
                     <Input type='text' className="edit-input" placeholder='Повторите новый пароль'/>
-                    <Input type='text' className="edit-input" placeholder='Введите старый пароль'/>
                 </div>
 
                 <div className="buttons-section">

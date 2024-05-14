@@ -10,9 +10,6 @@ const CardList : React.FC<{ data: Carwash[] | undefined}> = ({data}) => {
     const {setFormData} = useFormData();
 
     const handleCardEdit = (card: Carwash) => {
-        //setFormData({...carwashData, ...card}); <-Вот тут была ошибка:
-        //В данные формы сохраняется значение без сгенерированного на бэке айдишника. 
-        //Правильно сохранять значение, которое приходит с бэка (card):
         setFormData(card);
         navigate(`/carwash-about/:${card.carwashId}`);
     }
