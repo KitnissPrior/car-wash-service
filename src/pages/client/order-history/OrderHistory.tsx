@@ -1,6 +1,6 @@
 import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
-import Header from "../headers/Header";
+import Header from "../../headers/Header";
 
 
 const text = `

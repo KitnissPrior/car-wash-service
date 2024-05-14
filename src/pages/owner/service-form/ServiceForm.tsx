@@ -1,11 +1,11 @@
 import {FC} from "react"
-import { HeaderOwner } from "../headers/HeaderOwner"
+import { HeaderOwner } from "../../headers/HeaderOwner"
 import { Button, Form, Input } from "antd"
 import { useNavigate } from "react-router-dom"
-import { Service } from "../../components/types"
-import './styles/ServiceAdding.scss'
-import { useServiceAddMutation } from "../../components/api/serviceApi"
-import { useFormData } from "./CarwashFormContext"
+import { Service } from "../../../components/types"
+import 'ServiceForm.scss'
+import { useServiceAddMutation } from "../../../components/api/serviceApi"
+import { useFormData } from "../carwash-form/CarwashFormContext"
 
 export const ServiceAddingForm: FC = () => {
     const { formData: carwashData } = useFormData();

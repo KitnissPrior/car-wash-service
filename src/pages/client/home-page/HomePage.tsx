@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-import Header from "../headers/Header";
+import Header from "../../headers/Header";
 import './HomePage.scss';
 import { Button } from 'antd';
 import { useNavigate } from "react-router-dom"

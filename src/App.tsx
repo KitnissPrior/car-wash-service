@@ -1,20 +1,19 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import EditPasswordPage from "./pages/edit-password/EditPasswordPage";
-import { ServiceAddingForm } from './pages/owner/ServiceAddingForm';
+import { ServiceAddingForm } from './pages/owner/service-form/ServiceForm';
 import EditProfilePage from "./pages/edit-profile/EditProfilePage";
 import BookingPage from './pages/client/booking-page/BookingPage';
-import { FormProvider } from './pages/owner/CarwashFormContext';
-import OrderHistory from "./pages/order-history/OrderHistory";
-import { ServiceAdding } from './pages/owner/ServicesForm';
+import { FormProvider } from './pages/owner/carwash-form/CarwashFormContext';
+import OrderHistory from "./pages/client/order-history/OrderHistory";
 import { HeaderOwner } from './pages/headers/HeaderOwner';
-import { CarwashAdding } from './pages/owner/CarwashForm';
-import { CarwashInfo } from './pages/owner/CarwashInfo';
+import { CarwashAdding } from './pages/owner/carwash-form/CarwashForm';
+import { CarwashInfo } from './pages/owner/carwash-info/CarwashInfo';
 import ProfilePage from "./pages/profile/ProfilePage";
 import LoginPage from "./pages/login/LoginPage";
-import OwnerHomePage from './pages/owner/HomePage';
+import OwnerHomePage from './pages/owner/home-page/HomePage';
 import PageNotFound from "./pages/ux/PageNotFound";
-import HomePage from "./pages/client/HomePage";
+import HomePage from "./pages/client/home-page/HomePage";
 import './App.scss';
 import SignUpPage from "./pages/sign-up/SignUpPage";
 import { PageHost } from "./pages/PageHost";
@@ -36,21 +35,22 @@ const queryClient = new QueryClient({
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<PageHost />}>
+            <Route element={<LoginPage/>} path={'/login'}/>
+            <Route element={<SignUpPage/>} path={'/sign-up'}/>
             <Route element={<HeaderOwner/>}></Route>
-            <Route element={<HomePage/>} path='/'/>
-            <Route element={<PageNotFound/>} path='*'/>
-            <Route element={<OwnerHomePage/>} path='/owner'/>
-            <Route element={<CarwashAdding/>} path='/carwash-adding'/>
-            <Route element={<ServiceAdding/>} path='/carwash-services'/>
-            <Route element={<CarwashInfo/>} path='/carwash-about/:id'/>
-            <Route element={<ServiceAddingForm/>} path='/service-adding'/>
+            <Route element={<HomePage/>} path='/'>
+                <Route element={<OrderHistory/>} path={'/history'}/>
+                <Route element={<BookingPage/>} path={'/booking-page'}/>
+            </Route>
+            <Route element={<OwnerHomePage/>} path='/owner'>
+                <Route element={<CarwashAdding/>} path='/carwash-adding'/>
+                <Route element={<CarwashInfo/>} path='/carwash-about/:id'/>
+                <Route element={<ServiceAddingForm/>} path='/service-adding'/>
+            </Route>
             <Route element={<ProfilePage/>} path='/profile'/>
             <Route element={<EditProfilePage/>} path='/edit-profile'/>
             <Route element={<EditPasswordPage/>} path='/edit-password'/>
-            <Route element={<OrderHistory/>} path={'/history'}/>
-            <Route element={<BookingPage/>} path={'/booking-page'}/>
-            <Route element={<LoginPage/>} path={'/login'}/>
-            <Route element={<SignUpPage/>} path={'/sign-up'}/>
+            <Route element={<PageNotFound/>} path='*'/>
         </Route>
     )
 );

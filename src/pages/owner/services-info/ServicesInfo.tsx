@@ -1,9 +1,9 @@
 import { List, Button } from "antd";
-import { Service } from "../../components/types";
+import { Service } from "../../../components/types";
 import { FC } from "react";
-import { NoData } from "../ux/NoData";
+import { NoData } from "../../ux/NoData";
 import { useNavigate } from "react-router-dom";
-import { useServiceQuery } from "../../components/api/serviceApi";
+import { useServiceQuery } from "../../../components/api/serviceApi";
 import { Guid } from "guid-typescript";
 
 export const ServicesInfo : FC<{ data: Service[] | undefined}> = ({data}) => {
