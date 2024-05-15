@@ -37,15 +37,15 @@ const router = createBrowserRouter(
         <Route path='/' element={<PageHost />}>
             <Route element={<LoginPage/>} path={'/login'}/>
             <Route element={<SignUpPage/>} path={'/sign-up'}/>
-            <Route element={<HeaderOwner/>}></Route>
             <Route element={<HomePage/>} path='/'>
                 <Route element={<OrderHistory/>} path={'/history'}/>
                 <Route element={<BookingPage/>} path={'/booking-page'}/>
             </Route>
             <Route element={<OwnerHomePage/>} path='/owner'>
                 <Route element={<CarwashAdding/>} path='/carwash-adding'/>
-                <Route element={<CarwashInfo/>} path='/carwash-about/:id'/>
-                <Route element={<ServiceAddingForm/>} path='/service-adding'/>
+                <Route element={<CarwashInfo/>} path='/carwash-about/:id'>
+                     <Route element={<ServiceAddingForm/>} path='/service-adding'/>
+                </Route>
             </Route>
             <Route element={<ProfilePage/>} path='/profile'/>
             <Route element={<EditProfilePage/>} path='/edit-profile'/>

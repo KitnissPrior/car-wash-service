@@ -7,7 +7,7 @@ import './Header.scss';
 //     }
 // } попытка как-то добавлять активный класс
 
-export default function Header() {
+export default function HeaderClient() {
     return (
         <>
             <div className="header">

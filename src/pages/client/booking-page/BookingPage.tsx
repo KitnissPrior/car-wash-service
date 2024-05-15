@@ -1,6 +1,6 @@
 import { YMaps, Map, Placemark, ZoomControl } from '@pbe/react-yandex-maps';
 import './BookingPage.scss';
-import Header from '../../headers/Header';
+import HeaderClient from '../../headers/HeaderClient';
 import OrderForm from "../../../components/order-form/OrderForm";
 import DateTimeSelectionStep from "../../../components/order-form/DateTimeSelectionStep";
 import ServiceSelectionStep from "../../../components/order-form/ServiceSelectionStep";
@@ -81,7 +81,7 @@ const handleSubmit = (data) => {
 export default function BookingPage() {
     return (
         <>
-            <Header />
+            <HeaderClient />
             <OrderForm stepData={stepData} onSubmit={handleSubmit} />
             {/*<div className="booking-container">*/}
             {/*    <h2 className="booking-title">Выберете автомойку</h2>*/}
