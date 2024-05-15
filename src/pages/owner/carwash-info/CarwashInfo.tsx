@@ -1,13 +1,13 @@
 import { FC, useState } from "react";
-import { Carwash } from "../../components/types";
-import { useFormData } from "./CarwashFormContext";
+import { Carwash } from "../../../components/types";
+import { useFormData } from "../carwash-form/CarwashFormContext";
 import { Button } from "antd";
-import { useNavigate, useParams } from "react-router-dom";
-import { useCarwashDeleteMutation, useCarwashQuery } from "../../components/api/carwashApi";
-import { useServicesQuery } from "../../components/api/serviceApi";
-import { ConfirmationPopup } from "./ConfirmationPopup";
-import { ServicesInfo } from "./ServicesInfo";
-import './styles/CarwashInfo.scss'
+import { useNavigate} from "react-router-dom";
+import { useCarwashDeleteMutation} from "../../../components/api/carwashApi";
+import { useServicesQuery } from "../../../components/api/serviceApi";
+import { ConfirmationPopup } from "../../ux/ConfirmationPopup";
+import { ServicesInfo } from "../services-info/ServicesInfo";
+import './CarwashInfo.scss'
 
 export const CarwashInfo: FC = () => {
     const [confirmationVisible, setConfirmationVisible] = useState(false);
@@ -21,27 +21,27 @@ export const CarwashInfo: FC = () => {
     const services = useServicesQuery().data;
 
     const handleEditClick = () => {
-        navigate(`/carwash-adding/`);
+        navigate(`/carwashes/carwash-adding/`);
     }
 
     const handleAddServiceClick = () => {
-        navigate('/service-adding');
+        navigate(`/carwashes/carwash-about/:${carwash?.carwashId}/service-adding`);
     }
    
     const handleDeleteClick = async (item: Carwash) => {
         setConfirmationVisible(false);
         
         await deleteCarwash(item);
-        navigate('/owner');
+        navigate('/carwashes');
     }
     
     const handleContinue = () => {
-        navigate('/owner');
+        navigate('/carwashes');
     }
 
     const handleDeleteCancel = () => {
         setConfirmationVisible(false);
-        navigate(`/carwash-about/:${carwash?.carwashId}`)
+        navigate(`/carwashes/carwash-about/:${carwash?.carwashId}`)
     }
 
     const showConfirmationPopup = () => {
