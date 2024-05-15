@@ -30,7 +30,6 @@ const items: CollapseProps['items'] = [
 export default function OrderHistory() {
     return (
         <>
-            <HeaderClient/>
             <div>
                 <h2>История записей</h2>
                 <Collapse defaultActiveKey={['1']} ghost items={items} expandIconPosition="right"/>

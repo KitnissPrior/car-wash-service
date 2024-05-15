@@ -1,5 +1,4 @@
 import { useLoaderData } from 'react-router-dom';
-import HeaderClient from "../../headers/HeaderClient";
 import './HomePage.scss';
 import { Button } from 'antd';
 import { useNavigate } from "react-router-dom"
@@ -16,7 +15,6 @@ export default function HomePage() {
 
     return (
         <div className='homepage-content'>
-            <HeaderClient/>
             <img className='main-image1' alt="Машина" src='./src/images/car2.png'/>
             <div className="main-wrapper">
                 <span className="upper-main-text">

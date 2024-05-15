@@ -4,10 +4,11 @@ import { HeaderOwner } from './headers/HeaderOwner';
 import HeaderClient from "./headers/HeaderClient";
 
 export const PageHost: React.FC = React.memo(() => {
-    const role = 'client';
+    const role = localStorage.getItem('role');
+    
     return (
         <>
-            {role === 'client' ? <HeaderClient /> : <HeaderOwner />}
+            {role === 'owner' ? <HeaderOwner /> : <HeaderClient />}
             <Outlet />
         </>
     );

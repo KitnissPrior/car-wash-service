@@ -3,17 +3,16 @@ import { Service } from "../../../components/types";
 import { FC } from "react";
 import { NoData } from "../../ux/NoData";
 import { useNavigate } from "react-router-dom";
-import { useServiceQuery } from "../../../components/api/serviceApi";
 import { Guid } from "guid-typescript";
 
 export const ServicesInfo : FC<{ data: Service[] | undefined}> = ({data}) => {
 
     const navigate = useNavigate()
 
-    const handleServiceEdit = () => {
+    const handleServiceEdit = (carwashId: string | Guid | undefined) => {
         // const query = useServiceQuery(id?.toString() || '')
         // const { data: services} = query
-        navigate('../service-adding')
+        navigate(`/carwashes/carwash-about/:${carwashId}/service-adding`)
     }
 
     const handleServiceDelete = (evt : any) => {
@@ -31,7 +30,7 @@ export const ServicesInfo : FC<{ data: Service[] | undefined}> = ({data}) => {
                     <List.Item.Meta title={item.duration + " мин."}/>
                     <List.Item.Meta
                         title={
-                            <Button onClick={handleServiceEdit}>Редактировать</Button>
+                            <Button onClick={ () => handleServiceEdit(item.carwashId)}>Редактировать</Button>
                     }/>
                     <List.Item.Meta 
                         title={

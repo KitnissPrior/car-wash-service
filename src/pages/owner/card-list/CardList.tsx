@@ -1,5 +1,5 @@
 import { Card } from 'antd';
-import 'CardList.scss'
+import './CardList.scss'
 import { Carwash } from '../../../components/types';
 import { useNavigate } from 'react-router-dom';
 import { useFormData, defaultFormData } from '../carwash-form/CarwashFormContext';
@@ -11,7 +11,7 @@ const CardList : React.FC<{ data: Carwash[] | undefined}> = ({data}) => {
 
     const handleCardEdit = (card: Carwash) => {
         setFormData(card);
-        navigate(`/carwash-about/:${card.carwashId}`);
+        navigate(`/carwashes/carwash-about/:${card.carwashId}`);
     }
 
     const handleCardAdd = () => {
@@ -30,7 +30,7 @@ const CardList : React.FC<{ data: Carwash[] | undefined}> = ({data}) => {
                 
             )}
             <div className="adding-button" onClick={handleCardAdd}>
-                <Link className="adding-button-link" to='/carwash-adding'>
+                <Link className="adding-button-link" to='/carwashes/carwash-adding'>
                 <img src="/src/images/plus.png" className='adding-button-image' alt="Кнопка" />
                 Добавить автомойку
                 </Link>

@@ -6,7 +6,6 @@ import EditProfilePage from "./pages/edit-profile/EditProfilePage";
 import BookingPage from './pages/client/booking-page/BookingPage';
 import { FormProvider } from './pages/owner/carwash-form/CarwashFormContext';
 import OrderHistory from "./pages/client/order-history/OrderHistory";
-import { HeaderOwner } from './pages/headers/HeaderOwner';
 import { CarwashAdding } from './pages/owner/carwash-form/CarwashForm';
 import { CarwashInfo } from './pages/owner/carwash-info/CarwashInfo';
 import ProfilePage from "./pages/profile/ProfilePage";
@@ -27,31 +26,42 @@ const queryClient = new QueryClient({
     },
     queryCache: new QueryCache({
         onError: () => {
-            //window.location.replace('/404');
+            window.location.replace('/404');
         }
     })
 });
+localStorage.setItem('role', 'owner');
+const role = localStorage.getItem('role');
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path='/' element={<PageHost />}>
-            <Route element={<LoginPage/>} path={'/login'}/>
-            <Route element={<SignUpPage/>} path={'/sign-up'}/>
-            <Route element={<HomePage/>} path='/'>
-                <Route element={<OrderHistory/>} path={'/history'}/>
-                <Route element={<BookingPage/>} path={'/booking-page'}/>
-            </Route>
-            <Route element={<OwnerHomePage/>} path='/owner'>
-                <Route element={<CarwashAdding/>} path='/carwash-adding'/>
-                <Route element={<CarwashInfo/>} path='/carwash-about/:id'>
-                     <Route element={<ServiceAddingForm/>} path='/service-adding'/>
+        <Route path="/" element={<PageHost />}>
+            <Route index element={<LoginPage />} path="/login" />
+            <Route element={<SignUpPage />} path="/sign-up" />
+            {role === 'client'? (
+                <>
+                <Route element={<HomePage />} path="/">
+                    <Route element={<OrderHistory />} path="/history" />
+                    <Route element={<BookingPage />} path="/booking-page" />
                 </Route>
-            </Route>
-            <Route element={<ProfilePage/>} path='/profile'/>
-            <Route element={<EditProfilePage/>} path='/edit-profile'/>
-            <Route element={<EditPasswordPage/>} path='/edit-password'/>
-            <Route element={<PageNotFound/>} path='*'/>
+                </>
+            ) : (
+                <Route path="/carwashes" element={<OwnerHomePage />}>
+                <Route index element={<CarwashAdding />} />
+                <Route path="carwash-adding" element={<CarwashAdding />} />
+                <Route path="carwash-about/:id">
+                    <Route index element={<CarwashInfo />} />
+                    <Route path="service-adding" element={<ServiceAddingForm />} />
+                </Route>
+                </Route>
+            )}
+
+            <Route element={<ProfilePage />} path="/profile" />
+            <Route element={<EditProfilePage />} path="/edit-profile" />
+            <Route element={<EditPasswordPage />} path="/edit-password" />
+            <Route element={<PageNotFound />} path="*" />
         </Route>
+
     )
 );
 

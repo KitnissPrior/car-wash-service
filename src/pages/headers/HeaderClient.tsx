@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Header.scss';
 
 // function AddActiveClass() {
@@ -18,7 +18,6 @@ export default function HeaderClient() {
                     <NavLink className="header-button header-button-red" to='/booking-page'>Забронировать место</NavLink>
                 </div>
             </div>
-            <Outlet/>
         </>
     );
 };

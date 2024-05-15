@@ -1,7 +1,7 @@
 import React from "react"
 import { FC} from "react"
 import {Form, Button, Input} from "antd"
-import 'CarwashAdding.scss'
+import './CarwashForm.scss'
 import { HeaderOwner } from "../../headers/HeaderOwner"
 import { useNavigate } from "react-router-dom"
 import { useFormData } from "./CarwashFormContext"
@@ -14,7 +14,7 @@ export const CarwashAdding: FC = () => {
     const handleCarwashSuccessAdd = (data: Carwash) => {
         console.log(data)
         setFormData(data);
-        navigate(`/carwash-about/:${data.carwashId}`);
+        navigate(`/carwashes/carwash-about/:${data.carwashId}`);
     }
 
     const {mutateAsync: save} = useCarwashAddMutation(handleCarwashSuccessAdd)
@@ -42,7 +42,7 @@ export const CarwashAdding: FC = () => {
     const navigate = useNavigate()
 
     const handleFormCancel = () => {
-        navigate('/owner');
+        navigate('/carwashes');
     }
 
     const handleFormSubmit = async (carwashData: Carwash) => {

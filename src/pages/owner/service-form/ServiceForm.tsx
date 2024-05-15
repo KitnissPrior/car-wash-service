@@ -1,15 +1,13 @@
 import {FC} from "react"
-import { HeaderOwner } from "../../headers/HeaderOwner"
 import { Button, Form, Input } from "antd"
 import { useNavigate } from "react-router-dom"
 import { Service } from "../../../components/types"
-import 'ServiceForm.scss'
+import './ServiceForm.scss'
 import { useServiceAddMutation } from "../../../components/api/serviceApi"
 import { useFormData } from "../carwash-form/CarwashFormContext"
 
 export const ServiceAddingForm: FC = () => {
     const { formData: carwashData } = useFormData();
-    console.log(carwashData)
 
     const { mutateAsync: save } = useServiceAddMutation()
 
@@ -30,9 +28,6 @@ export const ServiceAddingForm: FC = () => {
 
     return (
         <>
-            <div>
-                <HeaderOwner/>
-            </div>
             <div className="carwash-adding">
                 <div className="carwash-adding-content2">
                     <h1 className="form-title">Добавление услуги</h1>
