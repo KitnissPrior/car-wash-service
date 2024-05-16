@@ -30,7 +30,7 @@ const queryClient = new QueryClient({
         }
     })
 });
-localStorage.setItem('role', 'owner');
+localStorage.setItem('role', 'client');
 const role = localStorage.getItem('role');
 
 const router = createBrowserRouter(
@@ -40,10 +40,9 @@ const router = createBrowserRouter(
             <Route element={<SignUpPage />} path="/sign-up" />
             {role === 'client'? (
                 <>
-                <Route element={<HomePage />} path="/">
-                    <Route element={<OrderHistory />} path="/history" />
-                    <Route element={<BookingPage />} path="/booking-page" />
-                </Route>
+                <Route element={<HomePage />} path="/" />
+                <Route element={<OrderHistory />} path="/history" />
+                <Route element={<BookingPage />} path="/booking-page" />
                 </>
             ) : (
                 <Route path="/carwashes" element={<OwnerHomePage />}>
