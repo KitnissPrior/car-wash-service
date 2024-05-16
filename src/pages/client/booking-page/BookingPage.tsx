@@ -44,11 +44,6 @@ const MapApp = () => {
                         iconImageSize: [27, 36],
                     }}
                 />
-                <ZoomControl
-                    options={{
-                        // Здесь параметры какие-то нужны?
-                    }}
-                />
             </Map>
         </YMaps>
     );
@@ -79,7 +74,11 @@ const handleSubmit = (data: any) => {
 // Основное все закомментировано для работы над OrderForm
 export default function BookingPage() {
     return (
-        <>
+        <div className='booking-container'>
+            <div className='choose-container'>
+                <MapApp />
+                <div className='booking-carvash-adding'></div>
+            </div>
             <OrderForm stepData={stepData} onSubmit={handleSubmit} />
             {/*<div className="booking-container">*/}
             {/*    <h2 className="booking-title">Выберете автомойку</h2>*/}
@@ -114,6 +113,6 @@ export default function BookingPage() {
             {/*        </div>*/}
             {/*    </div>*/}
             {/*</div>*/}
-        </>
+        </div>
     );
 };
