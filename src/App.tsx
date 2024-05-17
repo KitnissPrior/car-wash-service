@@ -30,7 +30,7 @@ const queryClient = new QueryClient({
         }
     })
 });
-localStorage.setItem('role', 'client');
+localStorage.setItem('role', 'owner');
 const role = localStorage.getItem('role');
 
 const router = createBrowserRouter(
