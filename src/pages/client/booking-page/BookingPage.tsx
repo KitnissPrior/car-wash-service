@@ -1,6 +1,5 @@
 import { YMaps, Map, Placemark, ZoomControl } from '@pbe/react-yandex-maps';
 import './BookingPage.scss';
-import Header from '../../headers/Header';
 import OrderForm from "../../../components/order-form/OrderForm";
 import DateTimeSelectionStep from "../../../components/order-form/DateTimeSelectionStep";
 import ServiceSelectionStep from "../../../components/order-form/ServiceSelectionStep";
@@ -45,11 +44,6 @@ const MapApp = () => {
                         iconImageSize: [27, 36],
                     }}
                 />
-                <ZoomControl
-                    options={{
-                        // Здесь параметры какие-то нужны?
-                    }}
-                />
             </Map>
         </YMaps>
     );
@@ -73,15 +67,18 @@ const stepData = [
     },
 ];
 
-const handleSubmit = (data) => {
+const handleSubmit = (data: any) => {
     console.log("Форма отправлена:", data);
 };
 
 // Основное все закомментировано для работы над OrderForm
 export default function BookingPage() {
     return (
-        <>
-            <Header />
+        <div className='booking-container'>
+            <div className='choose-container'>
+                <MapApp />
+                <div className='booking-carvash-adding'></div>
+            </div>
             <OrderForm stepData={stepData} onSubmit={handleSubmit} />
             {/*<div className="booking-container">*/}
             {/*    <h2 className="booking-title">Выберете автомойку</h2>*/}
@@ -116,6 +113,6 @@ export default function BookingPage() {
             {/*        </div>*/}
             {/*    </div>*/}
             {/*</div>*/}
-        </>
+        </div>
     );
 };

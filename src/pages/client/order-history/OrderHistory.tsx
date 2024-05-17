@@ -1,6 +1,6 @@
 import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
-import Header from "../headers/Header";
+import HeaderClient from "../../headers/HeaderClient";
 
 
 const text = `
@@ -30,7 +30,6 @@ const items: CollapseProps['items'] = [
 export default function OrderHistory() {
     return (
         <>
-            <Header/>
             <div>
                 <h2>История записей</h2>
                 <Collapse defaultActiveKey={['1']} ghost items={items} expandIconPosition="right"/>

@@ -1,8 +1,6 @@
-import { Outlet, NavLink } from 'react-router-dom';
 import { Button } from "antd";
 import './ProfilePage.scss';
 import { useNavigate } from "react-router-dom";
-import Header from '../headers/Header';
 
 export default function ProfilePage() {const navigate = useNavigate();
     const editProfilePage = () => {
@@ -19,8 +17,6 @@ export default function ProfilePage() {const navigate = useNavigate();
 
     return (
         <div>
-            <Header />
-
             <div className="profile-page">
                 <h2 className="profile-page-title">Мои данные</h2>
                 <div className="personal-info-list">

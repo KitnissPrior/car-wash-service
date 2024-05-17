@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Header.scss';
 
 // function AddActiveClass() {
@@ -7,7 +7,7 @@ import './Header.scss';
 //     }
 // } попытка как-то добавлять активный класс
 
-export default function Header() {
+export default function HeaderClient() {
     return (
         <>
             <div className="header">
@@ -18,7 +18,6 @@ export default function Header() {
                     <NavLink className="header-button header-button-red" to='/booking-page'>Забронировать место</NavLink>
                 </div>
             </div>
-            <Outlet/>
         </>
     );
 };
