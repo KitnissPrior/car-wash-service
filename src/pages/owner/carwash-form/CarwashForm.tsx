@@ -2,7 +2,6 @@ import React from "react"
 import { FC} from "react"
 import {Form, Button, Input} from "antd"
 import './CarwashForm.scss'
-import { HeaderOwner } from "../../headers/HeaderOwner"
 import { useNavigate } from "react-router-dom"
 import { useFormData } from "./CarwashFormContext"
 import { useCarwashAddMutation } from "../../../components/api/carwashApi"
@@ -51,7 +50,6 @@ export const CarwashAdding: FC = () => {
 
     return ( 
         <div>
-            <div><HeaderOwner/></div>
             <div className="carwash-adding">
             <div className="carwash-adding-content2">
                 <h1 className="form-title">Добавление автомойки</h1>

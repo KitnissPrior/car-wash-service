@@ -36,29 +36,39 @@ const role = localStorage.getItem('role');
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<PageHost />}>
-            <Route index element={<LoginPage />} path="/login" />
+            <Route element={<LoginPage />} path="/login" />
             <Route element={<SignUpPage />} path="/sign-up" />
+            <Route element={<PageNotFound />} path="*" />
             {role === 'client'? (
                 <>
-                <Route element={<HomePage />} path="/" />
-                <Route element={<OrderHistory />} path="/history" />
-                <Route element={<BookingPage />} path="/booking-page" />
+                <Route path="/">
+                    <Route index element={<HomePage />}/>
+                    <Route element={<BookingPage />} path="/booking-page" />
+                    <Route path="/profile">
+                        <Route index element={<ProfilePage />}/>
+                        <Route element={<EditProfilePage />} path="/profile/edit-profile" />
+                        <Route element={<EditPasswordPage />} path="/profile/edit-password" />
+                        <Route element={<OrderHistory />} path="/profile/history" />
+                    </Route>
+                </Route>
                 </>
             ) : (
-                <Route path="/carwashes" element={<OwnerHomePage />}>
-                <Route index element={<CarwashAdding />} />
-                <Route path="carwash-adding" element={<CarwashAdding />} />
-                <Route path="carwash-about/:id">
-                    <Route index element={<CarwashInfo />} />
-                    <Route path="service-adding" element={<ServiceAddingForm />} />
-                </Route>
+                <Route path="/carwashes">
+                    <Route index element={<OwnerHomePage />}/>
+                    <Route path="/carwashes/carwash-adding" element={<CarwashAdding />} />
+                    <Route path="/carwashes/carwash-about/:id">
+                        <Route index element={<CarwashInfo />} />
+                        <Route path="/carwashes/carwash-about/:id/service-adding" element={<ServiceAddingForm />} />
+                    </Route>
+                    <Route path="/carwashes/profile">
+                        <Route index element={<ProfilePage />}/>
+                        <Route element={<EditProfilePage />} path="/carwashes/profile/edit-profile" />
+                        <Route element={<EditPasswordPage />} path="/carwashes/profile/edit-password" />
+                    </Route>
                 </Route>
             )}
 
-            <Route element={<ProfilePage />} path="/profile" />
-            <Route element={<EditProfilePage />} path="/edit-profile" />
-            <Route element={<EditPasswordPage />} path="/edit-password" />
-            <Route element={<PageNotFound />} path="*" />
+            
         </Route>
 
     )
