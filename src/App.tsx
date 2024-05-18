@@ -16,6 +16,7 @@ import HomePage from "./pages/client/home-page/HomePage";
 import './App.scss';
 import SignUpPage from "./pages/sign-up/SignUpPage";
 import { PageHost } from "./pages/PageHost";
+import CalendarAndScheduler from "./pages/test/calendar-and-scheduler/CalendarAndScheduler";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -68,7 +69,9 @@ const router = createBrowserRouter(
                 </Route>
             )}
 
-            
+            {/* Здесь тестовые страницы */}
+            <Route path="/test-01" element={<CalendarAndScheduler />}/>
+
         </Route>
 
     )
