@@ -7,19 +7,23 @@ import { useServicesQuery } from "../../../components/api/serviceApi";
 import { ConfirmationPopup } from "../../ux/ConfirmationPopup";
 import { ServicesInfo } from "../services-info/ServicesInfo";
 import './CarwashInfo.scss'
+import { useFormData } from "../carwash-form/CarwashFormContext";
 
 export const CarwashInfo: FC = () => {
     const [confirmationVisible, setConfirmationVisible] = useState(false);
 
+    const {setFormData} = useFormData();
+
     const navigate = useNavigate();
-    const { id } = useParams<{ id?: string }>();
+    const { carwashId } = useParams<{ carwashId?: string }>();
     
-    const {data: carwash} = useCarwashQuery(id?.substring(1) || '');
+    const {data: carwash} = useCarwashQuery(carwashId?.substring(1) || '');
 
     const {mutateAsync: deleteCarwash} = useCarwashDeleteMutation()
     const services = useServicesQuery().data;
 
     const handleEditClick = () => {
+        setFormData(carwash as Carwash);
         navigate(`/carwashes/carwash-adding/`);
     }
 

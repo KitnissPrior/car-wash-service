@@ -6,7 +6,7 @@ import './ServiceForm.scss'
 import { useServiceAddMutation } from "../../../components/api/serviceApi"
 import { useFormData } from "../carwash-form/CarwashFormContext"
 
-export const ServiceAddingForm: FC = () => {
+export const ServiceForm: FC = () => {
     const { formData: carwashData } = useFormData();
 
     const { mutateAsync: save } = useServiceAddMutation()
