@@ -1,4 +1,4 @@
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements, useNavigate } from 'react-router-dom';
 import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import EditPasswordPage from "./pages/edit-password/EditPasswordPage";
 import { ServiceForm } from './pages/owner/service-form/ServiceForm';
@@ -57,10 +57,9 @@ const router = createBrowserRouter(
                 <Route path="/carwashes">
                     <Route index element={<OwnerHomePage />}/>
                     <Route path="/carwashes/carwash-adding" element={<CarwashForm />} />
-                    <Route path="/carwashes/carwash-about/:id">
+                    <Route path="/carwashes/carwash-about/:carwashId">
                         <Route index element={<CarwashInfo />} />
-                        <Route path="/carwashes/carwash-about/:id/service-adding" element={<ServiceForm />} />
-                        <Route path="/carwashes/carwash-about/:id/service-editing/:serviceId" element={<ServiceForm />} />
+                        <Route path="/carwashes/carwash-about/:carwashId/service-adding" element={<ServiceForm />} />
                     </Route>
                     <Route path="/carwashes/profile">
                         <Route index element={<ProfilePage />}/>
@@ -68,7 +67,8 @@ const router = createBrowserRouter(
                         <Route element={<EditPasswordPage />} path="/carwashes/profile/edit-password" />
                     </Route>
                 </Route>
-            )}
+            )
+            }
 
             {/* Здесь тестовые страницы */}
             <Route path="/test-01" element={<CalendarAndScheduler />}/>
@@ -77,6 +77,7 @@ const router = createBrowserRouter(
 
     )
 );
+
 
 export default function App() {
     return (

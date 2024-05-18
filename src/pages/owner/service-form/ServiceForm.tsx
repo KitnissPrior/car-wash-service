@@ -1,42 +1,26 @@
-import {FC, useEffect, useState} from "react"
+import {FC} from "react"
 import { Button, Form, Input } from "antd"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { Service } from "../../../components/types"
 import './ServiceForm.scss'
-import { useServiceAddMutation, useServiceQuery } from "../../../components/api/serviceApi"
+import { useServiceAddMutation } from "../../../components/api/serviceApi"
 import { useFormData } from "../carwash-form/CarwashFormContext"
 
-export const ServiceForm: FC = () =>{
+export const ServiceForm: FC = () => {
     const { formData: carwashData } = useFormData();
 
     const { mutateAsync: save } = useServiceAddMutation()
-    const navigate = useNavigate();
 
-    const [serviceDefaultValues, setServiceDefaultValues] = useState( {
-         name: '',
-         price: 0,
-         duration: '0',
-         carwashId: carwashData.carwashId,
-         //status_ID : '1'
-    })
-
-    let formTitle = 'Добавление услуги';
-    let submitButtonText = 'Добавить';
-    let cancelButtonText = 'Не добавлять';
-    
-    const { serviceId } = useParams<{ serviceId?: string }>();
-
-    if (serviceId) {
-        //нижние три строчки перенести в обработчик...какой-нибудь
-        const query = useServiceQuery(serviceId?.substring(1) || '')
-        const { data: service} = query
-        console.log(service)
-
-        setServiceDefaultValues(service);
-        formTitle = 'Редактирование услуги';
-        submitButtonText = 'Сохранить';
-        cancelButtonText = 'Не сохранять';
+    const serviceDefaultValues: Service = {
+       //id: undefined,
+        name: '',
+        price: 0,
+        duration: '0',
+        carwashId: carwashData.carwashId,
+        //status_ID : '1'
     }
+
+    const navigate = useNavigate();
 
     const handleFormCancel = () => {
         navigate(-1);
@@ -46,8 +30,8 @@ export const ServiceForm: FC = () =>{
         <>
             <div className="carwash-adding">
                 <div className="carwash-adding-content2">
-                    <h1 className="form-title">{formTitle}</h1>
-                    <Form
+                    <h1 className="form-title">Добавление услуги</h1>
+                    <Form initialValues={serviceDefaultValues}
                         onFinish={async (data) => {
                             console.log(data)
                             await save(data);
@@ -59,8 +43,7 @@ export const ServiceForm: FC = () =>{
                                     { max: 100, message: 'Название должно содержать не более 100 символов'} ]}>
                             <div>
                                 <span className="input-label">Название услуги*</span>
-                                <Input.TextArea className="input" placeholder="Название" 
-                                    defaultValue={serviceDefaultValues?.name} required/>
+                                <Input.TextArea className="input" placeholder="Название" required/>
                             </div>
                         </Form.Item>
 
@@ -68,16 +51,14 @@ export const ServiceForm: FC = () =>{
                             rules={[{ required: true,  message: 'Введите стоимость услуги' }]}>
                             <div>
                                 <span className="input-label">Стоимость (руб)*</span>
-                                <Input type="number" className="input" min="1" placeholder="0" 
-                                    defaultValue={serviceDefaultValues?.price} required/>
+                                <Input type="number" className="input" min="1" placeholder="0" required/>
                             </div>
                         </Form.Item>
 
                         <Form.Item label="Продолжительность услуги (мин)*" name="duration">
                             <div>
                                 <span className="input-label">Продолжительность услуги (мин)*</span>
-                                <Input type="number" className="input" min="5" placeholder="0" 
-                                    defaultValue={serviceDefaultValues?.duration} required step={5}/>
+                                <Input type="number" className="input" min="5" placeholder="0" required step={5}/>
                             </div>
                         </Form.Item>
 
@@ -86,11 +67,11 @@ export const ServiceForm: FC = () =>{
                         <Form.Item name="carwashId" hidden/>
 
                         <Form.Item>
-                            <Button className="form-submit-button" htmlType="submit">{submitButtonText}</Button>
+                            <Button className="form-submit-button" htmlType="submit">Добавить</Button>
                         </Form.Item>
 
                         <Form.Item>
-                            <Button className="form-cancel-button" onClick={handleFormCancel}>{cancelButtonText}</Button>
+                            <Button className="form-cancel-button" onClick={handleFormCancel}>Не добавлять</Button>
                         </Form.Item>
                     </Form>
                 </div>
