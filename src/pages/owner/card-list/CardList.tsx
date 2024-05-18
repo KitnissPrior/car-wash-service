@@ -19,8 +19,6 @@ const CardList : React.FC<{ data: Carwash[] | undefined}> = ({data}) => {
         setFormData(defaultFormData);
     }
 
-    console.log(data)
-
     return ( 
         data?.length ? (
             <div className="card-list">

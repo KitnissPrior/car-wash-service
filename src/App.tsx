@@ -1,12 +1,12 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import EditPasswordPage from "./pages/edit-password/EditPasswordPage";
-import { ServiceAddingForm } from './pages/owner/service-form/ServiceForm';
+import { ServiceForm } from './pages/owner/service-form/ServiceForm';
 import EditProfilePage from "./pages/edit-profile/EditProfilePage";
 import BookingPage from './pages/client/booking-page/BookingPage';
 import { FormProvider } from './pages/owner/carwash-form/CarwashFormContext';
 import OrderHistory from "./pages/client/order-history/OrderHistory";
-import { CarwashAdding } from './pages/owner/carwash-form/CarwashForm';
+import { CarwashForm } from './pages/owner/carwash-form/CarwashForm';
 import { CarwashInfo } from './pages/owner/carwash-info/CarwashInfo';
 import ProfilePage from "./pages/profile/ProfilePage";
 import LoginPage from "./pages/login/LoginPage";
@@ -56,10 +56,11 @@ const router = createBrowserRouter(
             ) : (
                 <Route path="/carwashes">
                     <Route index element={<OwnerHomePage />}/>
-                    <Route path="/carwashes/carwash-adding" element={<CarwashAdding />} />
+                    <Route path="/carwashes/carwash-adding" element={<CarwashForm />} />
                     <Route path="/carwashes/carwash-about/:id">
                         <Route index element={<CarwashInfo />} />
-                        <Route path="/carwashes/carwash-about/:id/service-adding" element={<ServiceAddingForm />} />
+                        <Route path="/carwashes/carwash-about/:id/service-adding" element={<ServiceForm />} />
+                        <Route path="/carwashes/carwash-about/:id/service-editing/:serviceId" element={<ServiceForm />} />
                     </Route>
                     <Route path="/carwashes/profile">
                         <Route index element={<ProfilePage />}/>
