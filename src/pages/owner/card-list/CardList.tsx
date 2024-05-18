@@ -4,6 +4,7 @@ import { Carwash } from '../../../components/types';
 import { useNavigate } from 'react-router-dom';
 import { useFormData, defaultFormData } from '../carwash-form/CarwashFormContext';
 import { Link } from 'react-router-dom';
+import { NoData } from '../../ux/NoData';
 
 const CardList : React.FC<{ data: Carwash[] | undefined}> = ({data}) => {
     const navigate = useNavigate();
@@ -18,24 +19,28 @@ const CardList : React.FC<{ data: Carwash[] | undefined}> = ({data}) => {
         setFormData(defaultFormData);
     }
 
-    return (
-        <div className="card-list">
-            {data?.map((item, index) =>
+    console.log(data)
+
+    return ( 
+        data?.length ? (
+            <div className="card-list">
+            {data.map((item, index) =>
                 <Card onClick={() => handleCardEdit(item)} key={index} className='card'>
                     <p className='carwash-title'>Название автомойки: {item.name}</p>
                     <p className='carwash-info'><b>Адрес:</b> {item.carwashStreet}</p>
                     <p className='carwash-info'><b>Количество боксов обслуживания:</b> {item.boxAmount}</p>
                     <p className='carwash-info'><b>Контактные данные:</b> {item.contactInfo}</p>
                 </Card>
-                
-            )}
-            <div className="adding-button" onClick={handleCardAdd}>
-                <Link className="adding-button-link" to='/carwashes/carwash-adding'>
-                <img src="/src/images/plus.png" className='adding-button-image' alt="Кнопка" />
-                Добавить автомойку
-                </Link>
-            </div>
-        </div>
+                )
+            }
+                <div className="adding-button" onClick={handleCardAdd}>
+                    <Link className="adding-button-link" to='/carwashes/carwash-adding'>
+                        <img src="/src/images/plus.png" className='adding-button-image' alt="Кнопка" />
+                        Добавить автомойку
+                    </Link>
+                </div>
+            </div>)
+        : <NoData message='Проблемы с подключением к серверу'/>
     );
 }
 

@@ -3,16 +3,20 @@ import './ProfilePage.scss';
 import { useNavigate } from "react-router-dom";
 
 export default function ProfilePage() {const navigate = useNavigate();
+    const role = localStorage.getItem('role');
+
     const editProfilePage = () => {
-        navigate('/edit-profile/');
+        role === 'client' ? navigate('/profile/edit-profile/') 
+            : navigate('/carwashes/profile/edit-profile/');
     }
 
     const editPassword = () => {
-        navigate('/edit-password/');
+        role === 'client' ? navigate('/profile/edit-password/') 
+            : navigate('/carwashes/profile/edit-password/');
     }
 
     const checkOrderHistory = () => {
-        navigate('/history/');
+        navigate('/profile/history/');
     }
 
     return (
@@ -39,7 +43,9 @@ export default function ProfilePage() {const navigate = useNavigate();
                 <div className="buttons-section">
                     <Button className="profile-page-button" onClick={editProfilePage}>Изменить данные</Button>
                     <Button className="profile-page-button" onClick={editPassword}>Изменить пароль</Button>
-                    <Button className="profile-page-button" onClick={checkOrderHistory}>История записей</Button>
+                    { role === 'client' ?
+                        <Button className="profile-page-button" onClick={checkOrderHistory}>История записей</Button> 
+                        : <></>}
                 </div>
             </div>
         </div>

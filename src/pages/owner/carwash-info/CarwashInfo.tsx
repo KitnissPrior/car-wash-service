@@ -1,9 +1,8 @@
 import { FC, useState } from "react";
 import { Carwash } from "../../../components/types";
-import { useFormData } from "../carwash-form/CarwashFormContext";
 import { Button } from "antd";
-import { useNavigate} from "react-router-dom";
-import { useCarwashDeleteMutation} from "../../../components/api/carwashApi";
+import { useNavigate, useParams} from "react-router-dom";
+import { useCarwashDeleteMutation, useCarwashQuery} from "../../../components/api/carwashApi";
 import { useServicesQuery } from "../../../components/api/serviceApi";
 import { ConfirmationPopup } from "../../ux/ConfirmationPopup";
 import { ServicesInfo } from "../services-info/ServicesInfo";
@@ -13,9 +12,9 @@ export const CarwashInfo: FC = () => {
     const [confirmationVisible, setConfirmationVisible] = useState(false);
 
     const navigate = useNavigate();
-    const {formData: carwash } = useFormData();
-    //const {carwashId} = useParams();
-    //const {data: carwash} = useCarwashQuery(carwashId?.toString() || '');
+    const { id } = useParams<{ id?: string }>();
+    
+    const {data: carwash} = useCarwashQuery(id?.substring(1) || '');
 
     const {mutateAsync: deleteCarwash} = useCarwashDeleteMutation()
     const services = useServicesQuery().data;
@@ -47,7 +46,6 @@ export const CarwashInfo: FC = () => {
     const showConfirmationPopup = () => {
         setConfirmationVisible(true);
     }
-
     return (
         <div className="carwash-adding-info">
         <h1 className="carwash-info-title">{carwash?.name}</h1>
