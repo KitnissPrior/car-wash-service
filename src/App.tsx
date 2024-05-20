@@ -18,7 +18,7 @@ import SignUpPage from "./pages/sign-up/SignUpPage";
 import { PageHost } from "./pages/PageHost";
 import CalendarAndScheduler from "./pages/test/calendar-and-scheduler/CalendarAndScheduler";
 
-localStorage.setItem('role', 'owner');
+//localStorage.setItem('role', 'owner');
 
 const queryClient = new QueryClient({
     defaultOptions: {
