@@ -3,7 +3,7 @@ import { Modal } from 'antd';
 import { ConfirmationProps } from '../../components/types';
 
 export const ConfirmationPopup: FC<ConfirmationProps> = (
-   {title, visible, handleOk, handleCancel, okText, cancelText}) => {
+   { title, visible, handleOk, handleCancel, okText, cancelText, isAdditionalTextHidden: isAdditionalText }) => {
 
     return (
         <div className='confirm-popup'>
@@ -14,7 +14,7 @@ export const ConfirmationPopup: FC<ConfirmationProps> = (
           onCancel={handleCancel}
           okText={okText}
           cancelText={cancelText}>
-          <p>Отменить данное действие будет невозможно!</p>
+          {!isAdditionalText &&<p>Отменить данное действие будет невозможно!</p>}
           </Modal>
         </div>
     )

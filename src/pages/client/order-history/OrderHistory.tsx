@@ -1,7 +1,5 @@
 import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
-import HeaderClient from "../../headers/HeaderClient";
-
 
 const text = `
     A dog is a type of domesticated animal.

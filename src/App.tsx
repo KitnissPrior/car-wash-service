@@ -18,6 +18,8 @@ import SignUpPage from "./pages/sign-up/SignUpPage";
 import { PageHost } from "./pages/PageHost";
 import CalendarAndScheduler from "./pages/test/calendar-and-scheduler/CalendarAndScheduler";
 
+localStorage.setItem('role', 'owner');
+
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
@@ -31,25 +33,25 @@ const queryClient = new QueryClient({
         }
     })
 });
-localStorage.setItem('role', 'owner');
+
 const role = localStorage.getItem('role');
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<PageHost />}>
-            <Route element={<LoginPage />} path="/login" />
+            <Route element={<LoginPage />} path="/" />
             <Route element={<SignUpPage />} path="/sign-up" />
             <Route element={<PageNotFound />} path="*" />
             {role === 'client'? (
                 <>
-                <Route path="/">
+                <Route path="/home">
                     <Route index element={<HomePage />}/>
-                    <Route element={<BookingPage />} path="/booking-page" />
-                    <Route path="/profile">
+                    <Route element={<BookingPage />} path="/home/booking-page" />
+                    <Route path="/home/profile">
                         <Route index element={<ProfilePage />}/>
-                        <Route element={<EditProfilePage />} path="/profile/edit-profile" />
-                        <Route element={<EditPasswordPage />} path="/profile/edit-password" />
-                        <Route element={<OrderHistory />} path="/profile/history" />
+                        <Route element={<EditProfilePage />} path="/home/profile/edit-profile" />
+                        <Route element={<EditPasswordPage />} path="/home/profile/edit-password" />
+                        <Route element={<OrderHistory />} path="/home/profile/history" />
                     </Route>
                 </Route>
                 </>

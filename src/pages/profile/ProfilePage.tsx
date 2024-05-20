@@ -1,22 +1,39 @@
 import { Button } from "antd";
 import './ProfilePage.scss';
 import { useNavigate } from "react-router-dom";
+import { ConfirmationPopup } from "../ux/ConfirmationPopup";
+import { useState } from "react";
 
 export default function ProfilePage() {const navigate = useNavigate();
     const role = localStorage.getItem('role');
+    const [confirmationVisible, setConfirmationVisible] = useState(false);
 
-    const editProfilePage = () => {
+    const handleEditProfile = () => {
         role === 'client' ? navigate('/profile/edit-profile/') 
             : navigate('/carwashes/profile/edit-profile/');
     }
 
-    const editPassword = () => {
+    const handleEditPassword = () => {
         role === 'client' ? navigate('/profile/edit-password/') 
             : navigate('/carwashes/profile/edit-password/');
     }
 
-    const checkOrderHistory = () => {
+    const handleCheckOrderHistory = () => {
         navigate('/profile/history/');
+    }
+
+    const handleExit = () => {
+        setConfirmationVisible(false);
+        localStorage.clear();
+        navigate('/');
+    }
+
+    const handleExitCancel = () => {
+        setConfirmationVisible(false);
+    }
+
+    const showConfirmationPopup = () => {
+        setConfirmationVisible(true);
     }
 
     return (
@@ -41,12 +58,22 @@ export default function ProfilePage() {const navigate = useNavigate();
                 </div>
 
                 <div className="buttons-section">
-                    <Button className="profile-page-button" onClick={editProfilePage}>Изменить данные</Button>
-                    <Button className="profile-page-button" onClick={editPassword}>Изменить пароль</Button>
+                    <Button className="profile-page-button" onClick={handleEditProfile}>Изменить данные</Button>
+                    <Button className="profile-page-button" onClick={handleEditPassword}>Изменить пароль</Button>
                     { role === 'client' ?
-                        <Button className="profile-page-button" onClick={checkOrderHistory}>История записей</Button> 
+                        <Button className="profile-page-button" onClick={handleCheckOrderHistory}>История записей</Button> 
                         : <></>}
+                    <Button className="profile-page-button" style={{backgroundColor: 'red', color: 'white'}} onClick={showConfirmationPopup}>Выйти</Button>
                 </div>
+                
+                <ConfirmationPopup 
+                    title="Вы уверены, что хотите выйти из аккаунта?"
+                    handleOk={handleExit}
+                    handleCancel={handleExitCancel}
+                    visible={confirmationVisible}
+                    okText="Да, выйти из аккаунта"
+                    isAdditionalTextHidden = {true}
+                    cancelText="Отмена"/>
             </div>
         </div>
     );
