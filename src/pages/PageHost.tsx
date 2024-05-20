@@ -10,7 +10,7 @@ export const PageHost: React.FC = React.memo(() => {
     
     return (
         <>
-            { location.pathname !== '/'  && location.pathname !== '/sign-up'? 
+            { location.pathname !== '/' && location.pathname !== '/sign-up'? 
                 (role === 'owner' ? <HeaderOwner /> : <HeaderClient />) 
                 :null}
             <Outlet />
