@@ -19,6 +19,7 @@ export type ConfirmationProps = {
     handleCancel: () => void;
     okText: string;
     cancelText: string;
+    isAdditionalTextHidden?: boolean;
 }
 
 export type Service = {
