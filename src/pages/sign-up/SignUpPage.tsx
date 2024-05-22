@@ -1,19 +1,16 @@
 import { Input, Button, Form } from "antd";
-import {useState } from "react";
+import {useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Select } from 'antd';
 import { useUserAddMutation, useRolesQuery, usePersonAddMutation } from "../../components/api/userApi";
 const { Option } = Select;
-import { User, Role, RegisterFormProps } from "../../components/types";
-import { useForm } from "react-hook-form";
-import { add } from "date-fns";
+import { User, RegisterFormProps } from "../../components/types";
 
 export default function SignUpPage() {
     const navigate = useNavigate();
     const roles =  useRolesQuery().data;
     const [error, setError] = useState("");
-    // const [password] = useState("");
-    // const [confirmPassword] = useState("");
+    const [role, setRole] = useState("");
     const [formData, setFormData] = useState<RegisterFormProps | null>(null);
 
     const { mutateAsync: savePersonData } = usePersonAddMutation()
@@ -29,13 +26,12 @@ export default function SignUpPage() {
         }
         
         localStorage.setItem('userName', formData?.firstName ?? '');
-        localStorage.setItem('role', formData?.role ?? '');
+        localStorage.setItem('role', role ?? '');
         
         await savePersonData(newPerson);
     }
 
     const { mutateAsync: saveUser } = useUserAddMutation(handleUserSuccessAdd);
-    //const role = localStorage.getItem('role');
 
     const onSubmit = async (values: RegisterFormProps) => {
         if (values.password !== values.confirmPassword) {
@@ -45,10 +41,10 @@ export default function SignUpPage() {
 
         setFormData(values);
 
-        const role = roles?.filter(r => r.roleName === values.role)[0];
+        const userRole = roles?.filter(r => r.roleName == role)[0];
 
         const newUser: User = {
-            roleId: role?.roleId,
+            roleId: userRole?.roleId,
             login: values.email + ' ' + values.phoneNumber,
             password: values.password,
         };
@@ -56,8 +52,14 @@ export default function SignUpPage() {
         setError(""); // Сброс ошибки перед отправкой данных
         await saveUser(newUser);
 
-        role?.roleName === 'client'? navigate("/home") : navigate("/carwashes/")
+        userRole?.roleName === 'client'? navigate("/home") : navigate("/carwashes/")
     };
+
+    useEffect(() => {}, [role]); // Зависимость от role
+    
+    const handleRoleChange = (value : string) => {
+        setRole(value);
+      };
 
     return (
         <>
@@ -91,6 +93,7 @@ export default function SignUpPage() {
                         style={{ width: 200 }}
                         placeholder="Выберите роль"
                         optionFilterProp="children"
+                        onChange={handleRoleChange}
                         >
                         <Option value="client">Клиент</Option>
                         <Option value="owner">Владелец автомойки</Option>
