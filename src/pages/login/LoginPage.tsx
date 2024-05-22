@@ -8,6 +8,19 @@ export default function LoginPage() {
     const { loginWithRedirect, isAuthenticated, getAccessTokenSilently } = useAuth0();
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
+    
+    const navigate = useNavigate();
+    const role = localStorage.getItem('role');
+
+    const handleOpenHomePage = () => {
+        if(role === 'client') {
+            navigate("/home");
+        }
+        else
+        {
+            navigate("/carwashes/");
+        } 
+    }
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -33,7 +46,7 @@ export default function LoginPage() {
                 <form onSubmit={handleSubmit}>
                     <Input type='text' value={email} placeholder='Почта или телефон' onChange={(e) => setEmail(e.target.value)} required/>
                     <Input type='password' value={username} placeholder='Пароль' onChange={(e) => setUsername(e.target.value)} required />
-                    <Button className="profile-page-button" type="submit">Войти</Button>
+                    <Button className="profile-page-button" onClick={handleOpenHomePage}>Войти</Button>
                 </form>
                 <NavLink to="/sign-up">Нет аккаунта? Создайте его!</NavLink>
             </div>

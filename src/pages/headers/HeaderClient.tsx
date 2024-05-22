@@ -11,11 +11,11 @@ export default function HeaderClient() {
     return (
         <>
             <div className="header">
-                <NavLink className="header-logo" to='/'>Логотип</NavLink>
+                <NavLink className="header-logo" to='/home'>Логотип</NavLink>
                 <div className="header-buttons">
-                    <NavLink className="header-button" to='/'>Главная</NavLink>
-                    <NavLink className="header-button" to='/profile'>Мой профиль</NavLink>
-                    <NavLink className="header-button header-button-red" to='/booking-page'>Забронировать место</NavLink>
+                    <NavLink className="header-button" to='/home'>Главная</NavLink>
+                    <NavLink className="header-button" to='/home/profile'>Мой профиль</NavLink>
+                    <NavLink className="header-button header-button-red" to='/home/booking-page'>Забронировать место</NavLink>
                 </div>
             </div>
         </>

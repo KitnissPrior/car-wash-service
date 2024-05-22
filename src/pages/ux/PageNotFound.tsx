@@ -6,7 +6,7 @@ import '../../App.scss'
 export default function PageNotFound() {
     const navigate = useNavigate();
     const handleContinue = () => {
-        localStorage.getItem('role') === 'owner' ? navigate('/carwashes') : navigate('/');
+        localStorage.getItem('role') === 'owner' ? navigate('/carwashes') : navigate('/home');
     }
 
 
