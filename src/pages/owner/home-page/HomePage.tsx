@@ -1,6 +1,7 @@
 import './HomePage.scss';
 import { useCarwashesQuery } from '../../../components/api/carwashApi';
 import CardList from '../card-list/CardList';
+import { QueryStatus } from '../../ux/QueryStatus';
 
 export default function OwnerHomePage() {
     const query = useCarwashesQuery()
