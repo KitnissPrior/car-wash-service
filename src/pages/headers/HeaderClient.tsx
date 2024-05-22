@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
+import { useAuthContext } from '../../components/AuthContext';
 
 // function AddActiveClass() {
 //     let a = document.querySelectorAll('.header-button');
@@ -8,6 +9,8 @@ import './Header.scss';
 // } попытка как-то добавлять активный класс
 
 export default function HeaderClient() {
+    const {userData} = useAuthContext();
+    
     return (
         <>
             <div className="header">
@@ -16,7 +19,7 @@ export default function HeaderClient() {
                     <NavLink className="header-button" to='/home'>Главная</NavLink>
                     <NavLink className="header-button" to='/home/profile'>Мой профиль</NavLink>
                     <NavLink className="header-button header-button-red" to='/home/booking-page'>Забронировать место</NavLink>
-                    <div>{localStorage.getItem('userName')}</div>
+                    <div>{userData?.firstName + ' ' + userData?.lastName + ' ' + userData?.fathersName}</div>
                 </div>
             </div>
         </>

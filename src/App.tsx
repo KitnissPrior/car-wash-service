@@ -1,4 +1,4 @@
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Router, RouterProvider, Routes, createBrowserRouter, createRoutesFromElements, useNavigate } from 'react-router-dom';
 import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import EditPasswordPage from "./pages/edit-password/EditPasswordPage";
 import { ServiceForm } from './pages/owner/service-form/ServiceForm';
@@ -17,8 +17,8 @@ import './App.scss';
 import SignUpPage from "./pages/sign-up/SignUpPage";
 import { PageHost } from "./pages/PageHost";
 import CalendarAndScheduler from "./pages/test/calendar-and-scheduler/CalendarAndScheduler";
-
-//localStorage.setItem('role', 'owner');
+import { AuthProvider, useAuthContext } from './components/AuthContext';
+import { useEffect } from 'react';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -33,62 +33,57 @@ const queryClient = new QueryClient({
         }
     })
 });
-
-const role = localStorage.getItem('role');
-
-const router = createBrowserRouter(
-    createRoutesFromElements(
-        <Route path="/" element={<PageHost />}>
-            <Route element={<LoginPage />} path="/" />
-            <Route element={<SignUpPage />} path="/sign-up" />
-            <Route element={<PageNotFound />} path="*" />
-            {role === 'client'? (
-                <>
-                <Route path="/home">
-                    <Route index element={<HomePage />}/>
-                    <Route element={<BookingPage />} path="/home/booking-page" />
-                    <Route path="/home/profile">
-                        <Route index element={<ProfilePage />}/>
-                        <Route element={<EditProfilePage />} path="/home/profile/edit-profile" />
-                        <Route element={<EditPasswordPage />} path="/home/profile/edit-password" />
-                        <Route element={<OrderHistory />} path="/home/profile/history" />
-                    </Route>
-                </Route>
-                </>
-            ) : (
-                <Route path="/carwashes">
-                    <Route index element={<OwnerHomePage />}/>
-                    <Route path="/carwashes/carwash-adding" element={<CarwashForm />} />
-                    <Route path="/carwashes/carwash-about/:carwashId">
-                        <Route index element={<CarwashInfo />} />
-                        <Route path="/carwashes/carwash-about/:carwashId/service-adding" element={<ServiceForm />} />
-                    </Route>
-                    <Route path="/carwashes/profile">
-                        <Route index element={<ProfilePage />}/>
-                        <Route element={<EditProfilePage />} path="/carwashes/profile/edit-profile" />
-                        <Route element={<EditPasswordPage />} path="/carwashes/profile/edit-password" />
-                    </Route>
-                </Route>
-            )
-            }
-
-            {/* Здесь тестовые страницы */}
-            <Route path="/test-01" element={<CalendarAndScheduler />}/>
-
-        </Route>
-
-    )
-);
-
-
 export default function App() {
+    const { userData } = useAuthContext();
+    useEffect(() => {
+        
+    }, [userData])
+    console.log(userData)
+
     return (
-        <>
+        <AuthProvider>
             <FormProvider>
                 <QueryClientProvider client={queryClient}>
-                    <RouterProvider router={router}/>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={<PageHost />}>
+                                <Route index element={<LoginPage />} />
+                                <Route path="/sign-up" element={<SignUpPage />} />
+                                <Route path="*" element={<PageNotFound />} />
+                                {userData && userData.role === 'client'? (
+                                    <>
+                                        <Route path="/home">
+                                            <Route index element={<HomePage />} />
+                                            <Route path="/home/booking-page" element={<BookingPage />} />
+                                            <Route path="/home/profile">
+                                                <Route index element={<ProfilePage />} />
+                                                <Route path="/home/profile/edit-profile" element={<EditProfilePage />} />
+                                                <Route path="/home/profile/edit-password" element={<EditPasswordPage />} />
+                                                <Route path="/home/profile/history" element={<OrderHistory />} />
+                                            </Route>
+                                        </Route>
+                                    </>
+                                ) : (
+                                    <Route path="/carwashes">
+                                        <Route index element={<OwnerHomePage />} />
+                                        <Route path="/carwashes/carwash-adding" element={<CarwashForm />} />
+                                        <Route path="/carwashes/carwash-about/:carwashId">
+                                            <Route index element={<CarwashInfo />} />
+                                            <Route path="/carwashes/carwash-about/:carwashId/service-adding" element={<ServiceForm />} />
+                                        </Route>
+                                        <Route path="/carwashes/profile">
+                                            <Route index element={<ProfilePage />} />
+                                            <Route path="/carwashes/profile/edit-profile" element={<EditProfilePage />} />
+                                            <Route path="/carwashes/profile/edit-password" element={<EditPasswordPage />} />
+                                        </Route>
+                                    </Route>
+                                )}
+                                <Route path="/test-01" element={<CalendarAndScheduler />} />
+                            </Route>
+                        </Routes>
+                    </BrowserRouter>
                 </QueryClientProvider>
             </FormProvider>
-        </>
+        </AuthProvider>
     );
 }

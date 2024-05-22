@@ -5,6 +5,7 @@ import { Select } from 'antd';
 import { useUserAddMutation, useRolesQuery, usePersonAddMutation } from "../../components/api/userApi";
 const { Option } = Select;
 import { User, RegisterFormProps } from "../../components/types";
+import { useAuthContext } from "../../components/AuthContext";
 
 export default function SignUpPage() {
     const navigate = useNavigate();
@@ -13,9 +14,27 @@ export default function SignUpPage() {
     const [role, setRole] = useState("");
     const [formData, setFormData] = useState<RegisterFormProps | null>(null);
 
+    const {userData, setUserData} = useAuthContext();
+
     const { mutateAsync: savePersonData } = usePersonAddMutation()
 
     const handleUserSuccessAdd = async (addedUser: User) => {
+        const newUserData = {
+            userId: addedUser?.userId,
+            login: addedUser?.login,
+            roleId: addedUser?.roleId,
+            personId: addedUser?.personId,
+            firstName: formData?.firstName,
+            lastName: formData?.lastName,
+            fathersName: formData?.fathersName,
+            email: formData?.email,
+            phoneNumber: formData?.phoneNumber,
+            password: formData?.password,
+            role: role
+        }
+
+        setUserData(newUserData);
+
         const newPerson = {
             personId: addedUser?.personId,
             firstName: formData?.firstName,
@@ -25,8 +44,8 @@ export default function SignUpPage() {
             phoneNumber: formData?.phoneNumber,
         }
         
-        localStorage.setItem('userName', formData?.firstName ?? '');
-        localStorage.setItem('role', role ?? '');
+        //localStorage.setItem('userName', formData?.firstName ?? '');
+        //localStorage.setItem('role', role ?? '');
         
         await savePersonData(newPerson);
     }
@@ -55,7 +74,7 @@ export default function SignUpPage() {
         userRole?.roleName === 'client'? navigate("/home") : navigate("/carwashes/")
     };
 
-    useEffect(() => {}, [role]); // Зависимость от role
+    useEffect(() => {}, [role]);
     
     const handleRoleChange = (value : string) => {
         setRole(value);

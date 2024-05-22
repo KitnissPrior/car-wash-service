@@ -8,7 +8,7 @@ export type Carwash = {
     contactInfo: string;
 }
 
-export type FormContextProviderProps = {
+export type ContextProviderProps = {
     children: React.ReactNode;
 }
 
@@ -71,6 +71,20 @@ export type RegisterFormProps = {
     role: string
     password: string;
     confirmPassword: string;
+}
+
+export type UserData = {
+    userId?: Guid | string;
+    firstName?: string;
+    lastName?: string;
+    fathersName?: string;
+    email?: string;
+    phoneNumber?: string;
+    role?: string
+    password?: string;
+    roleId?: Guid | string;
+    login?: string;
+    personId?: Guid | string;
 }
 
 export type UUID = string & { __uuid: void };
