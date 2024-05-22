@@ -32,12 +32,45 @@ export type Service = {
 }
 
 export type ServiceStatus = {
-    statusId: Guid;
+    statusId?: Guid;
     name: string;
+}
+
+export type User = {
+    userId?: Guid | string;
+    roleId?: Guid | string;
+    login: string;
+    password: string;
+    personId?: Guid | string;
+}
+
+export type Role = {
+    roleId: Guid | string;
+    roleName: string;
+}
+
+export type Person = {
+    personId?: Guid | string;
+    firstName?: string;
+    lastName?: string;
+    fathersName?: string;
+    email?: string;
+    phoneNumber?: string;
 }
 
 export type NoDataProps = {
     message: string;
+}
+
+export type RegisterFormProps = {
+    firstName: string;
+    lastName: string;
+    fathersName?: string;
+    email?: string;
+    phoneNumber: string;
+    role: string
+    password: string;
+    confirmPassword: string;
 }
 
 export type UUID = string & { __uuid: void };

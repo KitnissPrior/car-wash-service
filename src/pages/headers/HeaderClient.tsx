@@ -16,6 +16,7 @@ export default function HeaderClient() {
                     <NavLink className="header-button" to='/home'>Главная</NavLink>
                     <NavLink className="header-button" to='/home/profile'>Мой профиль</NavLink>
                     <NavLink className="header-button header-button-red" to='/home/booking-page'>Забронировать место</NavLink>
+                    <div>{localStorage.getItem('userName')}</div>
                 </div>
             </div>
         </>

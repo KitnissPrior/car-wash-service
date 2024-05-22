@@ -12,12 +12,10 @@ export const ServiceForm: FC = () => {
     const { mutateAsync: save } = useServiceAddMutation()
 
     const serviceDefaultValues: Service = {
-       //id: undefined,
         name: '',
         price: 0,
         duration: '0',
         carwashId: carwashData.carwashId,
-        //status_ID : '1'
     }
 
     const navigate = useNavigate();
