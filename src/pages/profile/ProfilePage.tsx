@@ -5,19 +5,23 @@ import { ConfirmationPopup } from "../ux/ConfirmationPopup";
 import { useState } from "react";
 import { useAuthContext } from "../../components/AuthContext";
 import { UserData } from "../../components/types";
+import { usePersonDataQuery } from "../../components/api/userApi";
 
 export default function ProfilePage() {const navigate = useNavigate();
     const [confirmationVisible, setConfirmationVisible] = useState(false);
 
     const {userData, setUserData} = useAuthContext();
+    const person = usePersonDataQuery(userData?.personId).data;
 
     const handleEditProfile = () => {
-        userData?.role === 'client' ? navigate('/profile/edit-profile/') 
+        console.log(userData?.role);
+        userData?.role == 'client' ? navigate('/profile/edit-profile/') 
             : navigate('/carwashes/profile/edit-profile/');
     }
 
     const handleEditPassword = () => {
-        userData?.role === 'client' ? navigate('/profile/edit-password/') 
+        console.log(userData?.role);
+        userData?.role == 'client' ? navigate('/profile/edit-password/') 
             : navigate('/carwashes/profile/edit-password/');
     }
 
@@ -39,6 +43,8 @@ export default function ProfilePage() {const navigate = useNavigate();
         setConfirmationVisible(true);
     }
 
+    const name = person?.lastName + ' ' + person?.firstName  + (person?.fathersName ? ' ' + person?.fathersName : '');
+
     return (
         <div>
             <div className="profile-page">
@@ -46,17 +52,17 @@ export default function ProfilePage() {const navigate = useNavigate();
                 <div className="personal-info-list">
                     <div className="profile-page-list-item">
                         <h3>ФИО</h3>
-                        <p>Иванов Иван Иванович</p>
+                        <p>{name}</p>
                     </div>
 
                     <div className="profile-page-list-item">
                         <h3>Номер телефона</h3>
-                        <p>+7 (777) 777-77-77</p>
+                        <p>{person?.phoneNumber}</p>
                     </div>
 
                     <div className="profile-page-list-item">
                         <h3>Почта</h3>
-                        <p>email@example.com</p>
+                        <p>{person?.email}</p>
                     </div>
                 </div>
 

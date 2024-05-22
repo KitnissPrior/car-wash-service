@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { UserData } from './types';
 import { ContextProviderProps } from './types';
 
@@ -24,7 +24,20 @@ const AuthContext = createContext<{ userData: UserData; setUserData: React.Dispa
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider: React.FC<ContextProviderProps> = ({ children }) => {
-    const [userData, setUserData] = useState<UserData>(defaultUserData);
+    const [userData, setUserData] = useState<UserData>(() => {
+        // Попытка загрузить данные из localStorage при монтировании
+        const storedData = localStorage.getItem('userData');
+        if (storedData) {
+            return JSON.parse(storedData);
+        }
+        return defaultUserData;
+    });
+
+    useEffect(() => {
+        // Сохранение данных в localStorage при обновлении
+        localStorage.setItem('userData', JSON.stringify(userData));
+        setUserData(userData);
+    }, [userData]);
        
     return <AuthContext.Provider value={{ userData, setUserData }}>{children}</AuthContext.Provider>;
 };

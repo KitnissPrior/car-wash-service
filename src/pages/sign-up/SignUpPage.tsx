@@ -52,7 +52,7 @@ export default function SignUpPage() {
 
     const { mutateAsync: saveUser } = useUserAddMutation(handleUserSuccessAdd);
 
-    const onSubmit = async (values: RegisterFormProps) => {
+    const handleSubmit = async (values: RegisterFormProps) => {
         if (values.password !== values.confirmPassword) {
             setError("Пароли не совпадают");
             return;
@@ -85,7 +85,7 @@ export default function SignUpPage() {
             <h2>Зарегистрироваться</h2>
             <Form
                 title={"Зарегистрироваться"}
-                onFinish={onSubmit}>
+                onFinish={handleSubmit}>
                 <Form.Item name="phoneNumber"
                     rules={[{ required: true,  message: "Введите номер телефона" }, 
                     {min: 10, message: "Номер должен содержать 10 цифр"}]}>

@@ -11,7 +11,7 @@ export default function OwnerHomePage() {
         <>
             <main className='header-owner-main'>
                 <div className='cards'>
-                    {<QueryStatus query={query}></QueryStatus>}
+                    {/*<QueryStatus query={query}></QueryStatus>*/}
                     <CardList data={carwashes}/> 
                 </div>
             </main>

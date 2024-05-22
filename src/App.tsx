@@ -35,10 +35,7 @@ const queryClient = new QueryClient({
 });
 export default function App() {
     const { userData } = useAuthContext();
-    useEffect(() => {
-        
-    }, [userData])
-    console.log(userData)
+    console.log(userData.role)
 
     return (
         <AuthProvider>
@@ -50,7 +47,7 @@ export default function App() {
                                 <Route index element={<LoginPage />} />
                                 <Route path="/sign-up" element={<SignUpPage />} />
                                 <Route path="*" element={<PageNotFound />} />
-                                {userData && userData.role === 'client'? (
+                                {userData && userData.role == 'client'? (
                                     <>
                                         <Route path="/home">
                                             <Route index element={<HomePage />} />

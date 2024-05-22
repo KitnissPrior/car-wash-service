@@ -2,8 +2,9 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import {api} from './serverApi';
 import { User, Role, Person } from '../types';
 import { Dialog } from 'antd-mobile';
+import { Guid } from 'guid-typescript';
 
-export const useUserQuery = (userId : string) => useQuery({
+export const useUserQuery = (userId : string | undefined | Guid) => useQuery({
     queryKey: ['User', userId],
     queryFn: () => api.get('User/' + userId).json<User>(),
     refetchInterval: 1000,
@@ -18,7 +19,7 @@ export const useUserAddMutation = (handleSuccess: (newUser: User) => void) => us
         handleSuccess(data.value as User);
     },
     onError: () => {
-        Dialog.alert({content: 'Сохранение выполнить не удалось', confirmText: 'Закрыть'});
+        Dialog.alert({content: 'Зарегистрироваться не получилось', confirmText: 'Закрыть'});
     },
 })
 
@@ -47,7 +48,7 @@ export const checkRoleQuery = (roleId: string, requiredRole: string) => useQuery
     refetchInterval: 1000
 })
 
-export const usePersonDataQuery = (personId: string) => useQuery({
+export const usePersonDataQuery = (personId:  string | undefined | Guid) => useQuery({
     queryKey: ['Person'],
     queryFn: () => api.get('Person/' + personId).json<Person>(),
     refetchInterval: 1000
