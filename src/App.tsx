@@ -35,7 +35,10 @@ const queryClient = new QueryClient({
 });
 export default function App() {
     const { userData } = useAuthContext();
-    console.log(userData.role)
+    console.log(userData)
+
+    useEffect(() => {
+    }, [userData]);
 
     return (
         <AuthProvider>

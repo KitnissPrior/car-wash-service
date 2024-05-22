@@ -1,7 +1,7 @@
 import { Button, Input, Form } from "antd";
 import './EditProfilePage.scss';
 import { useNavigate } from "react-router-dom";
-import { Person, RegisterFormProps } from "../../components/types";
+import { Person } from "../../components/types";
 import { usePersonAddMutation } from "../../components/api/userApi";
 import { useAuthContext } from "../../components/AuthContext";
 
@@ -18,6 +18,7 @@ export default function EditProfilePage() {
     }
 
     const handleSubmit = async (person: Person) => {
+        console.log(person)
         await save(person);
         navigate(-1);
         const newUserData = {
@@ -35,29 +36,25 @@ export default function EditProfilePage() {
             <Form
                 onFinish={handleSubmit}>
                 <div className="edit-inputs">
-                    <Form.Item name="lastName"
+                    <Form.Item name="personId" hidden initialValue={userData?.personId}/>
+                    <Form.Item name="lastName" initialValue={userData?.lastName}
                         rules={[{ required: true,  message: "Введите фамилию" }]}>
-                        <Input className="edit-input" placeholder="Фамилия*"
-                            defaultValue={userData?.lastName}/>
+                        <Input className="edit-input" placeholder="Фамилия*"/>
                     </Form.Item>
-                    <Form.Item name="firstName"
+                    <Form.Item name="firstName" initialValue={userData?.firstName}
                         rules={[{ required: true,  message: "Введите имя" }]}>
-                        <Input className="edit-input" placeholder="Имя"
-                            defaultValue={userData?.firstName}/>
+                        <Input className="edit-input" placeholder="Имя"/>
                     </Form.Item>
-                    <Form.Item name="fathersName">
-                        <Input className="edit-input" placeholder="Отчество"
-                            defaultValue={userData?.fathersName}/>
+                    <Form.Item name="fathersName" initialValue={userData?.fathersName}>
+                        <Input className="edit-input" placeholder="Отчество"/>
                     </Form.Item>
-                    <Form.Item name="phoneNumber"
+                    <Form.Item name="phoneNumber" initialValue={userData?.phoneNumber}
                         rules={[{ required: true,  message: "Это поле является обязательным" }, 
                         {min: 10, message: "Номер должен содержать 10 цифр"}]}>
-                        <Input className="edit-input" placeholder="Номер телефона*" 
-                            defaultValue={userData?.phoneNumber}/>
+                        <Input className="edit-input" placeholder="Номер телефона*"/>
                     </Form.Item>
-                    <Form.Item name="email">
-                        <Input className="edit-input" placeholder="Почта"
-                            defaultValue={userData?.email}/>
+                    <Form.Item name="email" initialValue={userData?.email}>
+                        <Input className="edit-input" placeholder="Почта"/>
                     </Form.Item>
                 </div>
                 <div className="buttons-section">

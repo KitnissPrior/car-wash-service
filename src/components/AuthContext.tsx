@@ -25,7 +25,6 @@ export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider: React.FC<ContextProviderProps> = ({ children }) => {
     const [userData, setUserData] = useState<UserData>(() => {
-        // Попытка загрузить данные из localStorage при монтировании
         const storedData = localStorage.getItem('userData');
         if (storedData) {
             return JSON.parse(storedData);
@@ -34,28 +33,9 @@ export const AuthProvider: React.FC<ContextProviderProps> = ({ children }) => {
     });
 
     useEffect(() => {
-        // Сохранение данных в localStorage при обновлении
         localStorage.setItem('userData', JSON.stringify(userData));
         setUserData(userData);
     }, [userData]);
        
     return <AuthContext.Provider value={{ userData, setUserData }}>{children}</AuthContext.Provider>;
 };
-
-
-
-//     const [userData, setUserData] = useState< User | undefined >(undefined);
-
-//     // Предположим, что здесь происходит аутентификация и получение данных пользователя
-//     // Например, после успешной аутентификации, данные пользователя устанавливаются
-//     // useEffect(() => {
-//     //     const fetchedUser = fetchUserDataFromServer(); // Замените на вашу логику получения данных
-//     //     setUser(fetchedUser);
-//     // }, []);
-
-//     return (
-//         <UserContext.Provider value={{ userData, setUserData}}>
-//             {children}
-//         </UserContext.Provider>
-//     );
-// };

@@ -14,7 +14,7 @@ export default function SignUpPage() {
     const [role, setRole] = useState("");
     const [formData, setFormData] = useState<RegisterFormProps | null>(null);
 
-    const {userData, setUserData} = useAuthContext();
+    const {setUserData} = useAuthContext();
 
     const { mutateAsync: savePersonData } = usePersonAddMutation()
 
@@ -43,9 +43,6 @@ export default function SignUpPage() {
             email: formData?.email,
             phoneNumber: formData?.phoneNumber,
         }
-        
-        //localStorage.setItem('userName', formData?.firstName ?? '');
-        //localStorage.setItem('role', role ?? '');
         
         await savePersonData(newPerson);
     }
