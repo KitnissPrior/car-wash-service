@@ -14,7 +14,7 @@ export default function SignUpPage() {
     const [role, setRole] = useState("");
     const [formData, setFormData] = useState<RegisterFormProps | null>(null);
 
-    const {setUserData} = useAuthContext();
+    const {userData, setUserData} = useAuthContext();
 
     const { mutateAsync: savePersonData } = usePersonAddMutation()
 
@@ -34,6 +34,7 @@ export default function SignUpPage() {
         }
 
         setUserData(newUserData);
+        console.log(userData);
 
         const newPerson = {
             personId: addedUser?.personId,
@@ -66,9 +67,10 @@ export default function SignUpPage() {
         };
 
         setError(""); // Сброс ошибки перед отправкой данных
+        localStorage.setItem('role', role);
         await saveUser(newUser);
 
-        userRole?.roleName === 'client'? navigate("/home") : navigate("/carwashes/")
+        role === "client"? navigate("/home") : navigate("/carwashes/")
     };
 
     useEffect(() => {}, [role]);

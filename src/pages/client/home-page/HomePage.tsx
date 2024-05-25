@@ -1,9 +1,14 @@
 import './HomePage.scss';
 import { Button } from 'antd';
 import { useNavigate } from "react-router-dom"
+import { useAuthContext } from '../../../components/AuthContext';
+import { useEffect } from 'react';
 
 export default function HomePage() {
     const navigate = useNavigate();
+    const {userData} = useAuthContext();
+    
+    useEffect(() => {}, [userData]);
 
     const toBookingPage = () => {
         navigate('/home/booking-page');
