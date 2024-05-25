@@ -2,11 +2,14 @@ import { AutoCenter } from "antd-mobile"
 import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import '../../App.scss'
+import { useAuthContext } from "../../components/AuthContext";
 
 export default function PageNotFound() {
     const navigate = useNavigate();
+    const {userData} = useAuthContext();
+    
     const handleContinue = () => {
-        localStorage.getItem('role') === 'owner' ? navigate('/carwashes') : navigate('/');
+        userData?.role == 'owner' ? navigate('/carwashes') : navigate('/home');
     }
 
 

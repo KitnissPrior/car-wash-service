@@ -6,18 +6,16 @@ import './ServiceForm.scss'
 import { useServiceAddMutation } from "../../../components/api/serviceApi"
 import { useFormData } from "../carwash-form/CarwashFormContext"
 
-export const ServiceAddingForm: FC = () => {
+export const ServiceForm: FC = () => {
     const { formData: carwashData } = useFormData();
 
     const { mutateAsync: save } = useServiceAddMutation()
 
     const serviceDefaultValues: Service = {
-       //id: undefined,
         name: '',
         price: 0,
         duration: '0',
         carwashId: carwashData.carwashId,
-        //status_ID : '1'
     }
 
     const navigate = useNavigate();

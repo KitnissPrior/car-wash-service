@@ -2,17 +2,15 @@ import React from "react"
 import { FC} from "react"
 import {Form, Button, Input} from "antd"
 import './CarwashForm.scss'
-import { HeaderOwner } from "../../headers/HeaderOwner"
 import { useNavigate } from "react-router-dom"
 import { useFormData } from "./CarwashFormContext"
 import { useCarwashAddMutation } from "../../../components/api/carwashApi"
 import { Carwash } from "../../../components/types"
 
-export const CarwashAdding: FC = () => {
+export const CarwashForm: FC = () => {
     const { formData, setFormData} = useFormData();
 
     const handleCarwashSuccessAdd = (data: Carwash) => {
-        console.log(data)
         setFormData(data);
         navigate(`/carwashes/carwash-about/:${data.carwashId}`);
     }
@@ -48,13 +46,13 @@ export const CarwashAdding: FC = () => {
     const handleFormSubmit = async (carwashData: Carwash) => {
         await save(carwashData);
     }
+    const formTitle = formData.carwashId? 'Редактирование автомойки' : 'Добавление автомойки';
 
     return ( 
         <div>
-            <div><HeaderOwner/></div>
             <div className="carwash-adding">
             <div className="carwash-adding-content2">
-                <h1 className="form-title">Добавление автомойки</h1>
+                <h1 className="form-title">{formTitle}</h1>
                     <Form>
                         {<Form.Item name="carwashId" hidden/>}
                         <Form.Item label="Название автомойки*" name="name" 
