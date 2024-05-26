@@ -1,7 +1,8 @@
 import { Input, Button } from "antd";
-import { NavLink } from "react-router-dom";
-import  { useState } from "react";
+import { useState } from "react";
 import {api} from "../../components/api/serverApi";
+import { Link } from "react-router-dom";
+import './LoginPage.scss'
 
 
 export default function LoginPage() {
@@ -45,14 +46,14 @@ export default function LoginPage() {
 
     return (
         <>
-            <div>
-                <h2>Войти в аккаунт</h2>
+            <div className="login-main-container">
+                <h2 className="login-main-title">Войти в аккаунт</h2>
                 <form onSubmit={handleSubmit}>
-                    <Input type='text' value={login} placeholder='Почта или телефон' onChange={(e) => setLogin(e.target.value)} required/>
-                    <Input type='password' value={password} placeholder='Пароль' onChange={(e) => setPassword(e.target.value)} required />
-                    <Button className="profile-page-button" htmlType="submit">Войти</Button>
+                    <Input className='login-input' type='text' value={login} placeholder='Почта или телефон' onChange={(e) => setLogin(e.target.value)} required/>
+                    <Input className='login-input' type='password' value={password} placeholder='Пароль' onChange={(e) => setPassword(e.target.value)} required />
+                    <Button className="login-button" htmlType="submit">Войти</Button>
                 </form>
-                <NavLink to="/sign-up">Нет аккаунта? Создайте его!</NavLink>
+                <Link className='login-link' to="/sign-up">Нет аккаунта? Создайте его!</Link>
             </div>
         </>
     );

@@ -6,6 +6,7 @@ import { useUserAddMutation, useRolesQuery, usePersonAddMutation } from "../../c
 const { Option } = Select;
 import { User, RegisterFormProps } from "../../components/types";
 import { useAuthContext } from "../../components/AuthContext";
+import '../login/LoginPage.scss';
 
 export default function SignUpPage() {
     const navigate = useNavigate();
@@ -80,35 +81,36 @@ export default function SignUpPage() {
       };
 
     return (
-        <>
-            <h2>Зарегистрироваться</h2>
+        <div className="sign-main-container">
+            <h2 className="login-main-title">Зарегистрироваться</h2>
             <Form
                 title={"Зарегистрироваться"}
                 onFinish={handleSubmit}>
                 <Form.Item name="phoneNumber"
                     rules={[{ required: true,  message: "Введите номер телефона" }, 
                     {min: 10, message: "Номер должен содержать 10 цифр"}]}>
-                    <Input className="input" placeholder="Номер телефона*" />
+                    <Input className="sign-input" placeholder="Номер телефона*" />
                 </Form.Item>
                 <Form.Item name="email">
-                    <Input className="input" placeholder="Почта"/>
+                    <Input className="sign-input" placeholder="Почта"/>
                 </Form.Item>
                 <Form.Item name="lastName"
                     rules={[{ required: true,  message: "Введите фамилию" }]}>
-                    <Input className="input" placeholder="Фамилия*"/>
+                    <Input className="sign-input" placeholder="Фамилия*"/>
                 </Form.Item>
                 <Form.Item name="firstName"
                     rules={[{ required: true,  message: "Введите имя" }]}>
-                    <Input className="input" placeholder="Имя"/>
+                    <Input className="sign-input" placeholder="Имя"/>
                 </Form.Item>
                 <Form.Item name="fathersName">
-                    <Input className="input" placeholder="Отчество"/>
+                    <Input className="sign-input" placeholder="Отчество"/>
                 </Form.Item>
                 <Form.Item name="role"
                     rules={[{ required: true,  message: "Выберите роль" }]}>
                     <Select
                         showSearch
-                        style={{ width: 200 }}
+                        className="sign-select"
+                        style={{borderRadius: 5}}
                         placeholder="Выберите роль"
                         optionFilterProp="children"
                         onChange={handleRoleChange}
@@ -119,9 +121,9 @@ export default function SignUpPage() {
                 </Form.Item>
                 <Form.Item name="password"
                     rules={[{ required: true, message: "Введите пароль" }]}>
-                    <Input.Password className="input" placeholder="Пароль"/>
+                    <Input.Password className="sign-input" placeholder="Пароль"/>
                 </Form.Item>
-                <Form.Item name="confirmPassword"
+                <Form.Item name="confirmPassword" className="sign-password"
                     rules={[
                         { required: true, message: "Подтвердите пароль" },
                         ({ getFieldValue }) => ({
@@ -136,14 +138,14 @@ export default function SignUpPage() {
                             },
                         }),
                     ]}>
-                    <Input.Password className="input" placeholder="Подтвердите пароль"/>
+                    <Input.Password className="sign-input" placeholder="Подтвердите пароль"/>
                 </Form.Item>
                 {error && <p>{error}</p>}
                 <Form.Item>
-                    <Button className="profile-page-button" htmlType="submit">Зарегистрироваться</Button>
+                    <Button className="sign-button" htmlType="submit">Зарегистрироваться</Button>
                 </Form.Item> 
             </Form>
-                <NavLink to="/">Есть аккаунт? Войдите!</NavLink>
-        </>
+                <NavLink className='login-link' to="/">Есть аккаунт? Войдите!</NavLink>
+        </div>
     );
 };
