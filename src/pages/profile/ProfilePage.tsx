@@ -15,7 +15,7 @@ export default function ProfilePage() {const navigate = useNavigate();
 
     const handleEditProfile = () => {
         console.log(userData?.role);
-        userData?.role == 'client' ? navigate('/profile/edit-profile/') 
+        userData?.role == 'client' ? navigate('/home/profile/edit-profile/') 
             : navigate('/carwashes/profile/edit-profile/');
     }
 
@@ -26,12 +26,13 @@ export default function ProfilePage() {const navigate = useNavigate();
     }
 
     const handleCheckOrderHistory = () => {
-        navigate('/profile/history/');
+        navigate('/home/profile/history/');
     }
 
     const handleExit = () => {
         setConfirmationVisible(false);
         setUserData({} as UserData);
+        localStorage.clear();
         navigate('/');
     }
 

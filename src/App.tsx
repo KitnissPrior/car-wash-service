@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Router, RouterProvider, Routes, createBrowserRouter, createRoutesFromElements, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import EditPasswordPage from "./pages/edit-password/EditPasswordPage";
 import { ServiceForm } from './pages/owner/service-form/ServiceForm';
@@ -17,8 +17,7 @@ import './App.scss';
 import SignUpPage from "./pages/sign-up/SignUpPage";
 import { PageHost } from "./pages/PageHost";
 import CalendarAndScheduler from "./pages/test/calendar-and-scheduler/CalendarAndScheduler";
-import { AuthProvider, useAuthContext } from './components/AuthContext';
-import { useEffect } from 'react';
+import { AuthProvider} from './components/AuthContext';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -34,11 +33,6 @@ const queryClient = new QueryClient({
     })
 });
 export default function App() {
-    const { userData } = useAuthContext();
-    console.log(userData)
-
-    useEffect(() => {
-    }, [userData]);
 
     return (
         <AuthProvider>
@@ -50,7 +44,7 @@ export default function App() {
                                 <Route index element={<LoginPage />} />
                                 <Route path="/sign-up" element={<SignUpPage />} />
                                 <Route path="*" element={<PageNotFound />} />
-                                {userData && userData.role == 'client'? (
+                                { localStorage.getItem("role") === "client"? (
                                     <>
                                         <Route path="/home">
                                             <Route index element={<HomePage />} />
