@@ -3,16 +3,11 @@ import { useState } from "react";
 import {api} from "../../components/api/serverApi";
 import { Link, useNavigate } from "react-router-dom";
 import './LoginPage.scss'
-import { useAuthContext } from "../../components/AuthContext";
-import { useUsersQuery, usePeopleQuery } from "../../components/api/userApi";
 
 
 export default function LoginPage() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
-    const {setUserData }= useAuthContext();
-    //const {data: users} = useUsersQuery();
-    //const {data: people} = usePeopleQuery();
     const navigate = useNavigate();
 
     const handleSubmit = async (event: any) => {
@@ -36,35 +31,23 @@ export default function LoginPage() {
             console.log(response);
     
             if (!response.ok) {
-                throw new Error('Ошибка авторизации');
+                throw new Error('Неправильный логин или пароль');
             }
     
             const data : any = await response.json();
-            for (let key in data)
-                if (Object.prototype.hasOwnProperty.call(data, key)) {
-                    console.log(`${key}: ${data[key]}`);
-                }
 
-            //const userId = data.subject;
-            // const user = users?.filter(u => u.userId == userId)[0];
-            // const personData = people?.filter(p => p.personId == user?.personId)[0];
-            // const newUserData = {
-            //     userId: user?.userId,
-            //     login: user?.login,
-            //     roleId: user?.roleId,
-            //     personId: user?.personId,
-            //     firstName: personData?.firstName,
-            //     lastName: personData?.lastName,
-            //     fathersName: personData?.fathersName,
-            //     email: personData?.email,
-            //     phoneNumber: personData?.phoneNumber,
-            //     role: "owner"
-            // }
-    
-            // setUserData(newUserData);
-    
+            const userId = data.subject;
+            const role = data.issuer;
+            localStorage.setItem('role', role);
+            localStorage.setItem('userId', userId);
+            console.log(role);
+
+            if (role === "client") {
+                navigate('/home');
+            } else if (role === "owner") {
+                navigate('/carwashes');
+            }
             alert('Вы успешно вошли в систему.');
-            //window.location.href = '/';
         } catch (error) {
             console.error(error);
             alert('Произошла ошибка при попытке войти в систему.');
