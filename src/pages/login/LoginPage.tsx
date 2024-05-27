@@ -28,7 +28,6 @@ export default function LoginPage() {
                     'Authorization': 'Bearer '
                 },
             });
-            console.log(response);
     
             if (!response.ok) {
                 throw new Error('Неправильный логин или пароль');
@@ -38,9 +37,9 @@ export default function LoginPage() {
 
             const userId = data.subject;
             const role = data.issuer;
+            localStorage.setItem('token', data.payload);
             localStorage.setItem('role', role);
             localStorage.setItem('userId', userId);
-            console.log(role);
 
             if (role === "client") {
                 navigate('/home');
@@ -50,7 +49,7 @@ export default function LoginPage() {
             alert('Вы успешно вошли в систему.');
         } catch (error) {
             console.error(error);
-            alert('Произошла ошибка при попытке войти в систему.');
+            alert('Неправильный логин или пароль');
         }
     };
 

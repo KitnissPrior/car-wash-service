@@ -4,13 +4,14 @@ import CardList from '../card-list/CardList';
 import { useAuthContext } from '../../../components/AuthContext';
 import { useEffect } from 'react';
 import { useUserQuery, usePersonDataQuery } from '../../../components/api/userApi';
+import { useTokenQuery } from '../../../components/api/authApi';
 
 export default function OwnerHomePage() {
     const query = useCarwashesQuery()
     const { data: carwashes} = query
-    
     const {userData, setUserData} = useAuthContext();
     const {data: user} = useUserQuery(localStorage.getItem('userId') || '');
+    console.log(user)
     
     //useEffect(() => {}, [userData]);
     const {data: personData }= usePersonDataQuery(user?.userId as string);

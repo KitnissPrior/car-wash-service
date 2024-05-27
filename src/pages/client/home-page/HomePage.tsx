@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom"
 import { useAuthContext } from '../../../components/AuthContext';
 import { useEffect } from 'react';
 import { useUserQuery, usePersonDataQuery } from '../../../components/api/userApi';
+import { useTokenQuery } from '../../../components/api/authApi';
 
 export default function HomePage() {
     const navigate = useNavigate();
     const {userData, setUserData} = useAuthContext();
     const {data: user} = useUserQuery(localStorage.getItem('userId') || '');
+    console.log(user)
     
     //useEffect(() => {}, [userData]);
     const {data: personData }= usePersonDataQuery(user?.userId as string);
