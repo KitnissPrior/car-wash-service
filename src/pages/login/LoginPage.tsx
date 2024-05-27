@@ -1,13 +1,19 @@
 import { Input, Button } from "antd";
 import { useState } from "react";
 import {api} from "../../components/api/serverApi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './LoginPage.scss'
+import { useAuthContext } from "../../components/AuthContext";
+import { useUsersQuery, usePeopleQuery } from "../../components/api/userApi";
 
 
 export default function LoginPage() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+    const {setUserData }= useAuthContext();
+    //const {data: users} = useUsersQuery();
+    //const {data: people} = usePeopleQuery();
+    const navigate = useNavigate();
 
     const handleSubmit = async (event: any) => {
         event.preventDefault(); // Предотвращаем перезагрузку страницы
@@ -15,7 +21,7 @@ export default function LoginPage() {
         try {
             // Формируем строку запроса
             const queryString = new URLSearchParams({
-                login: encodeURIComponent(login),
+                login: login,
                 password: encodeURIComponent(password)
             }).toString();
     
@@ -24,20 +30,41 @@ export default function LoginPage() {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Accept': 'application/json',
+                    'Authorization': 'Bearer '
                 },
             });
+            console.log(response);
     
             if (!response.ok) {
                 throw new Error('Ошибка авторизации');
             }
     
-            const data = await response.json();
-            localStorage.setItem('token', JSON.stringify(data)); // Сохраняем токен в localStorage (data.token)
-            const token = localStorage.getItem('token');
-            const decodedToken = token? JSON.parse(token).token : null;
-            console.log(decodedToken);
+            const data : any = await response.json();
+            for (let key in data)
+                if (Object.prototype.hasOwnProperty.call(data, key)) {
+                    console.log(`${key}: ${data[key]}`);
+                }
+
+            //const userId = data.subject;
+            // const user = users?.filter(u => u.userId == userId)[0];
+            // const personData = people?.filter(p => p.personId == user?.personId)[0];
+            // const newUserData = {
+            //     userId: user?.userId,
+            //     login: user?.login,
+            //     roleId: user?.roleId,
+            //     personId: user?.personId,
+            //     firstName: personData?.firstName,
+            //     lastName: personData?.lastName,
+            //     fathersName: personData?.fathersName,
+            //     email: personData?.email,
+            //     phoneNumber: personData?.phoneNumber,
+            //     role: "owner"
+            // }
+    
+            // setUserData(newUserData);
     
             alert('Вы успешно вошли в систему.');
+            //window.location.href = '/';
         } catch (error) {
             console.error(error);
             alert('Произошла ошибка при попытке войти в систему.');
