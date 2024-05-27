@@ -29,11 +29,14 @@ export const useUserAddMutation = (handleSuccess: (newUser: User) => void) => us
     },
 })
 
-export const usePersonAddMutation = () => useMutation <Person, Error, Person>({
+export const usePersonAddMutation = (handleSuccess: () => void) => useMutation <Person, Error, Person>({
     mutationFn: (person) => api('Person/' + (person?.personId || ''), {
         method: person?.personId ? 'PUT' : 'POST',
         json: person
-    }).json<Person>()
+    }).json<Person>(),
+    onSuccess: () => {
+        handleSuccess();
+    },
 })
 
 export const useRoleQuery = (roleId: string) => useQuery({
