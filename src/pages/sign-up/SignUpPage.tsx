@@ -17,7 +17,14 @@ export default function SignUpPage() {
 
     const {userData, setUserData} = useAuthContext();
 
-    const { mutateAsync: savePersonData } = usePersonAddMutation()
+    useEffect(() => {}, [role]);
+    
+    const handleHomeNavigate = async () => {
+        if (role === "client") await navigate("/home") 
+        else await navigate("/carwashes/")
+    }
+
+    const { mutateAsync: savePersonData } = usePersonAddMutation(handleHomeNavigate)
 
     const handleUserSuccessAdd = async (addedUser: User) => {
         const newUserData = {
@@ -47,6 +54,8 @@ export default function SignUpPage() {
         }
         
         await savePersonData(newPerson);
+
+        //role === "client"? navigate("/home") : navigate("/carwashes/")
     }
 
     const { mutateAsync: saveUser } = useUserAddMutation(handleUserSuccessAdd);
@@ -71,10 +80,9 @@ export default function SignUpPage() {
         localStorage.setItem('role', role);
         await saveUser(newUser);
 
-        role === "client"? navigate("/home") : navigate("/carwashes/")
+        //await role === "client"? navigate("/home") : navigate("/carwashes/")
     };
 
-    useEffect(() => {}, [role]);
     
     const handleRoleChange = (value : string) => {
         setRole(value);
