@@ -17,7 +17,8 @@ import './App.scss';
 import SignUpPage from "./pages/sign-up/SignUpPage";
 import { PageHost } from "./pages/PageHost";
 import CalendarAndScheduler from "./pages/test/calendar-and-scheduler/CalendarAndScheduler";
-import { AuthProvider} from './components/AuthContext';
+import { AuthProvider, useAuthContext} from './components/AuthContext';
+import { useEffect } from 'react';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -28,11 +29,14 @@ const queryClient = new QueryClient({
     },
     queryCache: new QueryCache({
         onError: () => {
-            window.location.replace('/404');
+            //window.location.replace('/404');
         }
     })
 });
 export default function App() {
+    const {userData} = useAuthContext();
+    
+    useEffect(() => {}, [userData]);
 
     return (
         <AuthProvider>
@@ -43,7 +47,7 @@ export default function App() {
                             <Route path="/" element={<PageHost />}>
                                 <Route index element={<LoginPage />} />
                                 <Route path="/sign-up" element={<SignUpPage />} />
-                                <Route path="*" element={<PageNotFound />} />
+                                {/*<Route path="*" element={<PageNotFound />} />*/}
                                 { localStorage.getItem("role") === "client"? (
                                     <>
                                         <Route path="/home">
