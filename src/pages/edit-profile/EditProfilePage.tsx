@@ -10,7 +10,7 @@ export default function EditProfilePage() {
     const navigate = useNavigate();
     const {userData, setUserData} = useAuthContext();
 
-    const {mutateAsync: save} = usePersonAddMutation()
+    const {mutateAsync: save} = usePersonAddMutation(() => {})
 
 
     const toProfile = () => {

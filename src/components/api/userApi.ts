@@ -10,6 +10,12 @@ export const useUserQuery = (userId : string | undefined | Guid) => useQuery({
     refetchInterval: 1000,
 })
 
+export const useUsersQuery = () => useQuery({
+    queryKey: ['Users'],            
+    queryFn: () => api.get('User/').json<User[]>(),
+    refetchInterval: 1000
+})
+
 export const useUserAddMutation = (handleSuccess: (newUser: User) => void) => useMutation <User, Error, User>({
     mutationFn: (user) => api('User/' + (user?.userId || ''), {
         method: user?.userId ? 'PUT' : 'POST',
@@ -23,11 +29,14 @@ export const useUserAddMutation = (handleSuccess: (newUser: User) => void) => us
     },
 })
 
-export const usePersonAddMutation = () => useMutation <Person, Error, Person>({
+export const usePersonAddMutation = (handleSuccess: () => void) => useMutation <Person, Error, Person>({
     mutationFn: (person) => api('Person/' + (person?.personId || ''), {
         method: person?.personId ? 'PUT' : 'POST',
         json: person
-    }).json<Person>()
+    }).json<Person>(),
+    onSuccess: () => {
+        handleSuccess();
+    },
 })
 
 export const useRoleQuery = (roleId: string) => useQuery({
@@ -49,7 +58,13 @@ export const checkRoleQuery = (roleId: string, requiredRole: string) => useQuery
 })
 
 export const usePersonDataQuery = (personId:  string | undefined | Guid) => useQuery({
-    queryKey: ['Person'],
+    queryKey: ['person', personId],
     queryFn: () => api.get('Person/' + personId).json<Person>(),
+    refetchInterval: 1000
+})
+
+export const usePeopleQuery = () => useQuery({
+    queryKey: ['people'],
+    queryFn: () => api.get('Person/').json<Person[]>(),
     refetchInterval: 1000
 })

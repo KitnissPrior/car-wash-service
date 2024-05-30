@@ -12,8 +12,9 @@ export const PageHost: React.FC = React.memo(() => {
     return (
         <>
             { location.pathname !== '/' && location.pathname !== '/sign-up'? 
-                (userData?.role == 'owner' ? <HeaderOwner /> : <HeaderClient />) 
-                :null}
+                (localStorage.getItem('role') == 'owner' ? <HeaderOwner /> : localStorage.getItem('role') == 'client'? 
+                <HeaderClient /> : null )
+                : null}
             <Outlet />
         </>
     );
