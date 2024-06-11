@@ -75,6 +75,7 @@ export type RegisterFormProps = {
 
 export type UserData = {
     userId?: Guid | string;
+    carwashId?: Guid | string;
     firstName?: string;
     lastName?: string;
     fathersName?: string;
@@ -85,6 +86,13 @@ export type UserData = {
     roleId?: Guid | string;
     login?: string;
     personId?: Guid | string;
+    carNumber?: string, 
 }
 
-export type UUID = string & { __uuid: void };
+export type OrderFormProps = {
+    carwashes? : Carwash[];
+    services?: Service[];
+    data: any; 
+    onDataChange: (data: any) => void; 
+    shouldGoNext: (shouldGoNext: boolean) => void;
+}

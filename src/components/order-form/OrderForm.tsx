@@ -1,13 +1,22 @@
+import { Guid } from 'guid-typescript';
 import React, { useState, useEffect } from 'react';
+import { OrderFormProps } from '../types';
+import { Dialog } from 'antd-mobile';
+import { useNavigate } from 'react-router-dom';
 
 interface FormData {
     [stepId: string]: unknown;
+    carwashId?: string | Guid;
+    serviceId?: string | Guid;
+    userId?: string | Guid;
+    name?: string;
+    phone?: string;
 }
 
 interface StepData {
     title: string;
     id: string;
-    content: React.ComponentType<{ data: FormData; onDataChange: (data: unknown) => void; shouldGoNext: (shouldGoNext: boolean) => void; }>;
+    content: React.ComponentType<OrderFormProps>;
     shouldValidate?: boolean;
 }
 
@@ -19,10 +28,10 @@ interface MultiStepFormProps {
 const OrderForm: React.FC<MultiStepFormProps> = ({ stepData, onSubmit }) => {
     const [formData, setFormData] = useState({});
     const [currentStep, setCurrentStep] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log('formData updated:', formData);
-        // Здесь можно добавить дополнительную логику, например, проверку на валидность данных
     }, [formData]);
 
     const handleStepChange = (stepName: string, data: unknown) => {
@@ -37,12 +46,19 @@ const OrderForm: React.FC<MultiStepFormProps> = ({ stepData, onSubmit }) => {
             setCurrentStep(currentStep + 1);
         } else {
             onSubmit(formData);
+            navigate("/home");
+            Dialog.alert({ 
+                title: 'Форма типа отправлена', 
+                confirmText: 'ок'});
         }
     };
 
     const handleBack = () => {
         if (currentStep > 0) {
             setCurrentStep(currentStep - 1);
+        }
+        if (currentStep === 0) {
+            setFormData({});
         }
     };
 
