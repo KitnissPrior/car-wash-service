@@ -14,14 +14,12 @@ export default function ProfilePage() {const navigate = useNavigate();
     const person = usePersonDataQuery(userData?.personId).data;
 
     const handleEditProfile = () => {
-        console.log(userData?.role);
         userData?.role == 'client' ? navigate('/home/profile/edit-profile/') 
             : navigate('/carwashes/profile/edit-profile/');
     }
 
     const handleEditPassword = () => {
-        console.log(userData?.role);
-        userData?.role == 'client' ? navigate('/profile/edit-password/') 
+        userData?.role == 'client' ? navigate('/home/profile/edit-password/') 
             : navigate('/carwashes/profile/edit-password/');
     }
 

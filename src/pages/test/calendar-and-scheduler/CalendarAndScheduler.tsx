@@ -51,7 +51,7 @@ const events: Event[] = [
 ];
 
 export default function CalendarAndScheduler() {
-    const [value, onChange] = useState<Value>(new Date());
+    const [value, onChange] = useState<any>(new Date());
     // Example events array, replace with your actual data
 
     return (

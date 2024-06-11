@@ -11,7 +11,6 @@ import { CarwashInfo } from './pages/owner/carwash-info/CarwashInfo';
 import ProfilePage from "./pages/profile/ProfilePage";
 import LoginPage from "./pages/login/LoginPage";
 import OwnerHomePage from './pages/owner/home-page/HomePage';
-import PageNotFound from "./pages/ux/PageNotFound";
 import HomePage from "./pages/client/home-page/HomePage";
 import './App.scss';
 import SignUpPage from "./pages/sign-up/SignUpPage";

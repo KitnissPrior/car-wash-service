@@ -5,7 +5,6 @@ import { Person } from "../../components/types";
 import { usePersonAddMutation } from "../../components/api/userApi";
 import { useAuthContext } from "../../components/AuthContext";
 
-// Сделать функциональность изменения данных прочего
 export default function EditProfilePage() {
     const navigate = useNavigate();
     const {userData, setUserData} = useAuthContext();

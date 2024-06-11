@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 export default function OwnerHomePage() {
     const query = useCarwashesQuery()
     const { data: carwashes} = query
-    const {userData, setUserData} = useAuthContext();
+    const {userData} = useAuthContext();
     
     useEffect(() => {}, [userData]);
     // const {data: personData }= usePersonDataQuery(user?.userId as string);

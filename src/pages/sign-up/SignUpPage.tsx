@@ -42,7 +42,6 @@ export default function SignUpPage() {
         }
 
         setUserData(newUserData);
-        console.log(userData);
 
         const newPerson = {
             personId: addedUser?.personId,

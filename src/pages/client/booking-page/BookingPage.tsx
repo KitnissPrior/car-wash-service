@@ -1,4 +1,4 @@
-import { YMaps, Map, Placemark, ZoomControl } from '@pbe/react-yandex-maps';
+import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import './BookingPage.scss';
 import OrderForm from "../../../components/order-form/OrderForm";
 import DateTimeSelectionStep from "../../../components/order-form/DateTimeSelectionStep";
