@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useServicesQuery } from '../../api/serviceApi';
-import { OrderFormProps, Service } from '../../types';
+import { OrderFormProps} from '../../types';
 import {List} from 'antd';
 import './ServiceSelection.scss'
 import { Guid } from 'guid-typescript';

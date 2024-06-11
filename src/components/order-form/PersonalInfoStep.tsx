@@ -1,13 +1,13 @@
 import React from 'react';
+import { OrderFormProps } from '../types';
 
-const PersonalInfoStep: React.FC<{ data: any; onDataChange: (data: any) => void; shouldGoNext: (shouldGoNext: boolean) => void }> = ({ data, onDataChange, shouldGoNext }) => {
+const PersonalInfoStep: React.FC<OrderFormProps> = ({ data, onDataChange }) => {
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         onDataChange({...data, name: event.target.value });
     };
 
     const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         onDataChange({...data, phone: event.target.value });
-        //shouldGoNext(true);
     };
 
     return (
