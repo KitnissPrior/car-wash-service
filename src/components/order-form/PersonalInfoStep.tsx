@@ -7,7 +7,7 @@ const PersonalInfoStep: React.FC<{ data: any; onDataChange: (data: any) => void;
 
     const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         onDataChange({...data, phone: event.target.value });
-        shouldGoNext(true);
+        //shouldGoNext(true);
     };
 
     return (
@@ -15,6 +15,7 @@ const PersonalInfoStep: React.FC<{ data: any; onDataChange: (data: any) => void;
             <h2>Введите личную информацию</h2>
             <input type="text" placeholder="Имя" onChange={handleNameChange} />
             <input type="tel" placeholder="Телефон" onChange={handlePhoneChange} />
+            <input type="text" placeholder="Номер машины" />
         </div>
     );
 };

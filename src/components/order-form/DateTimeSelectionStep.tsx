@@ -3,12 +3,12 @@ import React from 'react';
 const DateTimeSelectionStep: React.FC<{ data: any; onDataChange: (data: any) => void; shouldGoNext: (shouldGoNext: boolean) => void }> = ({ data, onDataChange, shouldGoNext }) => {
     const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         onDataChange({...data, date: event.target.value });
-        shouldGoNext(true);
+        //shouldGoNext(true);
     };
 
     const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         onDataChange({...data, time: event.target.value });
-        shouldGoNext(true);
+        //shouldGoNext(true);
     };
 
     return (

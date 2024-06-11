@@ -1,8 +1,9 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import {api} from './serverApi';
 import { Service } from '../types';
+import { Guid } from 'guid-typescript';
 
-export const useServicesQuery = () => useQuery({
+export const useServicesQuery = (carwashId?: string | Guid) => useQuery({
     queryKey: ['services'],
     queryFn: () => api.get('Service/').json<Service[]>(),
     refetchInterval: 5000
