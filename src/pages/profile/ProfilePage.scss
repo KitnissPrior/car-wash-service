@@ -57,6 +57,24 @@
 
         transition: linear .1s;
     }
+
+    .profile-page-button-red {
+        width: 30vw;
+        height: 46px;
+        margin: auto;
+        padding: 0 19px;
+
+        border: 1px solid #ED1D24;
+        border-radius: 30px;
+
+        font-size: 1.2em;
+        text-decoration: none;
+
+        color: #fff;
+        background-color: #ED1D24;
+
+        transition: linear .1s;
+    }
 }
 
 @media (min-width: 740px) and (max-width: 1200px) {

@@ -21,7 +21,7 @@ export default function ProfilePage() {const navigate = useNavigate();
 
     const handleEditPassword = () => {
         console.log(userData?.role);
-        userData?.role == 'client' ? navigate('/profile/edit-password/') 
+        userData?.role == 'client' ? navigate('/home/profile/edit-password/') 
             : navigate('/carwashes/profile/edit-password/');
     }
 
@@ -73,7 +73,7 @@ export default function ProfilePage() {const navigate = useNavigate();
                     { userData?.role === 'client' ?
                         <Button className="profile-page-button" onClick={handleCheckOrderHistory}>История записей</Button> 
                         : <></>}
-                    <Button className="profile-page-button" style={{backgroundColor: 'red', color: 'white'}} onClick={showConfirmationPopup}>Выйти</Button>
+                    <Button className="profile-page-button" onClick={showConfirmationPopup}>Выйти из аккаунта</Button>
                 </div>
                 
                 <ConfirmationPopup 
