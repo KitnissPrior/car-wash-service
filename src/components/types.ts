@@ -75,6 +75,7 @@ export type RegisterFormProps = {
 
 export type UserData = {
     userId?: Guid | string;
+    carwashId?: Guid | string;
     firstName?: string;
     lastName?: string;
     fathersName?: string;
@@ -85,6 +86,7 @@ export type UserData = {
     roleId?: Guid | string;
     login?: string;
     personId?: Guid | string;
+    carNumber?: string, 
 }
 
 export type OrderFormProps = {

@@ -7,7 +7,7 @@ import { CarwashesList } from './CarwashesList';
 
 const CarwashStep : React.FC<OrderFormProps> = (props) => 
 {
-    const [mapVisible, setMapVisible] = useState(true);
+    const [mapVisible, setMapVisible] = useState(false);
 
     const query = useCarwashesQuery()
     const { data: carwashes} = query
