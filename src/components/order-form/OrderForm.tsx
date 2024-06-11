@@ -1,13 +1,20 @@
+import { Guid } from 'guid-typescript';
 import React, { useState, useEffect } from 'react';
+import { OrderFormProps } from '../types';
 
 interface FormData {
     [stepId: string]: unknown;
+    carwashId?: string | Guid;
+    serviceId?: string | Guid;
+    userId?: string | Guid;
+    name?: string;
+    phone?: string;
 }
 
 interface StepData {
     title: string;
     id: string;
-    content: React.ComponentType<{ data: FormData; onDataChange: (data: unknown) => void; shouldGoNext: (shouldGoNext: boolean) => void; }>;
+    content: React.ComponentType<OrderFormProps>;
     shouldValidate?: boolean;
 }
 
@@ -22,7 +29,6 @@ const OrderForm: React.FC<MultiStepFormProps> = ({ stepData, onSubmit }) => {
 
     useEffect(() => {
         console.log('formData updated:', formData);
-        // Здесь можно добавить дополнительную логику, например, проверку на валидность данных
     }, [formData]);
 
     const handleStepChange = (stepName: string, data: unknown) => {

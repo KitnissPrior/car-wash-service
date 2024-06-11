@@ -87,4 +87,10 @@ export type UserData = {
     personId?: Guid | string;
 }
 
-export type UUID = string & { __uuid: void };
+export type OrderFormProps = {
+    carwashes? : Carwash[];
+    services?: Service[];
+    data: any; 
+    onDataChange: (data: any) => void; 
+    shouldGoNext: (shouldGoNext: boolean) => void;
+}
