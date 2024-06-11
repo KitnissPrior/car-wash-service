@@ -13,7 +13,8 @@ export const defaultUserData: UserData = {
     password: '', 
     roleId: '', 
     login: '', 
-    personId: '' 
+    personId: '',
+    carNumber: '', 
 };
 
 const AuthContext = createContext<{ userData: UserData; setUserData: React.Dispatch<React.SetStateAction<UserData>> }>({

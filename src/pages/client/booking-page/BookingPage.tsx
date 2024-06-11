@@ -1,9 +1,10 @@
 import './BookingPage.scss';
 import OrderForm from "../../../components/order-form/OrderForm";
-import DateTimeSelectionStep from "../../../components/order-form/DateTimeSelectionStep";
+import DateSelectionStep from "../../../components/order-form/DateSelectionStep";
 import ServiceSelectionStep from "../../../components/order-form/ServiceSelection/ServiceSelectionStep";
 import PersonalInfoStep from "../../../components/order-form/PersonalInfoStep";
 import CarwashStep from '../../../components/order-form/CarwashSelection/CarwashSelectionStep';
+import { TimeSelectionStep } from '../../../components/order-form/TimeSelectionStep';
 
 const stepData = [
     {
@@ -18,9 +19,14 @@ const stepData = [
         content: ServiceSelectionStep,
     },
     {
-        title: "Выберите дату и время",
-        id: "dateTimeSelection",
-        content: DateTimeSelectionStep,
+        title: "Выберите дату",
+        id: "dateSelection",
+        content: DateSelectionStep,
+    },
+    {
+        title: "Выберите время",
+        id: "timeSelection",
+        content: TimeSelectionStep,
     },
     {
         title: "Введите личную информацию",

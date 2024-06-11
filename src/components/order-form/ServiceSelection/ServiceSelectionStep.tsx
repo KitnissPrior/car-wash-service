@@ -10,17 +10,17 @@ const ServiceSelectionStep: React.FC<OrderFormProps> = ({ data, onDataChange }) 
     const { data: services } = query;
     const filteredServices = services?.filter((service) => service.carwashId === data?.carwashSelection.carwashId);
 
-    const [clickedItems, setClickedItems] = useState(new Set()); // Храним ID нажатых элементов
+    const [clickedItems, setClickedItems] = useState(data.serviceSelection?.services? new Set(data.serviceSelection.services) : new Set()); // Храним ID выбранных элементов
 
     const handleClick = (itemId : string | Guid | undefined) => {
         if (clickedItems.has(itemId)) {
-            setClickedItems(prevState => {
+            setClickedItems((prevState: Iterable<unknown> | null | undefined) => {
                 const newState = new Set(prevState);
                 newState.delete(itemId);
                 return newState;
             });
         } else {
-            setClickedItems(prevState => new Set(prevState.add(itemId)));
+            setClickedItems((prevState: { add: (arg0: string | Guid | undefined) => Iterable<unknown> | null | undefined; }) => new Set(prevState.add(itemId)));
             onDataChange({ services: clickedItems });
         }
     };
