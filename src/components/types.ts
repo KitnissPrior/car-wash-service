@@ -96,3 +96,26 @@ export type OrderFormProps = {
     onDataChange: (data: any) => void; 
     shouldGoNext: (shouldGoNext: boolean) => void;
 }
+
+export type Order = {
+    orderId?: Guid | string;
+    dateTime?: DateOnly;
+    carwashId?: Guid | string;
+    userId?: Guid | string;
+    licencePlate?: string;
+    statusId?: Guid | string;
+    box_Id?: Guid | string;
+    servicesIds?: string[] ;
+}
+
+export type ServiceInOrder = {
+    serviceInOrderId?: Guid | string;
+    serviceId?: Guid | string;
+    orderId?: Guid | string;
+}
+
+export type DateOnly = { 
+    year: number;
+    month: number;
+    day: number ;
+}
